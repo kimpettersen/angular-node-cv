@@ -1,6 +1,6 @@
 {
   "author": "",
-  "name": "",
+  "name": "ANUGULARCV",
   "version": "0.0.0",
   "dependencies": {
       "mongodb":"1.2.9",

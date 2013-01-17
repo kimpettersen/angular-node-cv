@@ -8,7 +8,7 @@ var ANGULARCVApp = angular.module('ANGULARCVApp', [])
         controller: 'MainCtrl'
       })
       .when('/api/education/index', {
-        templateUrl: 'views/education/educationIndex.html',
+        templateUrl: 'views/Models/educationIndex.html',
         controller: 'EducationIndexCtrl'
       })
       .when('/api/education/create', {

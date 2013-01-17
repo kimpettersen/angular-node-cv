@@ -1,12 +1,20 @@
 
 module.exports = function(app){
 
-  app.get('/api/educations', function(req, res) {
-
+  app.get('/api/educations/', function(req, res) {
+    var data = {
+      'university': 'Oslo',
+      'degree': 'Bachelor in Software Engineer'
+    };
+    res.json(data);
   });
 
   app.get('/api/education/:id', function(req, res) {
-    res.send('You hit an ExpressJS route with ' + req.params.id);
+    var data = {
+      'university': 'Oslo',
+      'degree': 'Bachelor in Software Engineer'
+    };
+    res.json(data);
   });
 
   app.post('/api/educations', function(req, res) {

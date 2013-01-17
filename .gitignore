@@ -1,2 +1,5 @@
-temp
-dist
+intermediate/
+publish/
+temp/
+node_modules
+.sass-cache

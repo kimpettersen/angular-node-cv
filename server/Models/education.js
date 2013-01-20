@@ -1,5 +1,9 @@
-var educationSchema = new Schema({
-    'university': String
+var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
+
+var EducationSchema = Schema({
+  education: String,
+  degree: String
 });
 
-var EducationModel = mongoose.model('EducationModel', educationSchema);
+module.exports.EducationModel = mongoose.model('EducationModel', EducationSchema);

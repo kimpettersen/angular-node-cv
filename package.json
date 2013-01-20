@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "dependencies": {
       "mongodb":"1.2.9",
-      "mongoose":"3.5.4"
+      "mongoose":"3.5.4",
+      "mocha":"*",
+      "should":"*"
       },
   "devDependencies": {}
 }

@@ -19,7 +19,7 @@ ed.save(function(err){
 module.exports = function(app){
 
   app.get('/api/education/', function(req, res) {
-    controller.get(model.Education, {}, function(error, result){
+    controller.get({ 'model': model.Education }, function(error, result){
         if(error){
             res.json(error);
         }
@@ -29,7 +29,7 @@ module.exports = function(app){
 
   app.get('/api/education/:id', function(req, res) {
     var id = req.params.id;
-    controller.get(model.Education, { '_id': id }, function(data){
+    controller.get({ 'model': model.Education, 'params':{ '_id': id } }, function(data){
         res.json(data);
     });
   });

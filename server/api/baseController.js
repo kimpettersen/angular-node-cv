@@ -2,16 +2,42 @@ var mongoose = require('mongoose');
 
 var Controller = function(){
 
-  var get = function(Model, param, callback){
-    //TODO: variable validation
+  var get = function(options, callback){
+    var params;
+    var Model;
 
-    Model.find(param, function(err, res){
+    if(options.hasOwnProperty('model')){
+      Model = options.model;
+      console.log('Passed!');
+    }else{
+      console.log('In callback');
+      callback({ 'error': 'baseController.get requires a model' }, {});
+      return;
+    }
+
+    options.hasOwnProperty('params') ? params = options.params : params = {}
+
+    Model.find(params, function(err, res){
       callback(err, res)
     });
   }
 
-  var post = function(Model, param, callback){
-    var model = new Model(param)
+  var post = function(options, callback){
+    var params;
+    var Model;
+
+    if(options.hasOwnProperty('model')){
+      Model = options.model;
+    }else{
+      callback({ 'error': 'baseController.post requires a model' }, {});
+      return;
+    }
+
+    options.hasOwnProperty('params') ? params = options.params : params = {}
+
+
+    var model = new Model(params)
+    model.save();
     callback(model);
   };
 

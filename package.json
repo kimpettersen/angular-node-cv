@@ -6,7 +6,8 @@
       "mongodb":"1.2.9",
       "mongoose":"3.5.4",
       "mocha":"*",
-      "should":"*"
+      "should":"*",
+      "mongoose-schema-extend": "*"
       },
   "devDependencies": {}
 }

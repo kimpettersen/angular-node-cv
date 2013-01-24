@@ -1,6 +1,7 @@
 var model = require('./model.js'),
     controller = require('../baseController.js'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    extend = require('mongoose-schema-extend');
 
 var ed = new model.Education({
     university: 'Oslo',

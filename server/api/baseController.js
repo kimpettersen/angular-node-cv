@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 var Controller = function(){
 
   var get = function(options, callback){
@@ -55,6 +56,10 @@ var Controller = function(){
     }
 
     params = options.hasOwnProperty('params') ? options.params : {};
+
+    Model.findAndModify(params, [], {}, {}, function (err){
+      console.log('updated');
+    });
 
     Model.findAndModify(params, function(err, res){
       console.log(res);

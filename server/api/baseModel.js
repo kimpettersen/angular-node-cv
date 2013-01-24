@@ -1,12 +1,12 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var baseSchema = Schema({
+var baseSchema = new Schema({
   isDeleted: {'type': Boolean, 'default': false }
 });
 
-// baseSchema.prototype.findAndModify = function (query, sort, doc, options, callback) {
-//   return this.collection.findAndModify(query, sort, doc, options, callback);
-// };
+baseSchema.methods.findAndModify = function (query, sort, doc, options, callback) {
+  return this.collection.findAndModify(query, sort, doc, options, callback);
+};
 
 module.exports.BaseSchema = baseSchema;

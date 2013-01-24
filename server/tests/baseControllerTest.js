@@ -1,12 +1,14 @@
 var controller = require('../api/baseController'),
     assert = require('assert'),
     should = require('should'),
-    mongoose = require("mongoose");
+    mongoose = require("mongoose"),
+    model = require('../baseModel');
+
 
 mongoose.connect('localhost', 'angularcv_tests');
 //mocha server/tests --reporter spec -u bdd -r should
 
-var testSchema = mongoose.Schema({
+var testSchema = model.BaseSchema.extend({
   fakeValue: String,
   fakeID: Number,
   isDeleted: Boolean

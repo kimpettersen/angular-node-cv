@@ -5,13 +5,7 @@ var baseSchema = new Schema({
   isDeleted: {'type': Boolean, 'default': false }
 });
 
-baseSchema.methods.get = function(options, callback){
-  var params = options.hasOwnProperty('params') ? options.params : {};
-  params.isDeleted = { '$ne': true };
-  callback(null, this);
-};
-
-baseSchema.statics.getAll = function(options, callback){
+baseSchema.statics.get = function(options, callback){
   var params = options.hasOwnProperty('params') ? options.params : {};
   params.isDeleted = { '$ne': true };
   this.find(params, callback);

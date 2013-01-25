@@ -2,59 +2,77 @@ var mongoose = require('mongoose');
 
 var Controller = function(){
 
-  var get = function(Model, param, callback){
-    //TODO: variable validation
+  var get = function(options, callback){
+    var params;
+    var Model;
 
-    Model.find(param, function(err, res){
-      callback(err, res)
+    if(options.hasOwnProperty('model')){
+      Model = options.model;
+    }else{
+      callback({ 'error': 'baseController.get requires a model' }, null);
+      return;
+    }
+
+    params = options.hasOwnProperty('params') ? options.params : {};
+
+    params.isDeleted = { '$ne': true };
+
+    Model.find(params, function(err, res){
+      callback(err, res);
     });
-  }
-
-  var post = function(Model, param, callback){
-    var model = new Model(param)
-    callback(model);
   };
 
-  var put = function(data, callback){};
-  var delete_func = function(data, callback){};
+  var post = function(options, callback){
+    var params;
+    var Model;
+
+    if(options.hasOwnProperty('model')){
+      Model = options.model;
+    }else{
+      callback({ 'error': 'baseController.post requires a model' }, null);
+      return;
+    }
+
+    params = options.hasOwnProperty('params') ? options.params : {};
+
+    var model = new Model(params);
+    model.save();
+    callback(null, model);
+  };
+
+  var put = function(options, callback){
+
+  };
+  var delete_func = function(options, callback){
+    var params;
+    var Model;
+
+    if(options.hasOwnProperty('model')){
+      Model = options.model;
+    }else{
+      callback({ 'error': 'baseController.delete requires a model' }, null);
+      return;
+    }
+
+    params = options.hasOwnProperty('params') ? options.params : {};
+
+    Model.findAndModify(params, function(err, res){
+      console.log(res);
+      res.isDeleted = true;
+      res.save();
+      callback(err, res);
+    });
+
+
+  };
 
   return {
     'get': get,
     'post': post,
     'put': put,
-    'delete': delete_func
+    'delete_func': delete_func
 
-  }
+  };
 }();
 
 module.exports = Controller;
-
-
-
-// module.exports.get = function(data, callback){
-//   var result = [];
-//   var args = data.id ? {'_id': data.id} : {}
-
-//   data.model.find(args, function(err, res){
-//     if(err){
-//       console.log('Error: ', err);
-//       result.push({ 'error': 'Problems retrieving model' });
-//     }else{
-//       result = res;
-//     }
-//     callback(result)
-//   });
-// }
-
-// module.exports.post = function(model){
-
-// }
-
-// module.exports.put = function(model){
-
-// }
-
-// module.exports.delete = function(model){
-
-// }
-

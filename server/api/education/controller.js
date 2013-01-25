@@ -3,30 +3,17 @@ var model = require('./model.js'),
     mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend');
 
-var ed = new model.Education({
-    university: 'Oslo',
-    degree: 'Engineer'
-});
-
-ed.save(function(err){
-    if(err){
-        console.log(err);
-    }
-    console.log('Created ..');
-});
-
-
-
 module.exports = function(app){
 
   app.get('/api/education/', function(req, res) {
-    controller.get({ 'model': model.Education }, function(error, result){
-        if(error){
-            res.json(error);
-        }
-        res.json(result);
+    model.Education.get({}, function(error, result){
+      if(error){
+        throw error;
+      }
+      res.json(result);
     });
   });
+
 
   app.get('/api/education/:id', function(req, res) {
     var id = req.params.id;

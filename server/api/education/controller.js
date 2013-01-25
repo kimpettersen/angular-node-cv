@@ -17,8 +17,8 @@ module.exports = function(app){
 
   app.get('/api/education/:id', function(req, res) {
     var id = req.params.id;
-    controller.get({ 'model': model.Education, 'params':{ '_id': id } }, function(data){
-        res.json(data);
+    model.Education.get({'_id': id}, function(error, result){
+      res.json(result);
     });
   });
 

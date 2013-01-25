@@ -13,6 +13,11 @@ BaseSchema.statics.get = function(args, callback){
   });
 };
 
+BaseSchema.statics.post = function(params, callback){
+  //Post to follow convention. might be dropped.
+  callback('Create a new model with new <ModelName({ params })>', 'Create a new model with new <ModelName({ params })>');
+};
+
 BaseSchema.statics.put = function(args, update, callback){
   var query;
 

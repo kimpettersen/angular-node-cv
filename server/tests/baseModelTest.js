@@ -61,6 +61,16 @@ describe('BaseModel', function(){
     });
   });
 
+  describe('post method', function(){
+    it('Should return "Create a new model with new <ModelName({ params })>"', function(done){
+      model.BaseModel.post({}, function(err, res){
+        err.should.be.equal('Create a new model with new <ModelName({ params })>');
+        res.should.be.equal('Create a new model with new <ModelName({ params })>');
+        done();
+      });
+    });
+  });
+
   describe('put method', function(){
     it('should modify the instance with the given _id with the given parameters', function(done){
       model.BaseModel.put({ '_id': model1._id }, { 'isDeleted': true }, function(err, res){
@@ -79,6 +89,13 @@ describe('BaseModel', function(){
   });
 
   describe('delete model', function(){
+    it('should return an error if _id is not passed', function(done){
+      model.BaseModel.put({'not-id': model1._id}, {'isDeleted': true }, function(err, res){
+        should.exist(err);
+        done();
+      });
+    });
+
     it('should soft delete a document with the given _id', function(done){
       model.BaseModel.deleteDocument({'_id': model1._id }, function(err, res){
         should.not.exist(err);

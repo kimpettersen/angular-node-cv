@@ -32,25 +32,63 @@ describe('BaseModel', function(){
     });
   });
 
-  describe('GET model', function(){
+  describe('get method', function(){
+
     it('should return all result that matches the parameters and is not deleted', function(done){
       model.BaseModel.get({}, function(err, res){
+        should.not.exist(err);
         res.should.have.lengthOf(1);
+        res[0].isDeleted.should.be.equal(false);
+        done();
+      });
+    });
+
+    it('should return one result when an _id that exists is passed', function(done){
+      model.BaseModel.get({ '_id': model1._id }, function(err, res){
+        should.not.exist(err);
+        res[0].isDeleted.should.be.equal(false);
+        res.should.have.lengthOf(1);
+        done();
+      });
+    });
+
+    it('should not return anything when an _id to a soft deleted is passed', function(done){
+      model.BaseModel.get({ '_id': model2._id }, function(err, res){
+        should.not.exist(err);
+        res.should.have.lengthOf(0);
         done();
       });
     });
   });
 
-  describe('POST model', function(){
+  describe('put method', function(){
+    it('should modify the instance with the given _id with the given parameters', function(done){
+      model.BaseModel.put({ '_id': model1._id }, { 'isDeleted': true }, function(err, res){
+        should.not.exist(err);
+        res.isDeleted.should.be.equal(true);
+        done();
+      });
+    });
 
+    it('should return an error if _id is not passed', function(done){
+      model.BaseModel.put({'not-id': model1._id}, {'isDeleted': true }, function(err, res){
+        should.exist(err);
+        done();
+      });
+    });
   });
 
-  describe('PUT model', function(){
-
-  });
-
-  describe('DELETE model', function(){
-
+  describe('delete model', function(){
+    it('should soft delete a document with the given _id', function(done){
+      model.BaseModel.deleteDocument({'_id': model1._id }, function(err, res){
+        should.not.exist(err);
+        res.isDeleted.should.be.equal(true);
+        model.BaseModel.get({'_id': model1._id},function(e, r){
+          r.should.have.lengthOf(0);
+          done();
+        });
+      });
+    });
   });
 
 });

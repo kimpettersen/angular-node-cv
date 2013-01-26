@@ -5,8 +5,12 @@ var mongoose = require("mongoose"),
 var Schema = mongoose.Schema;
 
 var EducationSchema = model.BaseSchema.extend({
-  university: String,
-  degree: String
+  institution: String,
+  degree: String,
+  startDate: Date,
+  endDate: Date,
+  description: String,
+  tags: [String]
 });
 
 module.exports.Education = mongoose.model('Education', EducationSchema);

@@ -23,15 +23,30 @@ module.exports = function(app){
   });
 
   app.post('/api/education', function(req, res) {
+    console.log(req.body);
+    var inst = new model.Education({
+                            'university': req.body.university,
+                            'degree': req.body.degree
+                          });
 
+    inst.save();
+    res.json(inst);
   });
 
   app.put('/api/education/:id', function(req, res) {
+    model.Education.put({'_id': req.params.id}, {
+                                            'university': req.body.university,
+                                            'degree': req.body.degree
+                                          }, function(error, result){
+      res.json(result);
+    });
 
   });
 
   app.delete('/api/education/:id', function(req, res) {
-
+    model.Education.deleteDocument({'_id': req.params.id}, function(error, result){
+      res.json(result);
+    });
   });
 
 };

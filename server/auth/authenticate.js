@@ -7,8 +7,9 @@ var UserSchema = model.BaseSchema.extend({
   username: String,
   password: String
 });
-User = mongoose.model('UserSchema', UserSchema);
+User = mongoose.model('UserModel', UserSchema);
 
+module.exports.UserModel = User;
 
 // us = new User({username: "kim@kim.com", password: "1234"})
 // us.save()

@@ -2,10 +2,8 @@ var assert = require('assert'),
     should = require('should'),
     mongoose = require("mongoose"),
     extend = require('mongoose-schema-extend'),
-    auth = require('../auth/authenticate'),
-    http = require('request'),
-    model = require('../api/baseModel');
-
+    auth = require('../auth/authenticate.js'),
+    http = require('request');
 
 mongoose.connect('localhost', 'angularcv_tests');
 //mocha server/tests --reporter spec -u bdd -r should
@@ -13,16 +11,8 @@ mongoose.connect('localhost', 'angularcv_tests');
 describe('Authentication', function(){
   var user;
 
-  var UserSchema = model.BaseSchema.extend({
-    username: String,
-    password: String
-  });
-  User = mongoose.model('UserSchema', UserSchema);
-
-
-
   beforeEach(function(done){
-    user = new User({
+    user = new auth.UserModel({
       username: 'kim',
       password: 'pword'
     });
@@ -38,7 +28,17 @@ describe('Authentication', function(){
   });
 
   describe('Login', function(){
-    it('should return "User not found" if the user does not exist', )
+    it('should return "User not found" if the user does not exist', function(){
+      http({
+        method: 'POST',
+        url: '/auth/login/',
+        json: true,
+        body: JSON.stringify({username: 'unknown', password: 'pword'}) },
+        function(err, res, body){
+          res.statusCode.should.be.equal(204);
+          console.log(body);
+        });
+    });
 
   });
 });

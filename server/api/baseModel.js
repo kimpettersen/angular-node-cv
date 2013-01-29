@@ -53,9 +53,6 @@ BaseSchema.statics.deleteDocument = function(args, callback){
 
 var BaseModel = mongoose.model('BaseSchema', BaseSchema);
 
-// baseSchema.methods.findAndModify = function (query, sort, doc, options, callback) {
-//   return this.collection.findAndModify(query, sort, doc, options, callback);
-// };
 
 module.exports.BaseSchema = BaseSchema;
 module.exports.BaseModel = BaseModel;

@@ -1,83 +1,17 @@
-var mongoose = require('mongoose');
+module.exports.baseController =  function(){
 
+  var resultHandler = function(err, res, returnCode){
+    //Default to 200
+    var statusCode = returnCode ? returnCode : 200;
 
-var Controller = function(){
-
-  var get = function(options, callback){
-    var params;
-    var Model;
-
-    if(options.hasOwnProperty('model')){
-      Model = options.model;
-    }else{
-      callback({ 'error': 'baseController.get requires a model' }, null);
-      return;
+    if(error){
+      res.status(500);
+      return res.json({ 'error': 'Internal server error' });
+    }else if(result.length < 1){
+      res.status(204);
+      return res.json({ 'result': 'No content' });
     }
-
-    params = options.hasOwnProperty('params') ? options.params : {};
-
-    params.isDeleted = { '$ne': true };
-
-    Model.find(params, function(err, res){
-      callback(err, res);
-    });
+    res.status(statusCode);
+    res.json({ 'result': result });
   };
-
-  var post = function(options, callback){
-    var params;
-    var Model;
-
-    if(options.hasOwnProperty('model')){
-      Model = options.model;
-    }else{
-      callback({ 'error': 'baseController.post requires a model' }, null);
-      return;
-    }
-
-    params = options.hasOwnProperty('params') ? options.params : {};
-
-    var model = new Model(params);
-    model.save();
-    callback(null, model);
-  };
-
-  var put = function(options, callback){
-
-  };
-  var delete_func = function(options, callback){
-    var params;
-    var Model;
-
-    if(options.hasOwnProperty('model')){
-      Model = options.model;
-    }else{
-      callback({ 'error': 'baseController.delete requires a model' }, null);
-      return;
-    }
-
-    params = options.hasOwnProperty('params') ? options.params : {};
-
-    Model.findAndModify(params, [], {}, {}, function (err){
-      console.log('updated');
-    });
-
-    Model.findAndModify(params, function(err, res){
-      console.log(res);
-      res.isDeleted = true;
-      res.save();
-      callback(err, res);
-    });
-
-
-  };
-
-  return {
-    'get': get,
-    'post': post,
-    'put': put,
-    'delete_func': delete_func
-
-  };
-}();
-
-module.exports = Controller;
+};

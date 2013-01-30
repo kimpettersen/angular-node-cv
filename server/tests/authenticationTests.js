@@ -5,13 +5,14 @@ var assert = require('assert'),
     auth = require('../auth/authenticate.js'),
     http = require('request');
 
-mongoose.connect('localhost', 'angularcv_tests');
+
 //mocha server/tests --reporter spec -u bdd -r should
 
 describe('Authentication', function(){
   var user;
 
   beforeEach(function(done){
+
     user = new auth.UserModel({
       username: 'kim',
       password: 'pword'
@@ -28,15 +29,28 @@ describe('Authentication', function(){
   });
 
   describe('Login', function(){
-    it('should return "User not found" if the user does not exist', function(){
+    it('should return status code 204 if the user does not exist', function(done){
       http({
         method: 'POST',
-        url: '/auth/login/',
+        url: 'http://localhost:3000/auth/login/',
         json: true,
         body: JSON.stringify({username: 'unknown', password: 'pword'}) },
         function(err, res, body){
           res.statusCode.should.be.equal(204);
+          done();
+        });
+    });
+
+    it('should return status code 200 if the user exists', function(done){
+      http({
+        method: 'POST',
+        url: 'http://localhost:3000/auth/login/',
+        json: true,
+        body: JSON.stringify({username: 'kim', password: 'pword'}) },
+        function(err, res, body){
           console.log(body);
+          res.statusCode.should.be.equal(200);
+          done();
         });
     });
 

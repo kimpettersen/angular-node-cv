@@ -7,9 +7,8 @@ var UserSchema = model.BaseSchema.extend({
   username: String,
   password: String
 });
-User = mongoose.model('UserModel', UserSchema);
 
-module.exports.UserModel = User;
+User = mongoose.model('UserModel', UserSchema);
 
 // us = new User({username: "kim@kim.com", password: "1234"})
 // us.save()
@@ -26,20 +25,21 @@ module.exports.checkAuth = function(req, res, next) {
 
 module.exports = function(app){
   app.post('/auth/login/', function(req, res) {      
-    var post = req.body;   
+    var post = req.body;
     User.findOne({username: post.username}, function(err, user){
+      console.log('user:::', user);
       if(err){
         res.status(500);
-        res.send('Error getting user');
+        res.json({ 'result':'Error getting user' });
         return;
       }else if(!user || user.isDeleted === true){
         res.status(204);
-        res.send('User not found');
+        res.json({ result: 'User not found' });
         return;
       }else if(user.password === post.password){
         res.status(200);
         req.session.user_id = user._id;
-        res.send('Succesful login');
+        res.json({'result': 'Succesful login'});
         return;
       }
       res.status(500);
@@ -61,3 +61,5 @@ module.exports = function(app){
     
   // });
 };
+
+module.exports.UserModel = User;

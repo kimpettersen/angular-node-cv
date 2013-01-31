@@ -26,7 +26,6 @@ app.configure(function () {
 //Active modules
 // require('./auth/authenticate.js')(app);
 require('./api/bucketlist/controller.js')(app);
-require('./api/courses/controller.js')(app);
 require('./api/education/controller.js')(app);
 require('./api/experience/controller.js')(app);
 require('./api/me/controller.js')(app);

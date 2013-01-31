@@ -25,10 +25,7 @@ module.exports = function(app){
 
   app.post('/api/experience/', function(request, response) {
     var id;
-    var inst = new model.Experience({
-                            'university': request.body.university,
-                            'degree': request.body.degree
-                          });
+    var inst = new model.Experience(request.body);
 
     inst.save();
     response.status(201);
@@ -37,10 +34,7 @@ module.exports = function(app){
 
   app.put('/api/experience/:id', function(request, response) {
     var id;
-    model.Experience.put({'_id': request.params.id}, {
-                                            'university': request.body.university,
-                                            'degree': request.body.degree
-                                          }, function(error, result){
+    model.Experience.put({'_id': request.params.id}, request.body, function(error, result){
         controller.resultHandler(error, result, response, 201, function(data){
              response.json(data);
         });

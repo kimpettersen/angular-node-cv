@@ -5,7 +5,7 @@ var mongoose = require("mongoose"),
 var BucketSchema = model.BaseSchema.extend({
   title: String,
   description: String,
-  rate: Number
+  rating: Number
 });
 
 module.exports.BucketList = mongoose.model('BucketList', BucketSchema);

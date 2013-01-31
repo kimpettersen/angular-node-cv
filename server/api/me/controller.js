@@ -25,10 +25,7 @@ module.exports = function(app){
 
   app.post('/api/me/', function(request, response) {
     var id;
-    var inst = new model.Me({
-                            'university': request.body.university,
-                            'degree': request.body.degree
-                          });
+    var inst = new model.Me(request.body);
 
     inst.save();
     response.status(201);
@@ -37,10 +34,7 @@ module.exports = function(app){
 
   app.put('/api/me/:id', function(request, response) {
     var id;
-    model.Me.put({'_id': request.params.id}, {
-                                            'university': request.body.university,
-                                            'degree': request.body.degree
-                                          }, function(error, result){
+    model.Me.put({'_id': request.params.id}, request.body, function(error, result){
         controller.resultHandler(error, result, response, 201, function(data){
              response.json(data);
         });

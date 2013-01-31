@@ -3,6 +3,8 @@ var mongoose = require("mongoose"),
     model = require('../baseModel.js');
 
 var MeSchema = model.BaseSchema.extend({
+  name: String,
+  born: Date,
   description: String,
   contact: [String],
   photo: String

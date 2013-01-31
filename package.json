@@ -1,12 +1,13 @@
 {
   "author": "",
   "name": "ANUGULARCV",
-  "version": "0.0.2-8",
+  "version": "0.0.1-1",
   "dependencies": {
     "express": "3.0.6",
     "mongodb": "1.2.9",
     "mongoose": "3.5.4",
-    "mongoose-schema-extend": "0.1.3"
+    "mongoose-schema-extend": "0.1.3",
+    "express-mongodb": "0.0.3"
   },
   "devDependencies": {
     "request": "2.12.0",

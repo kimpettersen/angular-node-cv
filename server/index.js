@@ -1,5 +1,6 @@
 var express = require('express'),
-    connection = require('./config/db.js');
+    connection = require('./config/db.js'),
+    // MongooseStore = require("express-mongodb")(express);
 
 var app = express();
 
@@ -7,7 +8,13 @@ app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    // app.use(express.session({ secret: 'keyboard cat' }));
+    // app.use(express.session({
+    //   secret: 'this is a really long key in production',
+    //   store: new MongooseStore({
+    //     collection: 'userLogin',
+    //     clearInterval: '120'
+    //   })
+    // }));
 
 });
 

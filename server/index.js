@@ -24,8 +24,12 @@ app.configure(function () {
 //   app.use(passport.session());
 
 //Active modules
-require('./auth/authenticate.js')(app);
+// require('./auth/authenticate.js')(app);
+require('./api/bucketlist/controller.js')(app);
+require('./api/courses/controller.js')(app);
 require('./api/education/controller.js')(app);
+require('./api/experience/controller.js')(app);
+require('./api/me/controller.js')(app);
 // require('./Routes/educationRoutes')(app);
 // mongoose.connect('mongodb://kimpettersen:77yjhw4@ds047427.mongolab.com:47427/cv');
 

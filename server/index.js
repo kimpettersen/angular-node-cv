@@ -7,7 +7,7 @@ app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    app.use(express.session({ secret: 'keyboard cat' }));
+    // app.use(express.session({ secret: 'keyboard cat' }));
 
 });
 

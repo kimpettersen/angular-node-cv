@@ -1,18 +1,17 @@
 var express = require('express'),
     connection = require('./config/db.js'),
-    // MongooseStore = require("express-mongodb")(express);
+    // MongoStore = require('connect-mongo')(express);
 
 var app = express();
 
 app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
-    app.use(express.cookieParser());
     // app.use(express.session({
-    //   secret: 'this is a really long key in production',
-    //   store: new MongooseStore({
-    //     collection: 'userLogin',
-    //     clearInterval: '120'
+    // secret: 'ae765e56ae5eef567fae567aef567fe675aef56f5e76ef765fae765aef567fae567fae',
+    // store: new MongoStore({
+    //     db: 'angularcv',
+    //     mongoose_connection: connection.db
     //   })
     // }));
 

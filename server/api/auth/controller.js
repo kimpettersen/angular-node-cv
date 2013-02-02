@@ -1,5 +1,5 @@
 module.exports = function(app){
-  app.post('/auth/login/', function(req, res) {
+  app.post('/auth/login/?', function(req, res) {
     var post = req.body;
     User.findOne({username: post.username}, function(err, user){
       if(err){
@@ -21,7 +21,7 @@ module.exports = function(app){
     });
   });
 
-  app.get('/auth/logout/', function(req, res){
+  app.get('/auth/logout/?', function(req, res){
     delete req.session.user_id;
     res.status(200);
     res.send('success', 'Successfully logged out');

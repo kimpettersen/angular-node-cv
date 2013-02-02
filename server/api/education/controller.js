@@ -5,7 +5,7 @@ var model = require('./model.js'),
 
 module.exports = function(app){
 
-  app.get('/api/education/', function(request, response) {
+  app.get('/api/education/?', function(request, response) {
     model.Education.get({}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){
          response.json(data);
@@ -16,14 +16,15 @@ module.exports = function(app){
 
   app.get('/api/education/:id', function(request, response) {
     var id = request.params.id;
+    console.log('THIS IS IT: ', id);
     model.Education.get({'_id': id}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){
-         response.json(data);
+         response.json(data[0]);
      });
     });
   });
 
-  app.post('/api/education/', function(request, response) {
+  app.post('/api/education/?', function(request, response) {
     var id;
     var inst = new model.Education(request.body);
 
@@ -51,7 +52,7 @@ module.exports = function(app){
     });
   });
 
-  app.options('/api/education/', function(request, response){
+  app.options('/api/education/?', function(request, response){
     //Returns documentation
     //res.status(200)
   });

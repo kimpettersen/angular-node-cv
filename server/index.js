@@ -1,5 +1,5 @@
 var express = require('express'),
-    connection = require('./config/db.js'),
+    connection = require('./config/db.js');
     // MongoStore = require('connect-mongo')(express);
 
 var app = express();
@@ -40,7 +40,7 @@ require('./api/me/controller.js')(app);
 
 
 
-// module.exports = app;
-app.listen(3000);
+module.exports = app;
+// app.listen(3000);
 
 

@@ -1,6 +1,6 @@
 'use strict';
 
-ANGULARCVApp.controller('MainCtrl', function($scope) {
+CVApp.controller('MainCtrl', function($scope) {
   $scope.awesomeThings = [
     'HTML5 Boilerplate',
     'AngularJS',

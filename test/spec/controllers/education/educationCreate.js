@@ -3,7 +3,7 @@
 describe('Controller: EducationCreateCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('ANGULARCVApp'));
+  beforeEach(module('CVApp'));
 
   var EducationCreateCtrl,
     scope;

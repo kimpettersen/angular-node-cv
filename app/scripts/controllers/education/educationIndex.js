@@ -1,8 +1,8 @@
 
 'use strict';
 
-ANGULARCVApp.controller('EducationIndexCtrl', function($scope, $routeParams, $http) {
-  $http.get('/api/educations/').success(function(data) {
-    $scope.education = data;
+CVApp.controller('EducationIndexCtrl', function($scope, $routeParams, $http) {
+  $http.get('/api/education/').success(function(data) {
+    $scope.educations = data.result;
   });
 });

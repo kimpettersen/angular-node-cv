@@ -1,26 +1,26 @@
 'use strict';
 
-var ANGULARCVApp = angular.module('ANGULARCVApp', [])
+var CVApp = angular.module('CVApp', [])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/api/education/index', {
-        templateUrl: 'views/Models/educationIndex.html',
+      .when('/cv/education/index', {
+        templateUrl: 'views/education/index.html',
         controller: 'EducationIndexCtrl'
       })
-      .when('/api/education/create', {
-        templateUrl: 'views/education/educationCreate.html',
+      .when('/cv/education/create', {
+        templateUrl: 'views/education/create.html',
         controller: 'EducationCreateCtrl'
       })
-      .when('/api/education/update/:id', {
-        templateUrl: 'views/education/educationUpdate.html',
+      .when('/cv/education/update/:id', {
+        templateUrl: 'views/education/update.html',
         controller: 'EducationUpdateCtrl'
       })
-      .when('/api/education/view/:id', {
-        templateUrl: 'views/education/educationView.html',
+      .when('/cv/education/view/:id', {
+        templateUrl: 'views/education/view.html',
         controller: 'EducationViewCtrl'
       })
       .otherwise({

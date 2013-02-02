@@ -1,0 +1,14 @@
+<div ng-controller="EducationCreateCtrl">
+<p>Create new education</p>
+  <form class="simple-form">
+    Institution: <input type="text" name="institution" ng-model="education.institution" /><br />
+    Degree: <input type="text" name="degree" ng-model="education.degree" /><br />
+    Duration: <input type="text" name="duration" ng-model="education.duration" />
+    Description: <textarea name="description" ng-model="education.description"></textarea>
+    <button ng-click="reset()">RESET</button>
+    <button ng-click="update(education)">SAVE</button>
+  </form>
+  <pre>form = {{education | json}}</pre>
+  <pre>master = {{master | json}}</pre>
+
+</div>

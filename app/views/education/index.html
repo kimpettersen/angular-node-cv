@@ -1,0 +1,22 @@
+<div ng-controller="EducationIndexCtrl">
+  <p>This is the education view.</p>
+  <ul>
+    <li ng-repeat="education in educations">
+      {{education.institution}}
+        <ul>
+          <li>
+            {{education.degree}}
+          </li>
+          <li>
+            {{education.duration}}
+          </li>
+          <li>
+            {{education.description}}
+          </li>
+          <li>
+            {{education.tags}}
+          </li>
+        </ul>
+    </li>
+  </ul>
+</div>

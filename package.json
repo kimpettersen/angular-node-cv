@@ -14,6 +14,8 @@
     "mocha": "1.8.1",
     "nock": "0.14.4",
     "should": "1.2.1",
+    "jasmine-node":"1.1.0",
+    "frisby": "0.6.7"
   },
   "subdomain": "angularcv",
   "scripts": {

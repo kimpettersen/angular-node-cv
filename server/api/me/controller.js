@@ -23,7 +23,7 @@ module.exports = function(app){
     });
   });
 
-  app.post('/api/me/', function(request, response) {
+  app.post('/api/me/', controller.protect, function(request, response) {
     var id;
     var inst = new model.Me(request.body);
 
@@ -32,7 +32,7 @@ module.exports = function(app){
     response.json({ 'result': inst });
   });
 
-  app.put('/api/me/:id', function(request, response) {
+  app.put('/api/me/:id', controller.protect, function(request, response) {
     var id;
     model.Me.put({'_id': request.params.id}, request.body, function(error, result){
         controller.resultHandler(error, result, response, 201, function(data){
@@ -42,7 +42,7 @@ module.exports = function(app){
     });
   });
 
-  app.delete('/api/me/:id', function(request, response) {
+  app.delete('/api/me/:id', controller.protect, function(request, response) {
     var id;
     model.Me.deleteDocument({'_id': request.params.id}, function(error, result){
       controller.resultHandler(error, result, response, 200, function(data){

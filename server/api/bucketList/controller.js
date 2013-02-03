@@ -23,7 +23,7 @@ module.exports = function(app){
     });
   });
 
-  app.post('/api/bucketlist/', function(request, response) {
+  app.post('/api/bucketlist/', controller.protect, function(request, response) {
     var id;
     var inst = new model.BucketList(request.body);
 
@@ -32,7 +32,7 @@ module.exports = function(app){
     response.json({ 'result': inst });
   });
 
-  app.put('/api/bucketlist/:id', function(request, response) {
+  app.put('/api/bucketlist/:id', controller.protect, function(request, response) {
     var id;
     model.BucketList.put({'_id': request.params.id}, request.body, function(error, result){
         controller.resultHandler(error, result, response, 201, function(data){
@@ -42,7 +42,7 @@ module.exports = function(app){
     });
   });
 
-  app.delete('/api/bucketlist/:id', function(request, response) {
+  app.delete('/api/bucketlist/:id', controller.protect, function(request, response) {
     var id;
     model.BucketList.deleteDocument({'_id': request.params.id}, function(error, result){
       controller.resultHandler(error, result, response, 200, function(data){

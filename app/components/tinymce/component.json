@@ -1,0 +1,8 @@
+{
+  "name": "tinymce",
+  "version": "3.5.8",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tinymce/tinymce.git"
+  }
+}

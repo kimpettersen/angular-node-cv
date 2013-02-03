@@ -1,4 +1,4 @@
-var resultHandler = function(error, result, response, returnCode, callback){
+module.exports.resultHandler = function(error, result, response, returnCode, callback){
     //Default to 200
     var statusCode = returnCode ? returnCode : 200;
 
@@ -13,4 +13,11 @@ var resultHandler = function(error, result, response, returnCode, callback){
     return callback(result);
 };
 
-module.exports.resultHandler = resultHandler;
+module.exports.protect = function(req, res, next) {
+  if (!req.session.user_id) {
+    res.status(403);
+    res.send('You are not authorized to view this page');
+  } else {
+    next();
+  }
+};

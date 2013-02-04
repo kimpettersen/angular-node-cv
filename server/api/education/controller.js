@@ -16,7 +16,6 @@ module.exports = function(app){
 
   app.get('/api/education/:id', function(request, response) {
     var id = request.params.id;
-    console.log('THIS IS IT: ', id);
     model.Education.get({'_id': id}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){
          response.json(data[0]);
@@ -30,7 +29,7 @@ module.exports = function(app){
 
     inst.save();
     response.status(201);
-    response.json({ 'result': inst });
+    response.json(inst);
   });
 
   app.put('/api/education/:id', controller.protect, function(request, response) {

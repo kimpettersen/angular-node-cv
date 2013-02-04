@@ -14,9 +14,9 @@ module.exports.resultHandler = function(error, result, response, returnCode, cal
 };
 
 module.exports.protect = function(req, res, next) {
-  if (!req.session.user_id) {
+  if(!req.session.user_id) {
     res.status(403);
-    res.send('You are not authorized to view this page');
+    res.json('You are not authorized to view this page');
   } else {
     next();
   }

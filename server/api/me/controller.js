@@ -29,7 +29,7 @@ module.exports = function(app){
 
     inst.save();
     response.status(201);
-    response.json({ 'result': inst });
+    response.json(inst);
   });
 
   app.put('/api/me/:id', controller.protect, function(request, response) {

@@ -29,5 +29,14 @@ var request = require('superagent'),
         done();
       });
     });
+
+    it('should return 200 succes when logged out', function(done){
+      request.get('localhost:3000/auth/logout')
+      .end(function(res){
+        res.statusCode.should.be.equal(200);
+        done();
+      });
+    });
+
   });
 

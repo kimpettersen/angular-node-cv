@@ -7,6 +7,7 @@ var request = require('superagent'),
       request.post('localhost:3000/auth/login')
       .send({'username': 'hello@kim.com', 'password': '1234'})
       .end(function(res){
+        should.exist(res.headers['set-cookie']);
         res.statusCode.should.be.equal(204);
         done();
       });
@@ -16,6 +17,7 @@ var request = require('superagent'),
       request.post('localhost:3000/auth/login')
       .send({'username': 'kim@kim.com', 'password': '124343434'})
       .end(function(res){
+        should.exist(res.headers['set-cookie']);
         res.statusCode.should.be.equal(204);
         done();
       });
@@ -34,6 +36,7 @@ var request = require('superagent'),
       request.get('localhost:3000/auth/logout')
       .end(function(res){
         res.statusCode.should.be.equal(200);
+        should.exist(res.headers['set-cookie']);
         done();
       });
     });

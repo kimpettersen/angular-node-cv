@@ -5,7 +5,7 @@ var model = require('./model.js'),
 
 module.exports = function(app){
 
-  app.get('/api/bucketlist/', function(request, response) {
+  app.get('/api/bucketlist/?', function(request, response) {
     model.BucketList.get({}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){
          response.json(data);
@@ -23,7 +23,7 @@ module.exports = function(app){
     });
   });
 
-  app.post('/api/bucketlist/', controller.protect, function(request, response) {
+  app.post('/api/bucketlist/?', controller.protect, function(request, response) {
     var id;
     var inst = new model.BucketList(request.body);
 

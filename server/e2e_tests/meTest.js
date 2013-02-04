@@ -1,10 +1,10 @@
 var request = require('superagent'),
     should = require('should'),
     mongoose = require('mongoose'),
-    model = require('../api/user/model.js');
+    model = require('../api/me/model.js');
 
 var referenceId;
-var user;
+var me;
 
 describe('Restricted access and status codes', function(){
 
@@ -13,9 +13,9 @@ describe('Restricted access and status codes', function(){
 
 
   beforeEach(function(done){
-    user = model.UserModel();
-    referenceId = user._id;
-    user.save();
+    me = model.Me();
+    referenceId = me._id;
+    me.save();
 
     auth_req.post('localhost:3000/auth/login')
       .send({'username': 'kim@kim.com', 'password': '1234'})
@@ -28,16 +28,16 @@ describe('Restricted access and status codes', function(){
   });
 
   afterEach(function(done){
-    model.UserModel.remove({}, function(){
+    model.Me.remove({}, function(){
       done();
     });
   });
 
 
-  describe('GET user', function(){
-    it('should return 200 when getting all bucket list', function(done){
+  describe('GET me', function(){
+    it('should return 200 when getting all me resources', function(done){
       auth_req
-        .get('localhost:3000/api/user')
+        .get('localhost:3000/api/me')
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -46,9 +46,9 @@ describe('Restricted access and status codes', function(){
         });
     });
 
-    it('should return 200 when getting one user', function(done){
+    it('should return 200 when getting one me', function(done){
       auth_req
-        .get('localhost:3000/api/user/' + referenceId)
+        .get('localhost:3000/api/me/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -57,9 +57,9 @@ describe('Restricted access and status codes', function(){
         });
     });
 
-    it('should return 200 when getting all bucket list when unauthenticated', function(done){
+    it('should return 200 when getting all me resources when unauthenticated', function(done){
       auth_req
-        .get('localhost:3000/api/user')
+        .get('localhost:3000/api/me')
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -68,9 +68,9 @@ describe('Restricted access and status codes', function(){
         });
     });
 
-    it('should return 200 when getting one user when unauthenticated', function(done){
+    it('should return 200 when getting one me when unauthenticated', function(done){
       auth_req
-        .get('localhost:3000/api/user/' + referenceId)
+        .get('localhost:3000/api/me/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -82,11 +82,11 @@ describe('Restricted access and status codes', function(){
 
   });
 
-  describe('POST user', function(){
+  describe('POST me', function(){
 
-    it('should return 201 when creating a new user', function(done){
+    it('should return 201 when creating a new me', function(done){
       auth_req
-        .post('localhost:3000/api/user/')
+        .post('localhost:3000/api/me/')
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -96,9 +96,9 @@ describe('Restricted access and status codes', function(){
         });
     });
 
-    it('should return 403 when creating a new user when not authenticated', function(done){
+    it('should return 403 when creating a new me when not authenticated', function(done){
       unauth_req
-        .post('localhost:3000/api/user/')
+        .post('localhost:3000/api/me/')
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -110,10 +110,10 @@ describe('Restricted access and status codes', function(){
 
   });
 
-  describe('PUT user', function(){
+  describe('PUT me', function(){
     it('should return 201 when authenticated', function(done){
       auth_req
-        .put('localhost:3000/api/user/' + referenceId)
+        .put('localhost:3000/api/me/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -124,9 +124,9 @@ describe('Restricted access and status codes', function(){
         });
     });
 
-    it('should return 403 when creating a new user when not authenticated', function(done){
+    it('should return 403 when creating a new me when not authenticated', function(done){
       unauth_req
-        .put('localhost:3000/api/user/' + referenceId)
+        .put('localhost:3000/api/me/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -136,10 +136,10 @@ describe('Restricted access and status codes', function(){
     });
   });
 
-  describe('DELETE user', function(){
+  describe('DELETE me', function(){
     it('Should return 200 when authenticated', function(done){
       auth_req
-        .del('localhost:3000/api/user/' + referenceId)
+        .del('localhost:3000/api/me/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -151,7 +151,7 @@ describe('Restricted access and status codes', function(){
 
     it('Should return 403 when not authenticated', function(done){
       unauth_req
-        .del('localhost:3000/api/user/' + referenceId)
+        .del('localhost:3000/api/me/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);

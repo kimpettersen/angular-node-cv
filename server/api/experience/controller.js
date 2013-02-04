@@ -5,7 +5,7 @@ var model = require('./model.js'),
 
 module.exports = function(app){
 
-  app.get('/api/experience/', function(request, response) {
+  app.get('/api/experience/?', function(request, response) {
     model.Experience.get({}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){
          response.json(data);
@@ -23,7 +23,7 @@ module.exports = function(app){
     });
   });
 
-  app.post('/api/experience/', controller.protect, function(request, response) {
+  app.post('/api/experience/?', controller.protect, function(request, response) {
     var id;
     var inst = new model.Experience(request.body);
 

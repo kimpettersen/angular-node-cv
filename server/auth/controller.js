@@ -2,7 +2,6 @@ var model = require('../api/user/model.js');
 
 module.exports = function(app){
   app.post('/auth/login/?', function(req, res) {
-    console.log('Got called');
     var post = req.body;
     model.UserModel.findOne({ username: post.username }, function(err, user){
       if(err){

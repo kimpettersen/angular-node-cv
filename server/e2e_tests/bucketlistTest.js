@@ -12,7 +12,7 @@ describe('Restricted access and status codes', function(){
   var unauth_req = request.agent();
 
 
-  beforeEach(function(done){
+  before(function(done){
     bl = model.BucketList();
     referenceId = bl._id;
     bl.save();
@@ -27,8 +27,9 @@ describe('Restricted access and status codes', function(){
 
   });
 
-  afterEach(function(done){
+  after(function(done){
     model.BucketList.remove({}, function(){
+      mongoose.connection.close();
       done();
     });
   });

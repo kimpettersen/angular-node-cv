@@ -6,16 +6,13 @@ var request = require('superagent'),
 var referenceId;
 var ed;
 
-mongoose.connect('localhost', 'angularcv_test');
-
-
 describe('Restricted access and status codes', function(){
 
     var auth_req = request.agent();
     var unauth_req = request.agent();
 
 
-  beforeEach(function(done){
+  before(function(done){
     ed = model.Education();
     referenceId = ed._id;
     ed.save();
@@ -26,11 +23,9 @@ describe('Restricted access and status codes', function(){
         should.not.exist(err);
         done();
     });
-
-
   });
 
-  afterEach(function(done){
+  after(function(done){
     model.Education.remove({}, function(){
       done();
     });

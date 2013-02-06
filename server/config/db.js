@@ -5,6 +5,9 @@ var user,
     testuser,
     dbName;
 
+// mongoose.connect('mongodb://kimpettersen:nrrnrr7@ds047427.mongolab.com:47427/cv');
+
+
 //May add more envs
 switch(process.env.NODE_ENV){
         case 'test':
@@ -31,4 +34,3 @@ model.UserModel.find(testuser, function(err, res){
 
 module.exports.dbName = dbName;
 
-// mongoose.connect('mongodb://kimpettersen:77yjhw4@ds047427.mongolab.com:47427/cv');

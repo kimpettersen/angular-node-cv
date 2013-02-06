@@ -2,7 +2,7 @@ module.exports.resultHandler = function(error, result, response, returnCode, cal
     //Default to 200
     var statusCode = returnCode ? returnCode : 200;
 
-    if(error){
+    if(error || result === null){
       response.status(500);
       return callback('Internal server error');
     }else if(result.length < 1){

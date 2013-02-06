@@ -45,8 +45,8 @@ BaseSchema.statics.deleteDocument = function(args, callback){
     return;
   }
   this.findOne(args, function(err, res){
-    res.isDeleted = true;
-    res.save();
+      res.isDeleted = true;
+      res.save();
     callback(err, res);
   });
 };

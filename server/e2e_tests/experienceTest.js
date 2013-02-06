@@ -17,7 +17,7 @@ describe('Restricted access and status codes', function(){
     referenceId = ex._id;
     ex.save();
 
-    auth_req.post('localhost:3000/auth/login')
+    auth_req.post('http://localhost:3000/auth/login')
       .send({'username': 'kim@kim.com', 'password': '1234'})
       .end(function(err, res){
         should.not.exist(err);
@@ -37,7 +37,7 @@ describe('Restricted access and status codes', function(){
   describe('GET experience', function(){
     it('should return 200 when getting all experience', function(done){
       auth_req
-        .get('localhost:3000/api/experience')
+        .get('http://localhost:3000/api/experience')
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -48,7 +48,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 200 when getting one experience', function(done){
       auth_req
-        .get('localhost:3000/api/experience/' + referenceId)
+        .get('http://localhost:3000/api/experience/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -59,7 +59,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 200 when getting all experience when unauthenticated', function(done){
       auth_req
-        .get('localhost:3000/api/experience')
+        .get('http://localhost:3000/api/experience')
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -70,7 +70,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 200 when getting one experience when unauthenticated', function(done){
       auth_req
-        .get('localhost:3000/api/experience/' + referenceId)
+        .get('http://localhost:3000/api/experience/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -86,7 +86,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 201 when creating a new experience', function(done){
       auth_req
-        .post('localhost:3000/api/experience/')
+        .post('http://localhost:3000/api/experience/')
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -98,7 +98,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 403 when creating a new experience when not authenticated', function(done){
       unauth_req
-        .post('localhost:3000/api/experience/')
+        .post('http://localhost:3000/api/experience/')
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -113,7 +113,7 @@ describe('Restricted access and status codes', function(){
   describe('PUT experience', function(){
     it('should return 201 when authenticated', function(done){
       auth_req
-        .put('localhost:3000/api/experience/' + referenceId)
+        .put('http://localhost:3000/api/experience/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -126,7 +126,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 403 when creating a new experience when not authenticated', function(done){
       unauth_req
-        .put('localhost:3000/api/experience/' + referenceId)
+        .put('http://localhost:3000/api/experience/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -139,7 +139,7 @@ describe('Restricted access and status codes', function(){
   describe('DELETE experience', function(){
     it('Should return 200 when authenticated', function(done){
       auth_req
-        .del('localhost:3000/api/experience/' + referenceId)
+        .del('http://localhost:3000/api/experience/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -151,7 +151,7 @@ describe('Restricted access and status codes', function(){
 
     it('Should return 403 when not authenticated', function(done){
       unauth_req
-        .del('localhost:3000/api/experience/' + referenceId)
+        .del('http://localhost:3000/api/experience/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);

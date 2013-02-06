@@ -6,39 +6,39 @@ var request = require('superagent'),
 var referenceId;
 var bl;
 
+mongoose.connect('localhost', 'angularcv_test');
+
+
 describe('Restricted access and status codes', function(){
 
   var auth_req = request.agent();
   var unauth_req = request.agent();
-
 
   before(function(done){
     bl = model.BucketList();
     referenceId = bl._id;
     bl.save();
 
-    auth_req.post('localhost:3000/auth/login')
+    auth_req.post('http://localhost:3000/auth/login')
       .send({'username': 'kim@kim.com', 'password': '1234'})
       .end(function(err, res){
         should.not.exist(err);
         done();
     });
-
-
   });
 
   after(function(done){
     model.BucketList.remove({}, function(){
-      mongoose.connection.close();
+      mongoose.
+
       done();
     });
   });
 
-
   describe('GET bucketlist', function(){
     it('should return 200 when getting all bucket list', function(done){
       auth_req
-        .get('localhost:3000/api/bucketlist')
+        .get('http://localhost:3000/api/bucketlist/')
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -49,10 +49,11 @@ describe('Restricted access and status codes', function(){
 
     it('should return 200 when getting one bucketlist', function(done){
       auth_req
-        .get('localhost:3000/api/bucketlist/' + referenceId)
+        .get('http://localhost:3000/api/bucketlist/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
+          console.log('http://localhost:3000/api/bucketlist/' + referenceId);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -60,7 +61,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 200 when getting all bucket list when unauthenticated', function(done){
       auth_req
-        .get('localhost:3000/api/bucketlist')
+        .get('http://localhost:3000/api/bucketlist')
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -71,7 +72,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 200 when getting one bucketlist when unauthenticated', function(done){
       auth_req
-        .get('localhost:3000/api/bucketlist/' + referenceId)
+        .get('http://localhost:3000/api/bucketlist/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
           should.not.exist(res.headers['set-cookie']);
@@ -87,7 +88,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 201 when creating a new bucketlist', function(done){
       auth_req
-        .post('localhost:3000/api/bucketlist/')
+        .post('http://localhost:3000/api/bucketlist/')
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -99,7 +100,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 403 when creating a new bucketlist when not authenticated', function(done){
       unauth_req
-        .post('localhost:3000/api/bucketlist/')
+        .post('http://localhost:3000/api/bucketlist/')
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -114,7 +115,7 @@ describe('Restricted access and status codes', function(){
   describe('PUT bucketlist', function(){
     it('should return 201 when authenticated', function(done){
       auth_req
-        .put('localhost:3000/api/bucketlist/' + referenceId)
+        .put('http://localhost:3000/api/bucketlist/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -127,7 +128,7 @@ describe('Restricted access and status codes', function(){
 
     it('should return 403 when creating a new bucketlist when not authenticated', function(done){
       unauth_req
-        .put('localhost:3000/api/bucketlist/' + referenceId)
+        .put('http://localhost:3000/api/bucketlist/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -140,7 +141,7 @@ describe('Restricted access and status codes', function(){
   describe('DELETE bucketlist', function(){
     it('Should return 200 when authenticated', function(done){
       auth_req
-        .del('localhost:3000/api/bucketlist/' + referenceId)
+        .del('http://localhost:3000/api/bucketlist/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);
@@ -152,7 +153,7 @@ describe('Restricted access and status codes', function(){
 
     it('Should return 403 when not authenticated', function(done){
       unauth_req
-        .del('localhost:3000/api/bucketlist/' + referenceId)
+        .del('http://localhost:3000/api/bucketlist/' + referenceId)
         .send({})
         .end(function(err, res){
           should.not.exist(err);

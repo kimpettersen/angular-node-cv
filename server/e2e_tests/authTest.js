@@ -5,13 +5,12 @@ var request = require('superagent'),
 
     var auth_req = request.agent();
 
-    mongoose.connect('localhost', 'angularcv_test');
 
   //Make sure the user isn't logged in
   describe('login a user', function(){
 
     it('should return 204 if wrong username is passsed', function(done){
-      auth_req.post('localhost:3000/auth/login')
+      auth_req.post('http://localhost:3000/auth/login')
       .send({'username': 'hello@kim.com', 'password': '1234'})
       .end(function(res){
         res.statusCode.should.be.equal(204);
@@ -20,7 +19,7 @@ var request = require('superagent'),
     });
 
     it('should return 204 if wrong password is passsed', function(done){
-      auth_req.post('localhost:3000/auth/login')
+      auth_req.post('http://localhost:3000/auth/login')
       .send({'username': 'kim@kim.com', 'password': '124343434'})
       .end(function(res){
         res.statusCode.should.be.equal(204);
@@ -29,7 +28,7 @@ var request = require('superagent'),
     });
 
     it('should return 200 succes if correct username and password is passsed', function(done){
-      auth_req.post('localhost:3000/auth/login')
+      auth_req.post('http://localhost:3000/auth/login')
       .send({'username': 'kim@kim.com', 'password': '1234'})
       .end(function(res){
         res.statusCode.should.be.equal(200);
@@ -38,7 +37,7 @@ var request = require('superagent'),
     });
 
     it('should return 200 succes when logged out', function(done){
-      auth_req.get('localhost:3000/auth/logout')
+      auth_req.get('http://localhost:3000/auth/logout')
       .end(function(res){
         res.statusCode.should.be.equal(200);
         done();

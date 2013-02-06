@@ -6,6 +6,7 @@ var model = require('./model.js'),
 module.exports = function(app){
 
   app.get('/api/education/?', function(request, response) {
+    console.log('Here')
     model.Education.get({}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){
          response.json(data);

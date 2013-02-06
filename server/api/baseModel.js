@@ -34,7 +34,10 @@ BaseSchema.statics.put = function(args, update, callback){
         res[prop] = update[prop];
       }
     }
-    res.save();
+    if(res){
+      res.save();
+    }
+
     callback(err, res);
   });
 };
@@ -45,8 +48,10 @@ BaseSchema.statics.deleteDocument = function(args, callback){
     return;
   }
   this.findOne(args, function(err, res){
-      res.isDeleted = true;
-      res.save();
+      if(res){
+        res.isDeleted = true;
+        res.save();
+      }
     callback(err, res);
   });
 };

@@ -20,6 +20,7 @@ switch(process.env.NODE_ENV){
 
 mongoose.connect('localhost', dbName);
 
+
 testuser = {
   'username': 'kim@kim.com',
   'password': '1234'

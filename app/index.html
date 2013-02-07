@@ -26,9 +26,9 @@
         <!-- Add your site or application content here -->
         <nav ng-controller="MenuCtrl">
           <ul>
-            <li ng-click="changeView('/main')">Main</li>
-            <li ng-click="changeView('/documentation')">Documentation</li>
-            <li ng-click="changeView('/admin')">Admin</li>
+            <a href="#/main">Main</li>
+            <a href="#/documentation">Documentation</li>
+            <a href="#/admin">Admin</li>
           </ul>
         </nav>
         <div class="container" ng-view></div>

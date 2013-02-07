@@ -25,12 +25,15 @@
 
         <!-- Add your site or application content here -->
         <nav ng-controller="MenuCtrl">
+
           <ul>
-            <a href="#/main">Main</li>
-            <a href="#/documentation">Documentation</li>
-            <a href="#/admin">Admin</li>
+            <button ng-click="changeView('/main')">Main</button>
+            <button ng-click="changeView('/documentation')">Documentation</button>
+            <button ng-click="changeView('/admin')">Admin</button>
           </ul>
+
         </nav>
+
         <div class="container" ng-view></div>
 
         <script src="scripts/vendor/angular.js"></script>

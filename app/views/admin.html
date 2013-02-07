@@ -1,12 +1,7 @@
 <div class="hero-unit">
+    <button ng-repeat="t in templates" ng-click="changeTemplate($index)">{{t.name}}</button>
 
-
-
-
-
-      <div ng-repeat="template in templates" ng-include="template.url">
-
-      </div>
+    <div ng-include src="template.url"></div>
 
 <!--
     <a href="#/admin/bucketlist">Bucketlist</a>

@@ -35,26 +35,26 @@ var CVApp = angular.module('CVApp', ['educationServices'])
         templateUrl: 'views/admin.html',
         controller: 'AdminCtrl'
       })
-      // .when('/admin/bucketlist', {
-      //   templateUrl: 'views/admin/bucketlist.html',
-      //   controller: 'BucketListCtrl'
-      // })
-      // .when('/admin/education', {
-      //   templateUrl: 'views/admin/education.html',
-      //   controller: 'EducationCtrl'
-      // })
-      // .when('/admin/experience', {
-      //   templateUrl: 'views/admin/experience.html',
-      //   controller: 'ExperienceCtrl'
-      // })
-      // .when('/admin/me', {
-      //   templateUrl: 'views/admin/me.html',
-      //   controller: 'MeCtrl'
-      // })
-      // .when('/admin/user', {
-      //   templateUrl: 'views/admin/user.html',
-      //   controller: 'UserCtrl'
-      // })
+      .when('/admin/bucketlist', {
+        templateUrl: 'views/admin/bucketlist.html',
+        controller: 'BucketListCtrl'
+      })
+      .when('/admin/education', {
+        templateUrl: 'views/admin/education.html',
+        controller: 'EducationCtrl'
+      })
+      .when('/admin/experience', {
+        templateUrl: 'views/admin/experience.html',
+        controller: 'ExperienceCtrl'
+      })
+      .when('/admin/me', {
+        templateUrl: 'views/admin/me.html',
+        controller: 'MeCtrl'
+      })
+      .when('/admin/user', {
+        templateUrl: 'views/admin/user.html',
+        controller: 'UserCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

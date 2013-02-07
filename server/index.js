@@ -27,7 +27,7 @@ require('./api/experience/controller.js')(app);
 require('./api/me/controller.js')(app);
 
 
-// module.exports = app;
+module.exports = app;
 app.listen(3000);
 
 

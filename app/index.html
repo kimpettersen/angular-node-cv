@@ -24,6 +24,13 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+        <nav ng-controller="MenuCtrl">
+          <ul>
+            <li ng-click="changeView('/main')">Main</li>
+            <li ng-click="changeView('/documentation')">Documentation</li>
+            <li ng-click="changeView('/admin')">Admin</li>
+          </ul>
+        </nav>
         <div class="container" ng-view></div>
 
         <script src="scripts/vendor/angular.js"></script>
@@ -33,11 +40,17 @@
 
         <!-- build:js scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/mainCtrl.js"></script>
+        <script src="scripts/controllers/docCtrl.js"></script>
+        <script src="scripts/controllers/adminCtrl.js"></script>
+        <script src="scripts/controllers/menuCtrl.js"></script>
         <script src="scripts/controllers/education/educationIndex.js"></script>
         <script src="scripts/controllers/education/educationCreate.js"></script>
         <script src="scripts/controllers/education/educationUpdate.js"></script>
         <script src="scripts/controllers/education/educationView.js"></script>
+
+
+
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

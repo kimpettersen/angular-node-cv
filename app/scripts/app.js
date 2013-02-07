@@ -23,6 +23,18 @@ var CVApp = angular.module('CVApp', ['educationServices'])
         templateUrl: 'views/education/view.html',
         controller: 'EducationViewCtrl'
       })
+      .when('/main', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/documentation', {
+        templateUrl: 'views/documentation.html',
+        controller: 'DocCtrl'
+      })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

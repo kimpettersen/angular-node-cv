@@ -1,12 +1,20 @@
 var express = require('express'),
     connection = require('./config/db.js'),
     mime = require('mime'),
-    MongoStore = require('connect-mongo')(express);
+    path = require('path'),
+    MongoStore = require('connect-mongo')(express),
+    cp = require('child_process');
 
+//Run grunt
+// grunt = cp.spawn('grunt', ['--force', 'default', 'watch']);
+// grunt.stdout.on('data', function(data) {
+//     console.log("%s", data);
+// });
 
 var app = express();
 var path = __dirname + '/../app';
 var type  = mime.lookup(path);
+
 
 app.configure(function () {
     app.use(express.logger('dev'));
@@ -23,7 +31,6 @@ app.configure(function () {
     app.use(app.router);
     app.use(function(req, res) {
       mimeType = mime.lookup(path);
-      console.log(mimeType);
       res.sendfile('index.html', {root: path});
     });
 });

@@ -39,7 +39,6 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/bucketlist/')
         .end(function(err, res){
           should.not.exist(err);
-          should.not.exist(res.headers['set-cookie']);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -50,30 +49,27 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/bucketlist/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
-          should.not.exist(res.headers['set-cookie']);
           console.log('http://localhost:3000/api/bucketlist/' + referenceId);
           res.statusCode.should.be.equal(200);
           done();
         });
     });
 
-    it('should return 200 when getting all bucket list when unauthenticated', function(done){
-      auth_req
+    it('should return 200 when getting all bucket list when not authenticated', function(done){
+      unauth_req
         .get('http://localhost:3000/api/bucketlist')
         .end(function(err, res){
           should.not.exist(err);
-          should.not.exist(res.headers['set-cookie']);
           res.statusCode.should.be.equal(200);
           done();
         });
     });
 
-    it('should return 200 when getting one bucketlist when unauthenticated', function(done){
-      auth_req
+    it('should return 200 when getting one bucketlist when not authenticated', function(done){
+      unauth_req
         .get('http://localhost:3000/api/bucketlist/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
-          should.not.exist(res.headers['set-cookie']);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -91,7 +87,6 @@ describe('Restricted access and status codes', function(){
         .end(function(err, res){
           should.not.exist(err);
           res.statusCode.should.be.equal(201);
-          should.not.exist(res.headers['set-cookie']);
           done();
         });
     });
@@ -103,7 +98,6 @@ describe('Restricted access and status codes', function(){
         .end(function(err, res){
           should.not.exist(err);
           res.statusCode.should.be.equal(403);
-          should.exist(res.headers['set-cookie']);
           done();
         });
     });
@@ -119,7 +113,6 @@ describe('Restricted access and status codes', function(){
           should.not.exist(err);
           should.not.exist(err);
           res.statusCode.should.be.equal(201);
-          should.not.exist(res.headers['set-cookie']);
           done();
         });
     });
@@ -144,7 +137,6 @@ describe('Restricted access and status codes', function(){
         .end(function(err, res){
           should.not.exist(err);
           res.statusCode.should.be.equal(200);
-          should.not.exist(res.headers['set-cookie']);
           done();
         });
     });

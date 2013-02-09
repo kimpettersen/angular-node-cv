@@ -2,12 +2,12 @@
 <p>Create new bucketlist item</p>
   <form class="simple-form">
     Title: <input type="text" name="title" ng-model="bucketlist.title" /><br />
-    Description: <textarea name="description" ng-model="bucketlist.description"></textarea>
+    Description: <textarea name="description" ng-model="bucketlist.description"></textarea><br />
     Rating: <select ng-model="bucketlist.rating" ng-options="rating for rating in ratings">
                     <option value="">(blank)</option>
-                  </select>
+                  </select><br />
     <button ng-click="reset()">RESET</button>
-    <button ng-click="update(education)">SAVE</button>
+    <button ng-click="update(bucketlist)">SAVE</button>
   </form>
   <pre>form = {{bucketlist | json}}</pre>
   <pre>master = {{master | json}}</pre>

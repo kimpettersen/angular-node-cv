@@ -1,6 +1,11 @@
 'use strict';
 
-var CVApp = angular.module('CVApp', ['bucketlistServices', 'educationServices'])
+var CVApp = angular.module('CVApp', ['bucketlistServices',
+                                      'educationServices',
+                                      'experienceServices',
+                                      'meServices',
+                                      'userServices'
+                                      ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {

@@ -3,12 +3,15 @@
   <form class="simple-form">
     Institution: <input type="text" name="institution" ng-model="education.institution" /><br />
     Degree: <input type="text" name="degree" ng-model="education.degree" /><br />
-    Duration: <input type="text" name="duration" ng-model="education.duration" />
-    Description: <textarea name="description" ng-model="education.description"></textarea>
+    Duration: <input type="text" name="duration" ng-model="education.duration" /><br />
+    Description: <textarea name="description" ng-model="education.description"></textarea><br />
+    Tags: <input name="tag" ng-model="tag">
+    <button ng-click="addTag(tag)">Add tag</button><br />
+
     <button ng-click="reset()">RESET</button>
-    <button ng-click="update(education)">SAVE</button>
+    <button ng-click="update(education)">SAVE</button><br />
   </form>
   <pre>form = {{education | json}}</pre>
   <pre>master = {{master | json}}</pre>
-  <pre>saved = {{saved}} || {{master | json}}</pre>
+  <pre>tags = {{tags | json}}</pre>
 </div>

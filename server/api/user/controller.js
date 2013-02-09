@@ -5,7 +5,7 @@ var model = require('./model.js'),
 
 module.exports = function(app){
 
-  app.get('/api/user/?', function(request, response) {
+  app.get('/api/user/?', controller.protect, function(request, response) {
     model.UserModel.get({}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){
          response.json(data);
@@ -14,7 +14,7 @@ module.exports = function(app){
   });
 
 
-  app.get('/api/user/:id', function(request, response) {
+  app.get('/api/user/:id', controller.protect, function(request, response) {
     var id = request.params.id;
     model.UserModel.get({'_id': id}, function(error, result){
      controller.resultHandler(error, result, response, 200, function(data){

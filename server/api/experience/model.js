@@ -4,15 +4,14 @@ var mongoose = require("mongoose"),
 
 var ProjectSchema = model.BaseSchema.extend({
    title: String,
-   duration: String,
-   technologies: [String]
+   description: String
 });
 
 var ExperienceSchema = model.BaseSchema.extend({
   company: String,
   description: String,
-  startDate: Date,
-  endDate: Date,
+  startDate: String,
+  endDate: String,
   projects: [ProjectSchema],
   tags: [String]
 });

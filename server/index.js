@@ -12,6 +12,7 @@ app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
+    app.use(express.static(__dirname + '/../app'));
     app.use(express.session({
       secret: '6C4DDD52C3E48F97574F67DF7251ABEF77BDAA28CE23676B18DD50DAB615BEAA',
       store: new MongoStore({

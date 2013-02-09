@@ -1,7 +1,9 @@
-<div class="hero-unit">
+<div class="hero-unit" ng-controller="AdminCtrl">
+
     <button ng-repeat="t in templates" ng-click="changeTemplate($index)">{{t.name}}</button>
-
-
+    {{template.url}}
+    <div ng-include src="template.url">
+    </div>
 
 <!--
     <div ng-include src="template.url"></div>

@@ -1,3 +1,15 @@
-<div ng-controller="BucketlistCtrl">
-sdf
+<div class="admin-content" ng-controller="BucketlistCtrl">
+<p>Create new bucketlist item</p>
+  <form class="simple-form">
+    Title: <input type="text" name="title" ng-model="bucketlist.title" /><br />
+    Description: <textarea name="description" ng-model="bucketlist.description"></textarea>
+    Rating: <select ng-model="bucketlist.rating" ng-options="rating for rating in ratings">
+                    <option value="">(blank)</option>
+                  </select>
+    <button ng-click="reset()">RESET</button>
+    <button ng-click="update(education)">SAVE</button>
+  </form>
+  <pre>form = {{bucketlist | json}}</pre>
+  <pre>master = {{master | json}}</pre>
+  <pre>saved = {{ratings}}</pre>
 </div>

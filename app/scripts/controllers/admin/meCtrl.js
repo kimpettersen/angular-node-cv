@@ -1,5 +1,5 @@
 'use strict'
 
-CVApp.controller('meCtrl', function($scope){
+CVApp.controller('MeCtrl', function($scope){
 
 });

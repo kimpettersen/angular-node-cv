@@ -29,7 +29,14 @@
           <ul>
             <button ng-click="changeView('/main')">Main</button>
             <button ng-click="changeView('/documentation')">Documentation</button>
-            <button ng-click="changeView('/admin')">Admin</button>
+          </ul>
+
+          <ul>
+            <button ng-click="changeView('/admin/bucketlist')">Bucketlist</button>
+            <button ng-click="changeView('/admin/education')">Education</button>
+            <button ng-click="changeView('/admin/experience')">Experience</button>
+            <button ng-click="changeView('/admin/me')">Me</button>
+            <button ng-click="changeView('/admin/user')">User</button>
           </ul>
 
         </nav>
@@ -39,18 +46,21 @@
         <script src="scripts/vendor/angular.js"></script>
         <script src="components/angular-resource/angular-resource.js"></script>
 
-        <script src="scripts/services/educationServices.js"></script>
 
         <!-- build:js scripts/scripts.js -->
+        <script src="scripts/services/bucketlistServices.js"></script>
+        <script src="scripts/services/educationServices.js"></script>
+
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/mainCtrl.js"></script>
         <script src="scripts/controllers/docCtrl.js"></script>
-        <script src="scripts/controllers/adminCtrl.js"></script>
         <script src="scripts/controllers/menuCtrl.js"></script>
-        <script src="scripts/controllers/education/educationIndex.js"></script>
-        <script src="scripts/controllers/education/educationCreate.js"></script>
-        <script src="scripts/controllers/education/educationUpdate.js"></script>
-        <script src="scripts/controllers/education/educationView.js"></script>
+        <script src="scripts/controllers/admin/bucketlistCtrl.js"></script>
+        <script src="scripts/controllers/admin/educationCtrl.js"></script>
+        <script src="scripts/controllers/admin/experienceCtrl.js"></script>
+        <script src="scripts/controllers/admin/meCtrl.js"></script>
+        <script src="scripts/controllers/admin/userCtrl.js"></script>
+
 
 
 

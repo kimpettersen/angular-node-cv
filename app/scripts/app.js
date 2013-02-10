@@ -4,7 +4,8 @@ var CVApp = angular.module('CVApp', ['bucketlistServices',
                                       'educationServices',
                                       'experienceServices',
                                       'meServices',
-                                      'userServices'
+                                      'userServices',
+                                      'adminResources'
                                       ])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider

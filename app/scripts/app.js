@@ -1,6 +1,6 @@
 'use strict';
 
-var CVApp = angular.module('CVApp', ['bucketlistServices',
+var CVApp = angular.module('CVApp', ['adminServices',
                                       'educationServices',
                                       'experienceServices',
                                       'meServices',

@@ -1,15 +1,21 @@
 <div class="admin-content" ng-controller="BucketlistCtrl">
-<p>Create new bucketlist item</p>
-  <form class="simple-form">
-    Title: <input type="text" name="title" ng-model="bucketlist.title" /><br />
-    Description: <textarea name="description" ng-model="bucketlist.description"></textarea><br />
-    Rating: <select ng-model="bucketlist.rating" ng-options="rating for rating in ratings">
-                    <option value="">(blank)</option>
-                  </select><br />
-    <button ng-click="reset()">RESET</button>
-    <button ng-click="update(bucketlist)">SAVE</button>
-  </form>
-  <pre>form = {{bucketlist | json}}</pre>
-  <pre>master = {{master | json}}</pre>
-  <pre>saved = {{ratings}}</pre>
+  <div>
+    <p>Create new bucketlist item</p>
+    <form class="simple-form">
+      Title: <input type="text" name="title" ng-model="bucket.title" /><br />
+      Description: <textarea name="description" ng-model="bucket.description"></textarea><br />
+      Rating: <select ng-model="bucket.rating" ng-options="rating for rating in ratings">
+                      <option value="">(blank)</option>
+                    </select><br />
+      <button ng-click="reset()">RESET</button>
+      <button ng-click="editItem(bucket)">EDIT</button>
+      <button ng-click="create(bucket)">CREATE</button>
+    </form>
+
+  </div>
+  <br />
+  <br />
+  <div>
+    Resources: <div resources list="resources" edit="edit(item)" del="del(item)"></div>
+  </div>
 </div>

@@ -33,7 +33,6 @@ module.exports = function(app){
   });
 
   app.put('/api/bucketlist/:id', controller.protect, function(request, response) {
-    console.log('id: ', id);
     var id;
     model.BucketList.put({'_id': request.params.id}, request.body, function(error, result){
         controller.resultHandler(error, result, response, 201, function(data){

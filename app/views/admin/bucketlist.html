@@ -7,7 +7,6 @@
       Rating: <select ng-model="bucket.rating" ng-options="rating for rating in ratings">
                       <option value="">(blank)</option>
                     </select><br />
-      <button ng-click="reset()">RESET</button>
       <button ng-click="editItem(bucket)">EDIT</button>
       <button ng-click="create(bucket)">CREATE</button>
     </form>
@@ -16,6 +15,6 @@
   <br />
   <br />
   <div>
-    Resources: <div resources list="resources" edit="edit(item)" del="del(item)"></div>
+    Resources: <div resources list="resources" display="title" edit="edit(item)" del="del(item)"></div>
   </div>
 </div>

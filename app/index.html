@@ -24,6 +24,27 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="brand" href="#">kimpettersen.org</a>
+              <div class="nav-collapse collapse" ng-controller="MenuCtrl">
+                <ul class="nav">
+                  <li class="active"><a href="#" ng-click="changeView('/main')">Main</a></li>
+                  <li><a href="#" ng-click="changeView('/documentation')">Documentation</a></li>
+                </ul>
+                <div class="btn-group">
+                  <button class="btn btn-primary" ng-click="changeView('/admin/bucketlist')">Bucketlist</button>
+                  <button class="btn btn-primary" ng-click="changeView('/admin/education')">Education</button>
+                  <button class="btn btn-primary" ng-click="changeView('/admin/experience')">Experience</button>
+                  <button class="btn btn-primary" ng-click="changeView('/admin/me')">Me</button>
+                  <button class="btn btn-primary" ng-click="changeView('/admin/user')">User</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--
         <nav ng-controller="MenuCtrl">
           <div class="btn-toolbar">
             <div class="btn-group">
@@ -38,11 +59,12 @@
               <button class="btn btn-primary" ng-click="changeView('/admin/me')">Me</button>
               <button class="btn btn-primary" ng-click="changeView('/admin/user')">User</button>
             </div>
-           </div>
-
         </nav>
 
-        <div class="container" ng-view></div>
+ -->
+        <div class="container" ng-view>
+        </div>
+
         <script src="scripts/vendor/angular.js"></script>
         <script src="components/angular-resource/angular-resource.js"></script>
 

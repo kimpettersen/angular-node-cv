@@ -1,7 +1,7 @@
-<div class="admin-content" ng-controller="BucketlistCtrl">
+<div class="admin-content hero-unit" ng-controller="BucketlistCtrl">
   <div>
-    <p>Bucketlist item</p>
-    <form class="form-horizontal">
+    <h1>Bucketlist item</h1>
+    <form class="form-vertical">
       <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
       <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
       <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">

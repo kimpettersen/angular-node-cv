@@ -2,19 +2,19 @@
   <div>
     <p>Create new bucketlist item</p>
     <form class="simple-form">
-      Title: <input type="text" name="title" ng-model="adminService.resource.title" /><br />
-      Description: <textarea name="description" ng-model="adminService.resource.description"></textarea><br />
-      Rating: <select ng-model="adminService.resource.rating" ng-options="rating for rating in ratings">
+      Title: <input type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
+      Description: <textarea name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
+      Rating: <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
                       <option value="">(blank)</option>
                     </select><br />
-      <button ng-click="adminService.editResource({type: 'bucketlist', item: adminService.resource })">EDIT</button>
-      <button ng-click="adminService.createResource({type: 'bucketlist', item: adminService.resource })">CREATE</button>
+      <button ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">EDIT</button>
+      <button ng-click="adminService.createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
     </form>
 
   </div>
   <br />
   <br />
   <div>
-    Resources: <div resources list="adminService.resources" display="title" edit="adminService.editItem(item)" del="del(adminService.delItem(item))" type="bucketlist"></div>
+    Resources: <div resources list="adminService.bucketlist.resources" display="title" edit="adminService.editItem(item)" del="del(adminService.delItem(item))" type="bucketlist"></div>
   </div>
 </div>

@@ -164,7 +164,7 @@ module.exports = function( grunt ) {
       baseUrl: './scripts',
       wrap: true
     },
-    
+
     server: {
       app: {
         main: './server'

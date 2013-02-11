@@ -1,14 +1,14 @@
 <div class="admin-content" ng-controller="BucketlistCtrl">
   <div>
-    <p>Create new bucketlist item</p>
-    <form class="simple-form">
-      Title: <input type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
-      Description: <textarea name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
-      Rating: <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
-                      <option value="">(blank)</option>
+    <p>Bucketlist item</p>
+    <form class="form-horizontal">
+      <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
+      <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
+      <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
+                      <option value="">Rating</option>
                     </select><br />
-      <button ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">EDIT</button>
-      <button ng-click="adminService.createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
+      <button class="btn"  ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">EDIT</button>
+      <button class="btn"  ng-click="adminService.createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
     </form>
 
   </div>

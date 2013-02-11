@@ -25,19 +25,20 @@
 
         <!-- Add your site or application content here -->
         <nav ng-controller="MenuCtrl">
+          <div class="btn-toolbar">
+            <div class="btn-group">
+              <button class="btn btn-primary"  ng-click="changeView('/main')">Main</button>
+              <button class="btn btn-primary"  ng-click="changeView('/documentation')">Documentation</button>
+            </div>
 
-          <ul>
-            <button ng-click="changeView('/main')">Main</button>
-            <button ng-click="changeView('/documentation')">Documentation</button>
-          </ul>
-
-          <ul>
-            <button ng-click="changeView('/admin/bucketlist')">Bucketlist</button>
-            <button ng-click="changeView('/admin/education')">Education</button>
-            <button ng-click="changeView('/admin/experience')">Experience</button>
-            <button ng-click="changeView('/admin/me')">Me</button>
-            <button ng-click="changeView('/admin/user')">User</button>
-          </ul>
+            <div class="btn-group">
+              <button class="btn btn-primary" ng-click="changeView('/admin/bucketlist')">Bucketlist</button>
+              <button class="btn btn-primary" ng-click="changeView('/admin/education')">Education</button>
+              <button class="btn btn-primary" ng-click="changeView('/admin/experience')">Experience</button>
+              <button class="btn btn-primary" ng-click="changeView('/admin/me')">Me</button>
+              <button class="btn btn-primary" ng-click="changeView('/admin/user')">User</button>
+            </div>
+           </div>
 
         </nav>
 

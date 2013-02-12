@@ -5,7 +5,6 @@ var mongoose = require("mongoose"),
 var EducationSchema = model.BaseSchema.extend({
   institution: String,
   degree: String,
-  duration: String,
   description: String,
   tags: [String]
 });

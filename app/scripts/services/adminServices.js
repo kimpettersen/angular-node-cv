@@ -10,8 +10,6 @@ angular.module('adminServices', ['ngResource'])
     service.me= {};
     service.user= {};
 
-
-
     service.bucketlist.resource = $resource('/api/bucketlist/:id',
       {'id': '@_id'}, {edit: { method: 'PUT' }}
     );
@@ -35,6 +33,7 @@ angular.module('adminServices', ['ngResource'])
     service.updateResources = function(type){
       service[type].resource.query(function(res){
         service[type].resources = res;
+        console.log(res);
       });
 
     };
@@ -52,7 +51,9 @@ angular.module('adminServices', ['ngResource'])
     };
 
     service.createResource = function (options){
-      service[options.type].resource.save(angular.copy(options.item), function(){
+      var item = angular.copy(options.item);
+      console.log(item);
+      service[options.type].resource.save(item, function(){
         service.updateResources(options.type);
       });
     };
@@ -73,14 +74,9 @@ angular.module('adminServices', ['ngResource'])
     };
 
     service.delItem = function(options){
-      console.log(options);
       service[options.type].resource.remove({ id: options.id }, function(){
         service.updateResources(options.type);
       });
-    };
-
-    service.addTag = function(tag){
-      service.tags.push(tag);
     };
 
     return service;

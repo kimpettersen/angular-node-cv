@@ -1,20 +1,46 @@
-<div class="admin-content hero-unit" ng-controller="BucketlistCtrl">
-  <div>
-    <h1>Bucketlist item</h1>
-    <form class="form-vertical">
-      <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
-      <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
-      <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
-                      <option value="">Rating</option>
-                    </select><br />
-      <button class="btn"  ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">EDIT</button>
-      <button class="btn"  ng-click="adminService.createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
-    </form>
+<div class="admin-content hero-unit">
 
+  <div ng-controller="BucketlistCtrl">
+    <div>
+      <h1>Bucketlist item</h1>
+      <form class="form-vertical">
+        <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
+        <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
+        <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
+                        <option value="">Rating</option>
+                      </select><br />
+        <button class="btn"  ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">EDIT</button>
+        <button class="btn"  ng-click="adminService.createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
+      </form>
+    </div>
+    <br />
+    <br />
+    <div>
+      Resources: <div resources list="adminService.bucketlist.resources" display="title" edit="adminService.editItem(item)" del="del(adminService.delItem(item))" type="bucketlist"></div>
+    </div>
   </div>
   <br />
+  <hr>
   <br />
-  <div>
-    Resources: <div resources list="adminService.bucketlist.resources" display="title" edit="adminService.editItem(item)" del="del(adminService.delItem(item))" type="bucketlist"></div>
+  <div ng-controller="EducationCtrl">
+    <div>
+      <h1>Education item</h1>
+      <form class="form-vertical">
+        <input placeholder="Institution" type="text" name="institution" ng-model="adminService.education.item.institution" /><br />
+        <input placeholder="Degree" type="text" name="degree" ng-model="adminService.education.item.degree" /><br />
+        <textarea placeholder="Description" name="description" ng-model="adminService.education.item.description"></textarea><br />
+        <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
+        <button class="btn"  ng-click="addTag(tag)">ADD TAG</button> <span>{{tags | json}}</span>
+        <br />
+        <button class="btn"  ng-click="editResource({type: 'education', item: adminService.education.item })">EDIT</button>
+        <button class="btn"  ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
+      </form>
+    </div>
+    <br />
+    <br />
+    <div>
+      Resources: <div resources list="adminService.education.resources" display="institution" edit="adminService.editItem(item)" del="del(adminService.delItem(item))" type="education"></div>
+    </div>
   </div>
+
 </div>

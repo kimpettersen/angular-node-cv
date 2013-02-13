@@ -89,9 +89,8 @@ angular.module('adminServices', ['ngResource'])
         type: '@'
       },
       template: '<div ng-repeat="elem in list">Name: {{ elem[display] }}' +
-                ' <button class="btn" ng-click="edit({ item: {id: elem._id, type: type } })">Edit</button> ' +
+                ' <button class="btn" ng-click="edit({ item: {id: elem._id, type: type } })">Show</button> ' +
                 ' <button class="btn" ng-click="del({ item: {id: elem._id, type: type } })">Delete</button> ' +
-                ' <button class="btn" ng-click="show({ item: {id: elem._id, type: type } })">Show</button> ' +
                 '</div>'
     };
   });

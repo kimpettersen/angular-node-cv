@@ -13,6 +13,14 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
     $scope.currentItem.tags.push(tag);
   };
 
+  $scope.removeTag = function(tag){
+    for (var i = 0; i < $scope.currentItem.tags.length; i++){
+      if ($scope.currentItem.tags[i] === tag){
+        $scope.currentItem.tags.splice(i, 1);
+      }
+    }
+  };
+
   // Wrapper to attach tags to the item
   $scope.editResource = function(options){
     $scope.currentItem = adminService.findById({type: 'education', id: options.item._id});
@@ -23,11 +31,6 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
   $scope.createResource = function(options){
     options.item.tags = $scope.tags;
     adminService.createResource(options);
-  };
-
-  $scope.show = function(item){
-    $scope.tags = [];
-    $scope.currentItem = adminService.findById(item);
   };
 
   $scope.edit = function(item){

@@ -23,6 +23,7 @@
   <br />
   <hr>
   <br />
+
   <div ng-controller="EducationCtrl">
     <div>
       <h1>Education item</h1>
@@ -45,5 +46,36 @@
       Resources: <div resources list="adminService.education.resources" display="institution" edit="edit(item)" del="del(adminService.delItem(item))" type="education"></div>
     </div>
   </div>
+
+  company: String,
+  description: String,
+  startDate: String,
+  endDate: String,
+  projects: [ProjectSchema],
+  tags: [String]
+<div ng-controller="ExperienceCtrl">
+    <div>
+      <h1>Experience item</h1>
+      <form class="form-vertical">
+        <input placeholder="Company" type="text" name="company" ng-model="adminService.experience.item.company" /><br />
+        <input placeholder="Duration" type="text" name="duration" ng-model="adminService.experience.item.duration" /><br />
+        <textarea placeholder="Description" name="description" ng-model="adminService.experience.item.description"></textarea><br />
+        <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
+        <button class="btn" ng-click="addTag(tag)">ADD TAG</button>
+        <br />
+        <button class="btn" ng-click="editResource({type: 'experience', item: adminService.experience.item })">SAVE</button>
+        <button class="btn" ng-click="createResource({type: 'experience', item: adminService.experience.item })">CREATE</button>
+      </form>
+    </div>
+    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag()">Remove: {{tag}}</button>
+    <pre>Current item: {{ currentItem | json }}</pre>
+    <br />
+    <br />
+    <div>
+      Resources: <div resources list="adminService.experience.resources" display="company" edit="edit(item)" del="del(adminService.delItem(item))" type="experience"></div>
+    </div>
+  </div>
+
+
 
 </div>

@@ -10,7 +10,9 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
 
 
   $scope.addTag = function(tag){
-    $scope.currentItem.tags.push(tag);
+    if (!$scope.currentItem.tags){
+       $scope.currentItem.tags = [];
+    }
   };
 
   $scope.removeTag = function(tag){

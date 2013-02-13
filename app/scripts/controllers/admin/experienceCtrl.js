@@ -1,33 +1,46 @@
 
 'use strict';
 
-CVApp.controller('ExperienceCtrl', function($scope, Experience) {
-  $scope.master = {};
+CVApp.controller('ExperienceCtrl', function($scope, adminService) {
+
+  $scope.adminService = adminService;
+  $scope.adminService.updateResources('experience');
+  $scope.currentItem = {};
   $scope.tags = [];
-  $scope.projects = [];
+
 
   $scope.addTag = function(tag){
-    $scope.tags.push(tag);
+    if (!$scope.currentItem.tags){
+       $scope.currentItem.tags = [];
+    }
+    $scope.currentItem.tags.push(tag);
+
   };
 
-  $scope.addProject = function(title, project){
-    $scope.projects.push({title: title, project: project});
+  $scope.removeTag = function(tag){
+    for (var i = 0; i < $scope.currentItem.tags.length; i++){
+      if ($scope.currentItem.tags[i] === tag){
+        $scope.currentItem.tags.splice(i, 1);
+      }
+    }
   };
 
-
-  $scope.update = function(experience){
-    experience.tags = $scope.tags;
-    experience.projects = $scope.projects;
-
-    $scope.master = angular.copy(experience);
-
-    Experience.save($scope.master, function(Experience){
-      $scope.saved = 'Saved!';
-    });
+  // Wrapper to attach tags to the item
+  $scope.editResource = function(options){
+    $scope.currentItem = adminService.findById({type: 'experience', id: options.item._id});
+    adminService.editResource(options);
   };
 
-  $scope.reset = function(){
-    $scope.experience = angular.copy($scope.master);
+  // Wrapper to attach tags to the item
+  $scope.createResource = function(options){
+    options.item.tags = $scope.tags;
+    adminService.createResource(options);
+  };
+
+  $scope.edit = function(item){
+    $scope.tags = [];
+    $scope.currentItem = adminService.findById(item);
+    adminService.editItem(item);
   };
 
 });

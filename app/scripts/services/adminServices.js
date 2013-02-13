@@ -33,15 +33,12 @@ angular.module('adminServices', ['ngResource'])
     service.updateResources = function(type){
       service[type].resource.query(function(res){
         service[type].resources = res;
-        console.log(res);
       });
-
     };
 
     service.findById = function(options){
       // Takes option object with id and type
       // e.g { id: '123', type: 'education'}
-
       var items = service[options.type].resources;
       for (var i = 0; i < items.length; i++){
         if (items[i]._id === options.id){
@@ -60,7 +57,7 @@ angular.module('adminServices', ['ngResource'])
 
     service.editResource = function (options){
       var item = angular.copy(options.item);
-
+      console.log(options);
       if (!item.hasOwnProperty('_id')){
         alert('Can not modify non existing item');
       }
@@ -88,11 +85,13 @@ angular.module('adminServices', ['ngResource'])
         display: '@',
         edit: '&',
         del: '&',
+        show: '&',
         type: '@'
       },
       template: '<div ng-repeat="elem in list">Name: {{ elem[display] }}' +
                 ' <button class="btn" ng-click="edit({ item: {id: elem._id, type: type } })">Edit</button> ' +
                 ' <button class="btn" ng-click="del({ item: {id: elem._id, type: type } })">Delete</button> ' +
+                ' <button class="btn" ng-click="show({ item: {id: elem._id, type: type } })">Show</button> ' +
                 '</div>'
     };
   });

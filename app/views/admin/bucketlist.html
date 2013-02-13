@@ -9,7 +9,7 @@
         <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
                         <option value="">Rating</option>
                       </select><br />
-        <button class="btn"  ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">EDIT</button>
+        <button class="btn"  ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">SAVE</button>
         <button class="btn"  ng-click="adminService.createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
       </form>
     </div>
@@ -30,16 +30,17 @@
         <input placeholder="Degree" type="text" name="degree" ng-model="adminService.education.item.degree" /><br />
         <textarea placeholder="Description" name="description" ng-model="adminService.education.item.description"></textarea><br />
         <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
-        <button class="btn"  ng-click="addTag(tag)">ADD TAG</button> <span>{{tags | json}}</span>
+        <button class="btn" ng-click="addTag(tag)">ADD TAG</button> <span>{{tags | json}}</span>
         <br />
-        <button class="btn"  ng-click="editResource({type: 'education', item: adminService.education.item })">EDIT</button>
-        <button class="btn"  ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
+        <button class="btn" ng-click="editResource({type: 'education', item: adminService.education.item })">SAVE</button>
+        <button class="btn" ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
       </form>
     </div>
+    <pre>Current item: {{ currentItem | json }}</pre>
     <br />
     <br />
     <div>
-      Resources: <div resources list="adminService.education.resources" display="institution" edit="adminService.editItem(item)" del="del(adminService.delItem(item))" type="education"></div>
+      Resources: <div resources list="adminService.education.resources" display="institution" edit="edit(item)" del="del(adminService.delItem(item))" show="show(item)" type="education"></div>
     </div>
   </div>
 

@@ -6,10 +6,10 @@ var express = require('express'),
     cp = require('child_process');
 
 //Run grunt
-grunt = cp.spawn('grunt', ['--force', 'default', 'watch']);
-grunt.stdout.on('data', function(data) {
-    console.log("%s", data);
-});
+// grunt = cp.spawn('grunt', ['--force', 'default', 'watch']);
+// grunt.stdout.on('data', function(data) {
+//     console.log("%s", data);
+// });
 
 var app = express();
 var path = __dirname + '/../app';

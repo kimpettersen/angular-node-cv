@@ -48,6 +48,7 @@ angular.module('adminServices', ['ngResource'])
     };
 
     service.createResource = function (options){
+      console.log('DOING T');
       var item = angular.copy(options.item);
       console.log(item);
       service[options.type].resource.save(item, function(){

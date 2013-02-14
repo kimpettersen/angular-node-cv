@@ -25,11 +25,17 @@ module.exports = function(app){
 
   app.post('/api/user/?', controller.protect, function(request, response) {
     var id;
-    var inst = new model.UserModel(request.body);
 
-    inst.save();
-    response.status(201);
-    response.json(inst);
+    model.UserModel.find({username: request.body.username}, function(err, res){
+      if(res){
+        response.json('User already exists');
+        return;
+      }
+      var inst = new model.UserModel(request.body);
+      inst.save();
+      response.status(201);
+      response.json(inst);
+    });
   });
 
   app.put('/api/user/:id', controller.protect, function(request, response) {

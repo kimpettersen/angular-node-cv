@@ -1,25 +1,46 @@
 
 'use strict';
 
-CVApp.controller('MeCtrl', function($scope, Me) {
-  $scope.master = {};
-  $scope.contacts = [];
+CVApp.controller('MeCtrl', function($scope, adminService) {
 
-  $scope.addContact = function(contact){
-    $scope.contacts.push(contact);
+  $scope.adminService = adminService;
+  $scope.adminService.updateResources('me');
+  $scope.currentItem = {};
+  $scope.tags = [];
+
+
+  $scope.addTag = function(tag){
+    if (!$scope.currentItem.tags){
+       $scope.currentItem.tags = [];
+    }
+    $scope.currentItem.tags.push(tag);
+
   };
 
-  $scope.update = function(me){
-    me.contact = $scope.contacts;
-    $scope.master = angular.copy(me);
-
-    Me.save($scope.master, function(Me){
-      $scope.saved = 'Saved!';
-    });
+  $scope.removeTag = function(tag){
+    for (var i = 0; i < $scope.currentItem.tags.length; i++){
+      if ($scope.currentItem.tags[i] === tag){
+        $scope.currentItem.tags.splice(i, 1);
+      }
+    }
   };
 
-  $scope.reset = function(){
-    $scope.me = angular.copy($scope.master);
+  // Wrapper to attach tags to the item
+  $scope.editResource = function(options){
+    $scope.currentItem = adminService.findById({type: 'me', id: options.item._id});
+    adminService.editResource(options);
+  };
+
+  // Wrapper to attach tags to the item
+  $scope.createResource = function(options){
+    options.item.tags = $scope.tags;
+    adminService.createResource(options);
+  };
+
+  $scope.edit = function(item){
+    $scope.tags = [];
+    $scope.currentItem = adminService.findById(item);
+    adminService.editItem(item);
   };
 
 });

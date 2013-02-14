@@ -1,19 +1,18 @@
 
 'use strict';
 
-CVApp.controller('UserCtrl', function($scope, User) {
-  $scope.master = {};
+CVApp.controller('UserCtrl', function( $scope, adminService ) {
+  $scope.adminService = adminService;
+  $scope.adminService.updateResources('user');
+  $scope.currentItem = {};
 
-  $scope.update = function(user){
-    $scope.master = angular.copy(user);
-
-    User.save($scope.master, function(User){
-      $scope.saved = 'Saved!';
-    });
+  $scope.show = function(item){
+    $scope.currentItem = adminService.findById(item);
   };
 
-  $scope.reset = function(){
-    $scope.user = angular.copy($scope.master);
+  $scope.edit = function(item){
+    $scope.currentItem = adminService.findById(item);
+    adminService.editItem(item);
   };
 
 });

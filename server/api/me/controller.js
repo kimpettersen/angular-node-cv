@@ -26,7 +26,7 @@ module.exports = function(app){
   app.post('/api/me/?', controller.protect, function(request, response) {
     var id;
     var inst = new model.Me(request.body);
-
+    console.log( 'here:::', request.body);
     inst.save();
     response.status(201);
     response.json(inst);

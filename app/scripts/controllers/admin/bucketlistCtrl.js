@@ -8,12 +8,10 @@ CVApp.controller('BucketlistCtrl', function( $scope, adminService ) {
   $scope.currentItem = {};
 
   $scope.show = function(item){
-    $scope.tags = [];
     $scope.currentItem = adminService.findById(item);
   };
 
   $scope.edit = function(item){
-    $scope.tags = [];
     $scope.currentItem = adminService.findById(item);
     adminService.editItem(item);
   };

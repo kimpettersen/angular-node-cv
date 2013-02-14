@@ -13,9 +13,12 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
     if (!$scope.currentItem.tags){
        $scope.currentItem.tags = [];
     }
+    $scope.currentItem.tags.push(tag);
+
   };
 
   $scope.removeTag = function(tag){
+    console.log(tag);
     for (var i = 0; i < $scope.currentItem.tags.length; i++){
       if ($scope.currentItem.tags[i] === tag){
         $scope.currentItem.tags.splice(i, 1);

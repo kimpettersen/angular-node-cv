@@ -4,8 +4,8 @@ var mongoose = require("mongoose"),
 
 var MeSchema = model.BaseSchema.extend({
   title: String,
-  about: String,
-  contact: [String]
+  description: String,
+  tags: [String]
 });
 
 module.exports.Me = mongoose.model('Me', MeSchema);

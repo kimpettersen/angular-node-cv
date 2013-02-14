@@ -15,6 +15,9 @@ var CVApp = angular.module('CVApp', ['adminServices'])
         templateUrl: 'views/documentation.html',
         controller: 'DocCtrl'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin.html'
+      })
       .when('/admin/bucketlist', {
         templateUrl: 'views/admin/bucketlist.html',
         controller: 'BucketlistCtrl'

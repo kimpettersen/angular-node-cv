@@ -24,15 +24,15 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="MenuCtrl">
           <div class="navbar-inner">
             <div class="container">
               <a class="brand" href="#">kimpettersen.org</a>
               <div class="nav-collapse collapse" ng-controller="MenuCtrl">
                 <ul class="nav">
-                  <li class="active"><a href="#" ng-click="changeView('/main')">Main</a></li>
-                  <li><a href="#" ng-click="changeView('/documentation')">Documentation</a></li>
-                  <li><a href="#" ng-click="changeView('/admin')">Admin</a></li>
+                  <li class="active"><a href="javascript:;" ng-click="changeView('/main')">Main</a></li>
+                  <li><a href="javascript:;" ng-click="changeView('/documentation')">Documentation</a></li>
+                  <li><a href="javascript:;" ng-click="changeView('/admin')">Admin</a></li>
                 </ul>
                 </div>
               </div>

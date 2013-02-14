@@ -18,7 +18,7 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
   };
 
   $scope.removeTag = function(tag){
-    console.log(tag);
+    console.log(tag, 'sss');
     for (var i = 0; i < $scope.currentItem.tags.length; i++){
       if ($scope.currentItem.tags[i] === tag){
         $scope.currentItem.tags.splice(i, 1);

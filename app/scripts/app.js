@@ -18,26 +18,6 @@ var CVApp = angular.module('CVApp', ['adminServices'])
       .when('/admin', {
         templateUrl: 'views/admin.html'
       })
-      .when('/admin/bucketlist', {
-        templateUrl: 'views/admin/bucketlist.html',
-        controller: 'BucketlistCtrl'
-      })
-      .when('/admin/education', {
-        templateUrl: 'views/admin/education.html',
-        controller: 'EducationCtrl'
-      })
-      .when('/admin/experience', {
-        templateUrl: 'views/admin/experience.html',
-        controller: 'ExperienceCtrl'
-      })
-      .when('/admin/me', {
-        templateUrl: 'views/admin/me.html',
-        controller: 'MeCtrl'
-      })
-      .when('/admin/user', {
-        templateUrl: 'views/admin/user.html',
-        controller: 'UserCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });

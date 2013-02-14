@@ -38,7 +38,7 @@
         <button class="btn" ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
       </form>
     </div>
-    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag()">Remove: {{tag}}</button>
+    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
     <pre>Current item: {{ currentItem | json }}</pre>
     <br />
     <br />
@@ -66,7 +66,7 @@
         <button class="btn" ng-click="createResource({type: 'experience', item: adminService.experience.item })">CREATE</button>
       </form>
     </div>
-    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag()">Remove: {{tag}}</button>
+    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
     <pre>Current item: {{ currentItem | json }}</pre>
     <br />
     <br />
@@ -92,7 +92,7 @@
         <button class="btn" ng-click="createResource({type: 'me', item: adminService.me.item })">CREATE</button>
       </form>
     </div>
-    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag()">Remove: {{tag}}</button>
+    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
     <pre>Current item: {{ currentItem | json }}</pre>
     <br />
     <br />

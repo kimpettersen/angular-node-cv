@@ -18,7 +18,7 @@ describe('Restricted access and status codes', function(){
     ex.save();
 
     auth_req.post('http://localhost:3000/auth/login')
-      .send({'username': 'kim@kim.com', 'password': '1234'})
+      .send({'username': 'admin', 'password': '1234'})
       .end(function(err, res){
         should.not.exist(err);
         done();
@@ -137,6 +137,17 @@ describe('Restricted access and status codes', function(){
         .end(function(err, res){
           should.not.exist(err);
           res.statusCode.should.be.equal(200);
+          done();
+        });
+    });
+
+    it('Should return 204 when getting the deleted item', function(done){
+      auth_req
+        .get('http://localhost:3000/api/bucketlist/' + referenceId)
+        .send({})
+        .end(function(err, res){
+          should.not.exist(err);
+          res.statusCode.should.be.equal(204);
           done();
         });
     });

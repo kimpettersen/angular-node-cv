@@ -25,12 +25,31 @@ module.exports = function(app){
 
   app.post('/api/user/?', controller.protect, function(request, response) {
     var id;
+    var regex = /^[a-zA-Z0-9]+$/;
+    //Check if username is passed and not empty string
+    if (request.body.username === undefined || request.body.username.match(regex) === null){
+      response.status(409);
+      response.json({ error: 'A username can only be contain A-Z, a-z, - and numbers 0-9' });
+      return;
+    }
 
+    //Check if password is passed and not empty string
+    if (request.body.password === undefined || request.body.password === ""){
+      response.status(409);
+      response.json({ error: 'Password can not be empty' });
+      return;
+    }
+
+    //Check if username already exists
     model.UserModel.find({username: request.body.username}, function(err, res){
-      if(res){
-        response.json('User already exists');
+
+      if (res.length !== 0){
+        response.status(409);
+        response.json({ error: 'username not available' });
         return;
       }
+
+      // User can be created
       var inst = new model.UserModel(request.body);
       inst.save();
       response.status(201);

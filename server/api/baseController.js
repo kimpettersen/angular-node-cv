@@ -4,10 +4,10 @@ module.exports.resultHandler = function(error, result, response, returnCode, cal
 
     if(error || result === null){
       response.status(500);
-      return callback({ error: 'Internal server error' });
+      return callback('Internal server error');
     }else if(result.length < 1){
       response.status(204);
-      return callback({ result: 'No content' });
+      return callback('No content');
     }
     response.status(statusCode);
     return callback(result);

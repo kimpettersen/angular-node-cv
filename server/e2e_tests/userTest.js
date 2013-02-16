@@ -18,7 +18,7 @@ describe('Restricted access and status codes', function(){
     user.save();
 
     auth_req.post('http://localhost:3000/auth/login')
-      .send({'username': 'kim@kim.com', 'password': '1234'})
+      .send({'username': 'admin', 'password': '1234'})
       .end(function(err, res){
         should.not.exist(err);
         done();
@@ -31,7 +31,7 @@ describe('Restricted access and status codes', function(){
     model.UserModel.remove({}, function(){
       //re initialize user
       var testuser = {
-        'username': 'kim@kim.com',
+        'username': 'admin',
         'password': '1234'
       };
 
@@ -89,14 +89,85 @@ describe('Restricted access and status codes', function(){
   describe('POST user', function(){
 
     it('should return 201 when creating a new user', function(done){
+      var random = Math.floor(Math.random() * 1000 * 1000 * 1000);
       auth_req
         .post('http://localhost:3000/api/user/')
-        .send({})
+        .send({ username: 'uniqueusername' + random, password: '1234' })
         .end(function(err, res){
           should.not.exist(err);
           res.statusCode.should.be.equal(201);
           done();
         });
+    });
+
+
+    it('should return 409 when not passing username', function(done){
+      //username empty
+      auth_req
+        .post('http://localhost:3000/api/user/')
+        .send({ username: '', password: '1234' })
+        .end(function(err, res){
+          should.not.exist(err);
+          res.statusCode.should.be.equal(409);
+          res.body.error.should.be.equal('A username can only be contain A-Z, a-z, - and numbers 0-9');
+
+          //Usernam not defined
+          auth_req
+            .post('http://localhost:3000/api/user/')
+            .send({ password: '1234' })
+            .end(function(err, res){
+              should.not.exist(err);
+              res.statusCode.should.be.equal(409);
+              res.body.error.should.be.equal('A username can only be contain A-Z, a-z, - and numbers 0-9');
+
+              // Doesn't match /^[a-zA-Z0-9]+$/
+              auth_req
+                .post('http://localhost:3000/api/user/')
+                .send({ username: 'abc$', password: '1234' })
+                .end(function(err, res){
+                  should.not.exist(err);
+                  res.statusCode.should.be.equal(409);
+                  res.body.error.should.be.equal('A username can only be contain A-Z, a-z, - and numbers 0-9');
+                  done();
+                  });
+            });
+        });
+    });
+
+
+    it('should return 409 when not passing password', function(done){
+      //password empty
+      auth_req
+        .post('http://localhost:3000/api/user/')
+        .send({ username: 'kim2', password: '' })
+        .end(function(err, res){
+          should.not.exist(err);
+          res.statusCode.should.be.equal(409);
+          res.body.error.should.be.equal('Password can not be empty');
+
+          //Password not defined
+          auth_req
+            .post('http://localhost:3000/api/user/')
+            .send({ username: 'kim2' })
+            .end(function(err, res){
+              should.not.exist(err);
+              res.statusCode.should.be.equal(409);
+              res.body.error.should.be.equal('Password can not be empty');
+              done();
+            });
+        });
+    });
+
+    it('Should return error: "username not available" when a username already exists', function(done){
+      auth_req
+        .post('http://localhost:3000/api/user/')
+        .send({ username: 'admin', password: '1234' })
+        .end(function(err, res){
+          should.not.exist(err);
+          res.statusCode.should.be.equal(409);
+          res.body.error.should.be.equal('username not available');
+          done();
+      });
     });
 
     it('should return 403 when creating a new user when not authenticated', function(done){
@@ -106,6 +177,17 @@ describe('Restricted access and status codes', function(){
         .end(function(err, res){
           should.not.exist(err);
           res.statusCode.should.be.equal(403);
+          done();
+        });
+    });
+
+    it('should return 409 Conflict when trying to create a user that already exists', function(done){
+      auth_req
+        .post('http://localhost:3000/api/user/')
+        .send({ username: 'admin', password: '1234' })
+        .end(function(err, res){
+          should.not.exist(err);
+          res.statusCode.should.be.equal(409);
           done();
         });
     });
@@ -145,6 +227,17 @@ describe('Restricted access and status codes', function(){
         .end(function(err, res){
           should.not.exist(err);
           res.statusCode.should.be.equal(200);
+          done();
+        });
+    });
+
+    it('Should return 204 when getting the deleted item', function(done){
+      auth_req
+        .get('http://localhost:3000/api/bucketlist/' + referenceId)
+        .send({})
+        .end(function(err, res){
+          should.not.exist(err);
+          res.statusCode.should.be.equal(204);
           done();
         });
     });

@@ -141,6 +141,19 @@ describe('Restricted access and status codes', function(){
         });
     });
 
+    it('Should return { result: "No content" } when getting the deleted item', function(done){
+      auth_req
+        .get('http://localhost:3000/api/bucketlist/' + referenceId)
+        .send({})
+        .end(function(err, res){
+          should.not.exist(err);
+          console.log(res);
+          res.statusCode.should.be.equal(204);
+          res.result.should.be.equal('No content');
+          done();
+        });
+    });
+
     it('Should return 403 when not authenticated', function(done){
       unauth_req
         .del('http://localhost:3000/api/bucketlist/' + referenceId)

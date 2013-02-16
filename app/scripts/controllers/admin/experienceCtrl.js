@@ -7,6 +7,7 @@ CVApp.controller('ExperienceCtrl', function($scope, adminService) {
   $scope.adminService.updateResources('experience');
   $scope.currentItem = {};
   $scope.tags = [];
+  $scope.status = '';
 
 
   $scope.addTag = function(tag){
@@ -28,13 +29,17 @@ CVApp.controller('ExperienceCtrl', function($scope, adminService) {
   // Wrapper to attach tags to the item
   $scope.editResource = function(options){
     $scope.currentItem = adminService.findById({type: 'experience', id: options.item._id});
-    adminService.editResource(options);
+    adminService.editResource(options, function(res){
+      $scope.status = res;
+    });
   };
 
   // Wrapper to attach tags to the item
   $scope.createResource = function(options){
     options.item.tags = $scope.tags;
-    adminService.createResource(options);
+    adminService.createResource(options, function(res){
+      $scope.status = res;
+    });
   };
 
   $scope.edit = function(item){

@@ -47,23 +47,24 @@ angular.module('adminServices', ['ngResource'])
       }
     };
 
-    service.createResource = function (options){
-      console.log('DOING T');
+    service.createResource = function (options, callback){
       var item = angular.copy(options.item);
-      console.log(item);
       service[options.type].resource.save(item, function(){
         service.updateResources(options.type);
+        return callback('Succesfully created a new ' + options.type);
+      }, function(err){
+        return callback('Server returned status code: ' + err.status + '\n' + err.data.error);
       });
     };
 
-    service.editResource = function (options){
+    service.editResource = function (options, callback){
       var item = angular.copy(options.item);
-      console.log(options);
       if (!item.hasOwnProperty('_id')){
-        alert('Can not modify non existing item');
+        return callback('Can not modify non existing item');
       }
       service[options.type].resource.edit(item, function(){
         service.updateResources(options.type);
+        return callback('Succesfully edited ' + options.type);
       });
     };
 

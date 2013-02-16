@@ -9,11 +9,12 @@
         <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
                         <option value="">Rating</option>
                       </select><br />
-        <button class="btn"  ng-click="adminService.editResource({type: 'bucketlist', item: adminService.bucketlist.item })">SAVE</button>
-        <button class="btn"  ng-click="adminService.createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
+        <button class="btn"  ng-click="editResource({type: 'bucketlist', item: adminService.bucketlist.item })">SAVE</button>
+        <button class="btn"  ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
       </form>
     </div>
-    <pre>Current item: {{ currentItem | json }}</pre>
+    <p> Status: <span class="text-info"> {{ status }}</span></p>
+    <pre>Current item: {{ currentItem | json }} </pre>
     <br />
     <br />
     <div>
@@ -39,7 +40,8 @@
       </form>
     </div>
     <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-    <pre>Current item: {{ currentItem | json }}</pre>
+    <p> Status: <span class="text-info"> {{ status }}</span></p>
+    <pre>Current item: {{ currentItem | json }} </pre>
     <br />
     <br />
     <div>
@@ -67,7 +69,8 @@
       </form>
     </div>
     <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-    <pre>Current item: {{ currentItem | json }}</pre>
+    <p> Status: <span class="text-info"> {{ status }}</span></p>
+    <pre>Current item: {{ currentItem | json }} </pre>
     <br />
     <br />
     <div>
@@ -93,7 +96,8 @@
       </form>
     </div>
     <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-    <pre>Current item: {{ currentItem | json }}</pre>
+    <p> Status: <span class="text-info"> {{ status }}</span></p>
+    <pre>Current item: {{ currentItem | json }} </pre>
     <br />
     <br />
     <div>
@@ -111,11 +115,12 @@
       <form class="form-vertical">
         <input placeholder="username" type="text" name="username" ng-model="adminService.user.item.username" /><br />
         <input placeholder="password" type="password" name="password" ng-model="adminService.user.item.password" /><br />
-        <button class="btn"  ng-click="adminService.editResource({type: 'user', item: adminService.user.item })">SAVE</button>
-        <button class="btn"  ng-click="adminService.createResource({type: 'user', item: adminService.user.item })">CREATE</button>
+        <button class="btn"  ng-click="editResource({type: 'user', item: adminService.user.item })">SAVE</button>
+        <button class="btn"  ng-click="createResource({type: 'user', item: adminService.user.item })">CREATE</button>
       </form>
     </div>
-    <pre>Current item: {{ currentItem | json }}</pre>
+    <p> Status: <span class="text-info"> {{ status }}</span></p>
+    <pre>Current item: {{ currentItem | json }} </pre>
     <br />
     <br />
     <div>

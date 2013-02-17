@@ -15,7 +15,8 @@
     "mocha": "1.8.1",
     "nock": "0.14.4",
     "should": "1.2.1",
-    "superagent": "0.12.1"
+    "superagent": "0.12.1",
+    "testacular": "0.4.0"
   },
   "subdomain": "angularcv",
   "scripts": {

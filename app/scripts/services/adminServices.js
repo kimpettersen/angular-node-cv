@@ -1,7 +1,7 @@
 angular.module('adminServices', ['ngResource'])
   .factory('adminService', function($resource){
     var service = {}; //Service namespace
-    service.resources = []; //List of all resources
+    // service.resources = []; //List of all resources
     service.resource = {}; //The current resource
     service.tags = [];
     service.bucketlist= {};

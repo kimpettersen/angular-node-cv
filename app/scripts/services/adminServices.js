@@ -40,6 +40,9 @@ angular.module('adminServices', ['ngResource'])
       // Takes option object with id and type
       // e.g { id: '123', type: 'education'}
       var items = service[options.type].resources;
+      if (items === undefined){
+        return;
+      }
       for (var i = 0; i < items.length; i++){
         if (items[i]._id === options.id){
           return items[i];
@@ -48,7 +51,13 @@ angular.module('adminServices', ['ngResource'])
     };
 
     service.createResource = function (options, callback){
+      if (options.item === undefined){
+        return callback('You need to specify an item and type {item: {}, type: String}');
+      }
       var item = angular.copy(options.item);
+      if (item === undefined){
+        return callback('You need to specify an item and type {item: {}, type: String}');
+      }
       service[options.type].resource.save(item, function(){
         service.updateResources(options.type);
         return callback('Succesfully created a new ' + options.type);

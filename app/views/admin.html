@@ -5,7 +5,10 @@
       <h1>Bucketlist item</h1>
       <form class="form-vertical">
         <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
-        <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
+
+        <div id="bucketlist-editor" placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></div><br />
+
+        <!-- <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br /> -->
         <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
                         <option value="">Rating</option>
                       </select><br />

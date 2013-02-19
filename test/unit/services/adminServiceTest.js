@@ -45,6 +45,12 @@ describe('AdminService', function() {
       $httpBackend.whenPUT('/api/experience/123')
         .respond({});
 
+      $httpBackend.whenDELETE('/api/education', undefined)
+        .respond({status: 500, data: '{ error: "the error message" }'});
+
+      $httpBackend.whenDELETE('/api/experience/123')
+        .respond({});
+
     }));
 
   describe('initial state', function(){
@@ -124,6 +130,21 @@ describe('AdminService', function() {
 
       });
 
+    }));
+
+    //delete
+    it('should return error message if wrong params are passed', inject(function(adminService){
+      adminService.delItem({type: {}}, function(res){
+        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+      });
+
+      adminService.delItem({id: {}}, function(res){
+        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+      });
+
+      adminService.delItem({id: '123', type: 'experience'}, function(res){
+
+      });
     }));
 
 

@@ -81,9 +81,13 @@ angular.module('adminServices', ['ngResource'])
       service[options.type].item = service.findById(options);
     };
 
-    service.delItem = function(options){
+    service.delItem = function(options, callback){
+      if (options.id === undefined || options.type === undefined){
+        return callback('You need to specify an item and type {item: {}, type: String}');
+      }
       service[options.type].resource.remove({ id: options.id }, function(){
         service.updateResources(options.type);
+        return callback('Succesfully deleted item')
       });
     };
 

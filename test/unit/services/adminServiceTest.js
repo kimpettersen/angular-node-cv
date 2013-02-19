@@ -9,39 +9,43 @@ describe('AdminService', function() {
     beforeEach(inject(function(_$httpBackend_, adminService) {
       $httpBackend = _$httpBackend_;
 
-      $httpBackend.whenGET('/api/bucketlist').
-        respond([
+      $httpBackend.whenGET('/api/bucketlist')
+        .respond([
           {_id: '123', title: 'REST', description: 'desc', rating: '3'},
           {_id: '456', title: 'Angular', description: 'desc2', rating: '1'}]);
-      $httpBackend.whenGET('/api/education').
-        respond([
-          {_id: '123', title: 'REST', description: 'desc', rating: '3'},
-          {_id: '456', title: 'Angular', description: 'desc2', rating: '1'}]);
-
-      $httpBackend.whenGET('/api/experience').
-        respond([
+      $httpBackend.whenGET('/api/education')
+        .respond([
           {_id: '123', title: 'REST', description: 'desc', rating: '3'},
           {_id: '456', title: 'Angular', description: 'desc2', rating: '1'}]);
 
-      $httpBackend.whenGET('/api/me').
-        respond([
+      $httpBackend.whenGET('/api/experience')
+        .respond([
           {_id: '123', title: 'REST', description: 'desc', rating: '3'},
           {_id: '456', title: 'Angular', description: 'desc2', rating: '1'}]);
 
-      $httpBackend.whenGET('/api/user').
-        respond([
+      $httpBackend.whenGET('/api/me')
+        .respond([
+          {_id: '123', title: 'REST', description: 'desc', rating: '3'},
+          {_id: '456', title: 'Angular', description: 'desc2', rating: '1'}]);
+
+      $httpBackend.whenGET('/api/user')
+        .respond([
           {_id: '123', title: 'REST', description: 'desc', rating: '3'},
           {_id: '456', title: 'Angular', description: 'desc2', rating: '1'}]);
 
       $httpBackend.whenPOST('/api/education', undefined)
-        .respond({status: 500, data: { error: 'the error message' }});
-      $httpBackend.whenPOST('/api/education')
-        .respond();
-  }));
+        .respond({status: 500, data: '{ error: "the error message" }'});
 
-  // it('fail', function(){
-  //   expect(adminService.bucketlist.resource).toBeUndefined();
-  // });
+      $httpBackend.whenPOST('/api/experience/123')
+        .respond('success');
+
+      $httpBackend.whenPUT('/api/education', undefined)
+        .respond({status: 500, data: '{ error: "the error message" }'});
+
+      $httpBackend.whenPUT('/api/experience/123')
+        .respond({});
+
+    }));
 
   describe('initial state', function(){
     it('should contain an adminService', inject(function(adminService){
@@ -84,12 +88,45 @@ describe('AdminService', function() {
         .toBe('REST');
     }));
 
-    // it('should create a new resource and return Succesfully created a new <type>', inject(function(adminService){
-    //   adminService.createResource({ item: {}, type: 'bucketlist' }, function(res){
-    //     $httpBackend.flush();
-    //     expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
-    //   });
-    // }));
+
+    // POST
+    it('should return error message if wrong params are passed', inject(function(adminService){
+      adminService.createResource({type: {}}, function(res){
+        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+      });
+
+      adminService.createResource({item: {}}, function(res){
+        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+      });
+    }));
+
+    it('should create a new resource and return Succesfully created a new <type>', inject(function(adminService){
+      adminService.createResource({item: {_id: '123', institution: 'Oslo'}, type: 'experience'}, function(res){
+        // expect(res).toBe('Succesfully created a new experience');
+      });
+    }));
+
+    // PUT
+    it('should return error message if wrong params are passed', inject(function(adminService){
+      adminService.editResource({type: {}}, function(res){
+        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+      });
+
+      adminService.editResource({item: {}}, function(res){
+        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+      });
+
+      adminService.editResource({item: {}, type: 'education'}, function(res){
+        expect(res).toBe('Can not modify non existing item');
+      });
+
+      adminService.editResource({item: {_id: '123'}, type: 'experience'}, function(res){
+
+      });
+
+    }));
+
+
 
   });
 

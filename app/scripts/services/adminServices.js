@@ -51,13 +51,10 @@ angular.module('adminServices', ['ngResource'])
     };
 
     service.createResource = function (options, callback){
-      if (options.item === undefined){
+      if (options.item === undefined || options.type === undefined){
         return callback('You need to specify an item and type {item: {}, type: String}');
       }
       var item = angular.copy(options.item);
-      if (item === undefined){
-        return callback('You need to specify an item and type {item: {}, type: String}');
-      }
       service[options.type].resource.save(item, function(){
         service.updateResources(options.type);
         return callback('Succesfully created a new ' + options.type);
@@ -67,6 +64,9 @@ angular.module('adminServices', ['ngResource'])
     };
 
     service.editResource = function (options, callback){
+      if (options.item === undefined || options.type === undefined){
+        return callback('You need to specify an item and type {item: {}, type: String}');
+      }
       var item = angular.copy(options.item);
       if (!item.hasOwnProperty('_id')){
         return callback('Can not modify non existing item');

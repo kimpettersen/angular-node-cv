@@ -1,13 +1,16 @@
 describe('Testing routes', function() {
 
-  beforeEach(function() {
-    browser().navigateTo('app/index.html');
-  });
+  beforeEach(angular.mock.module('CVApp'));
 
-  it('should redirect to /#/ when accessing /', function(){
-    browser().navigateTo('/');
-    expect(browser().location().path()).toBe('/#/');
-  });
+  // beforeEach(function() {
+  //   browser().navigateTo('app/index.html');
+  // });
+
+  it('Should change the location path of the browser to what\'s passed', inject(function($controller){
+      var ctrl = $controller('MenuCtrl');
+      ctrl.changeView('/#/admin');
+      expect(browser().location().path()).toBe('/#/admin');
+    }));
 
   // it('should jump to the /videos path when / is accessed', function() {
   //   browser().navigateTo('#!/');

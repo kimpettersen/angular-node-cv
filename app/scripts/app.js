@@ -1,6 +1,6 @@
 'use strict';
 
-var CVApp = angular.module('CVApp', ['adminServices', 'mainServices'])
+var CVApp = angular.module('CVApp', ['adminServices', 'mainServices', 'controllers'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -21,7 +21,11 @@ var CVApp = angular.module('CVApp', ['adminServices', 'mainServices'])
       .otherwise({
         redirectTo: '/'
       })
-    }])
+    }]);
+
+var Controllers = angular.module('controllers', []);
+
+
     // .run(function($rootScope, $location) {
     // // register listener to watch route changes
     // $rootScope.$on( "$routeChangeStart", function(event, next, current) {

@@ -1,15 +1,23 @@
 describe('Testing routes', function() {
-  var scope, $browser, $location, ctrl;
+    var scope;
 
-  beforeEach(angular.mock.module('CVApp'));
 
-  beforeEach(inject(function($rootScope, $location, $browser) {
+var $injector = angular.injector(['CVApp', 'ng']),
+  $controller = $injector.get('$controller');
+
+console.log($controller);
+
+    beforeEach(angular.mock.module('CVApp'));
+    // beforeEach(module('controllers'));
+
+  beforeEach( inject(function($rootScope) {
        scope = $rootScope.$new();
-       ctrl = scope.$new(MenuCtrl);
-       $browser = $browser;
-       $location = $location;
-    }));
 
+       ctrl = $controller('MenuCtrl', {
+         $scope: scope
+       });
+       // $browser = $browser;
+    }));
 
 
   it('Should change the location path of the browser to what\'s passed', function(){

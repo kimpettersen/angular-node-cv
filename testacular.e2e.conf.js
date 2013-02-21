@@ -10,14 +10,16 @@ files = [
   'app/components/angular-resource/*.js',
   'app/scripts/*.js',
   'app/scripts/**/*.js',
+  'app/scripts/controllers/menuCtrl.js',
+  'app/scripts/controllers/admin/*.js',
   'test/e2e/**/*.js'
 ];
 
-autoWatch = false;
+autoWatch = true;
 
 browsers = ['Chrome'];
 
-singleRun = true;
+singleRun = !autoWatch;
 
 proxies = {
   '/': 'http://localhost:3000/'

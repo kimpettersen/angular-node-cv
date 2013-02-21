@@ -1,29 +1,32 @@
 describe('Testing routes', function() {
-    var scope;
+  var scope,
+  browser;
+
+// var $injector = angular.injector(['CVApp', 'ng']),
+//   $controller = $injector.get('$controller');
 
 
-var $injector = angular.injector(['CVApp', 'ng']),
-  $controller = $injector.get('$controller');
+  beforeEach(angular.mock.module('CVApp'));
+  beforeEach(angular.mock.module('controllers'));
+  // beforeEach(module('CVApp.controllers'));
 
-console.log($controller);
 
-    beforeEach(angular.mock.module('CVApp'));
-    // beforeEach(module('controllers'));
 
-  beforeEach( inject(function($rootScope) {
+  beforeEach( inject(function($rootScope, $controller, $browser) {
        scope = $rootScope.$new();
-
        ctrl = $controller('MenuCtrl', {
          $scope: scope
        });
-       // $browser = $browser;
+       browser = $browser;
     }));
 
 
   it('Should change the location path of the browser to what\'s passed', function(){
-      ctrl.changeView('/#/admin');
-      expect(browser().location().path()).toBe('/#/admin');
+      scope.changeView('/#/admin');
+      expect(scope.a).toBe(1);
+      // expect(browser().location().path()).toBe('/#/admin');
   });
+
 
 //    it('should set the default category to match the category_id
 // found in location.hash', function() {

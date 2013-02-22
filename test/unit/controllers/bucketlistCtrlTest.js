@@ -1,24 +1,55 @@
-// 'use strict';
+'use strict';
+describe('Controller: BucketlistCtrl', function() {
+  var $httpBackend,
+      BucketlistCtrl,
+      ctrl,
+      scope;
 
-// describe('Controller: BucketlistCtrl', function() {
+  beforeEach(module('CVApp'));
+  beforeEach(module('controllers'));
 
-//   // load the controller's module
-//   beforeEach(module('CVApp'));
+  beforeEach(inject(function(_$httpBackend_, adminService) {
+  $httpBackend = _$httpBackend_;
 
-//   var BucketlistCtrl,
-//     scope;
+  $httpBackend.whenGET('/api/bucketlist')
+    .respond([
+      {_id: '123', title: 'Angular', description: 'desc2', rating: '1'}]);
+  }));
 
-//   // Initialize the controller and a mock scope
-//   beforeEach(inject(function($controller) {
-//     scope = {};
-//     MainCtrl = $controller('BucketlistCtrl', {
-//       $scope: scope
-//     });
-//   }));
+  beforeEach(inject(function($rootScope, $controller, adminService) {
+    scope = $rootScope.$new();
+    ctrl = $controller('BucketlistCtrl', {
+      $scope: scope,
+      adminService: adminService
+    });
+  }));
 
-//   it('should fail', function() {
-//     expect(false).toBe(false);
+  describe('Initial state', function(){
+    it('should have an empty currentItem object', function() {
+      expect(scope.currentItem).toEqual({});
+    });
 
-//     // expect(scope.awesomeThings.length).toBe(3);
-//   });
-// });
+    it('should have an Array ratings with numbers 1,2,3,4,5', function() {
+      expect(scope.ratings).toEqual([1, 2, 3, 4, 5]);
+    });
+
+    it('should have an empty status string', function() {
+      expect(scope.status).toEqual('');
+    });
+
+    it('should have an adminService', function() {
+      expect(scope.adminService).toBeDefined();
+    });
+  })
+
+  describe('scope functions', function(){
+    it('should set currentItem to the passed item on show()', function(){
+      scope.show({_id: '123', type: 'bucketlist'});
+      $httpBackend.flush();
+      console.log(scope.currentItem);
+      //Test that this outcome is right
+      expect(scope.currentItem).not.toEqual({});
+    });
+  });
+
+});

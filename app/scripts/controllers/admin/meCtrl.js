@@ -6,7 +6,7 @@ CVApp.controller('MeCtrl', function($scope, adminService) {
   $scope.adminService = adminService;
   $scope.adminService.updateResources('me');
   $scope.currentItem = {};
-  $scope.tags = [];
+  $scope.currentItem.tags = [];
   $scope.status = '';
 
   $scope.addTag = function(tag){
@@ -35,7 +35,7 @@ CVApp.controller('MeCtrl', function($scope, adminService) {
 
   // Wrapper to attach tags to the item
   $scope.createResource = function(options){
-    options.item.tags = $scope.tags;
+    options.item.tags = $scope.currentItem.tags;
     adminService.createResource(options, function(res){
       $scope.status = res;
     });

@@ -41,15 +41,4 @@ describe('Controller: BucketlistCtrl', function() {
       expect(scope.adminService).toBeDefined();
     });
   })
-
-  describe('scope functions', function(){
-    it('should set currentItem to the passed item on show()', function(){
-      scope.show({_id: '123', type: 'bucketlist'});
-      $httpBackend.flush();
-      console.log(scope.currentItem);
-      //Test that this outcome is right
-      expect(scope.currentItem).not.toEqual({});
-    });
-  });
-
 });

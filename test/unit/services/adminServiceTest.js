@@ -78,7 +78,7 @@ describe('AdminService', function() {
     }));
   });
 
-  describe('Create, update and delete', function(){
+  describe('Create and update functionality', function(){
     it('should return the object with the matching id and type', inject(function(adminService){
 
       // Testing with bucketlist
@@ -106,49 +106,53 @@ describe('AdminService', function() {
       });
     }));
 
-    it('should create a new resource and return Succesfully created a new <type>', inject(function(adminService){
+    it('should return Succesfully created a new <type>', inject(function(adminService){
       adminService.createResource({item: {_id: '123', institution: 'Oslo'}, type: 'experience'}, function(res){
-        // expect(res).toBe('Succesfully created a new experience');
+        expect(res).toBe('Succesfully created a new experience');
       });
     }));
 
-    // PUT
-    it('should return error message if wrong params are passed', inject(function(adminService){
-      adminService.editResource({type: {}}, function(res){
-        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
-      });
+    describe('Update functionality', function(){
+      it('should return error message if wrong params are passed', inject(function(adminService){
+        adminService.editResource({type: {}}, function(res){
+          expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+        });
 
-      adminService.editResource({item: {}}, function(res){
-        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
-      });
+        adminService.editResource({item: {}}, function(res){
+          expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+        });
 
-      adminService.editResource({item: {}, type: 'education'}, function(res){
-        expect(res).toBe('Can not modify non existing item');
-      });
+        adminService.editResource({item: {}, type: 'education'}, function(res){
+          expect(res).toBe('Can not modify non existing item');
+        });
+      }));
+    })
 
-      adminService.editResource({item: {_id: '123'}, type: 'experience'}, function(res){
+    describe('Delete functionality', function(){
+      it('should return the edited item when edited', inject(function(adminService){
+        adminService.editResource({item: {_id: '123'}, type: 'experience'}, function(res){
+           expect('Succesfully edited experience');
+        });
+      }));
 
-      });
+      //delete
+      it('should return error message if wrong params are passed', inject(function(adminService){
+        adminService.delItem({type: {}}, function(res){
+          expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+        });
 
-    }));
+        adminService.delItem({id: {}}, function(res){
+          expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
+        });
 
-    //delete
-    it('should return error message if wrong params are passed', inject(function(adminService){
-      adminService.delItem({type: {}}, function(res){
-        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
-      });
+      }));
 
-      adminService.delItem({id: {}}, function(res){
-        expect(res).toBe('You need to specify an item and type {item: {}, type: String}');
-      });
+      it('should return "Succesfully deleted item" params are passed', inject(function(adminService){
+        adminService.delItem({id: '123', type: 'experience'}, function(res){
+          expect(res).toBe('Succesfully deleted item')
+        });
+      }));
 
-      adminService.delItem({id: '123', type: 'experience'}, function(res){
-
-      });
-    }));
-
-
-
+    })
   });
-
 });

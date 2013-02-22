@@ -7,11 +7,12 @@ files = [
   JASMINE_ADAPTER,
   'app/components/angular/angular.js',
   'test/vendor/angular-mocks.js',
+  // 'app/components/angular-scenario/*.js',
   'app/components/angular-resource/*.js',
   'app/scripts/*.js',
   'app/scripts/**/*.js',
-  'app/scripts/controllers/menuCtrl.js',
-  'app/scripts/controllers/admin/*.js',
+  // 'app/scripts/controllers/menuCtrl.js',
+  // 'app/scripts/controllers/admin/*.js',
   'test/e2e/**/*.js'
 ];
 

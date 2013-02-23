@@ -2,7 +2,7 @@
 
   <div ng-controller="BucketlistCtrl">
     <div>
-      <h1>Bucketlist item</h1>
+      <h1>Bucket list item</h1>
       <form class="form-vertical">
         <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
         <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
@@ -37,8 +37,10 @@
         <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
         <button class="btn" ng-click="addTag(tag)">ADD TAG</button>
         <br />
-        <button class="btn" ng-click="editResource({type: 'education', item: adminService.education.item })">SAVE</button>
-        <button class="btn" ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
+        <span class="text-info"> {{ mode|uppercase }} MODE </span><br>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="editResource({type: 'education', item: adminService.education.item })">SAVE</button>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+        <button class="btn" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
       </form>
     </div>
     <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
@@ -66,8 +68,10 @@
         <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
         <button class="btn" ng-click="addTag(tag)">ADD TAG</button>
         <br />
-        <button class="btn" ng-click="editResource({type: 'experience', item: adminService.experience.item })">SAVE</button>
-        <button class="btn" ng-click="createResource({type: 'experience', item: adminService.experience.item })">CREATE</button>
+        <span class="text-info"> {{ mode|uppercase }} MODE </span><br>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="editResource({type: 'experience', item: adminService.experience.item })">SAVE</button>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+        <button class="btn" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'experience', item: adminService.experience.item })">CREATE</button>
       </form>
     </div>
     <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
@@ -93,8 +97,10 @@
         <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
         <button class="btn" ng-click="addTag(tag)">ADD TAG</button>
         <br />
-        <button class="btn" ng-click="editResource({type: 'me', item: adminService.me.item })">SAVE</button>
-        <button class="btn" ng-click="createResource({type: 'me', item: adminService.me.item })">CREATE</button>
+        <span class="text-info"> {{ mode|uppercase }} MODE </span><br>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="editResource({type: 'me', item: adminService.me.item })">SAVE</button>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+        <button class="btn" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'me', item: adminService.me.item })">CREATE</button>
       </form>
     </div>
     <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
@@ -117,8 +123,10 @@
       <form class="form-vertical">
         <input placeholder="username" type="text" name="username" ng-model="adminService.user.item.username" /><br />
         <input placeholder="password" type="password" name="password" ng-model="adminService.user.item.password" /><br />
-        <button class="btn"  ng-click="editResource({type: 'user', item: adminService.user.item })">SAVE</button>
-        <button class="btn"  ng-click="createResource({type: 'user', item: adminService.user.item })">CREATE</button>
+        <span class="text-info"> {{ mode|uppercase }} MODE </span><br>
+        <button class="btn"  ng-disabled="isCreateMode()" ng-click="editResource({type: 'user', item: adminService.user.item })">SAVE</button>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+        <button class="btn" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'user', item: adminService.user.item })">CREATE</button>
       </form>
     </div>
     <p> Status: <span class="text-info"> {{ status }}</span></p>

@@ -6,7 +6,7 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
   $scope.ratings = [1, 2, 3 ,4 ,5];
   $scope.currentItem = {};
   $scope.status = '';
-  $scope.mode = 'Create mode';
+  $scope.mode = '';
   $scope.adminService.updateResources('bucketlist');
 
   $scope.show = function(item){

@@ -7267,3 +7267,18 @@ a.badge:focus {
     overflow: visible !important;
   }
 }
+
+
+/* My stuff */
+
+.admin-content textarea, input, select {
+  width:70%;
+  border:none;
+}
+
+
+
+.admin-content textarea {
+  height: 200px;
+}
+

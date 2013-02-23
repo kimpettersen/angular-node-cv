@@ -9,8 +9,10 @@
         <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
                         <option value="">Rating</option>
                       </select><br />
-        <button class="btn"  ng-click="editResource({type: 'bucketlist', item: adminService.bucketlist.item })">SAVE</button>
-        <button class="btn"  ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
+        <span class="text-info"> {{ mode|uppercase }} MODE </span><br>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="editResource({type: 'bucketlist', item: adminService.bucketlist.item })">SAVE</button>
+        <button class="btn" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+        <button class="btn" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
       </form>
     </div>
     <p> Status: <span class="text-info"> {{ status }}</span></p>

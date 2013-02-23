@@ -6,6 +6,7 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
   $scope.ratings = [1, 2, 3 ,4 ,5];
   $scope.currentItem = {};
   $scope.status = '';
+  $scope.mode = 'Create mode';
   $scope.adminService.updateResources('bucketlist');
 
   $scope.show = function(item){
@@ -15,6 +16,10 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
   $scope.edit = function(item){
     $scope.currentItem = adminService.findById(item);
     adminService.editItem(item);
+  };
+
+  $scope.resetCurrent = function(){
+    $scope.currentItem = {};
   };
 
   $scope.editResource = function(options){
@@ -29,5 +34,17 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
       $scope.status = res;
     });
   };
+
+  $scope.isCreateMode = function(){
+    return $scope.mode === 'create';
+  };
+
+  $scope.$watch('currentItem', function(){
+    if (Object.keys($scope.currentItem).length === 0){
+      $scope.mode = 'create';
+    }else{
+      $scope.mode = 'edit';
+    }
+  }, true);
 
 }]);

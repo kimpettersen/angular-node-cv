@@ -21,6 +21,7 @@ describe('Restricted access and status codes', function(){
       .send({'username': 'admin', 'password': '1234'})
       .end(function(err, res){
         should.not.exist(err);
+        should.not.exist(res.header.cvappauth);
         done();
     });
   });
@@ -38,6 +39,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/education')
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -48,6 +50,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/education/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -58,6 +61,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/education')
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -68,6 +72,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/education/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -84,6 +89,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(201);
           done();
         });
@@ -95,6 +101,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -109,7 +116,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
-          should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(201);
           done();
         });
@@ -121,6 +128,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -134,19 +142,18 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
-          done();
-        });
-    });
 
-    it('Should return 204 when getting the deleted item', function(done){
-      auth_req
-        .get('http://localhost:3000/api/bucketlist/' + referenceId)
-        .send({})
-        .end(function(err, res){
-          should.not.exist(err);
-          res.statusCode.should.be.equal(204);
-          done();
+          auth_req
+            .get('http://localhost:3000/api/education/' + referenceId)
+            .send({})
+            .end(function(err, res){
+              should.not.exist(err);
+              should.not.exist(res.header.cvappauth);
+              res.statusCode.should.be.equal(204);
+              done();
+            });
         });
     });
 
@@ -156,6 +163,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });

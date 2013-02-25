@@ -3,6 +3,7 @@ var express = require('express'),
     mime = require('mime'),
     path = require('path'),
     MongoStore = require('connect-mongo')(express),
+    userModel = require('./api/user/model.js'),
     cp = require('child_process');
 
 //Run grunt

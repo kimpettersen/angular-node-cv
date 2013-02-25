@@ -1,4 +1,5 @@
-var model = require('../api/user/model.js');
+var controller = require('../api/baseController.js'),
+    model = require('../api/user/model.js');
 
 module.exports = function(app){
   app.post('/auth/login/?', function(req, res) {
@@ -15,6 +16,8 @@ module.exports = function(app){
       }else if(user.password === post.password){
         res.status(200);
         req.session.user_id = user._id;
+        req.session.username = user.username;
+        // res.setHeader('CVAppAuth', true);
         res.json('Succesful login');
         return;
       }else{
@@ -30,6 +33,11 @@ module.exports = function(app){
     delete req.session.user_id;
     res.status(200);
     res.send('Successfully logged out');
+  });
+
+  app.get('/auth/userstatus', controller.protect,  function(req, res){
+    res.status(200);
+    res.send('success');
   });
 
   //example

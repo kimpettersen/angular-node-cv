@@ -22,6 +22,7 @@ describe('Restricted access and status codes', function(){
     auth_req.post('http://localhost:3000/auth/login')
       .send({'username': 'admin', 'password': '1234'})
       .end(function(err, res){
+        should.not.exist(res.header.cvappauth);
         should.not.exist(err);
         done();
     });
@@ -39,6 +40,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/bucketlist/')
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -49,7 +51,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/bucketlist/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
-          console.log('http://localhost:3000/api/bucketlist/' + referenceId);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -60,6 +62,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/bucketlist')
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -70,6 +73,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/bucketlist/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -86,6 +90,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(201);
           done();
         });
@@ -97,6 +102,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -111,7 +117,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
-          should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(201);
           done();
         });
@@ -123,6 +129,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -136,19 +143,20 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
-          done();
-        });
-    });
 
-    it('Should return 204 when getting the deleted item', function(done){
-      auth_req
-        .get('http://localhost:3000/api/bucketlist/' + referenceId)
-        .send({})
-        .end(function(err, res){
-          should.not.exist(err);
-          res.statusCode.should.be.equal(204);
-          done();
+          //try to get the item
+          auth_req
+            .get('http://localhost:3000/api/bucketlist/' + referenceId)
+            .send({})
+            .end(function(err, res){
+              should.not.exist(err);
+              should.not.exist(res.header.cvappauth);
+              res.statusCode.should.be.equal(204);
+              done();
+        });
+
         });
     });
 
@@ -158,6 +166,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });

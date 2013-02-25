@@ -12,7 +12,7 @@ describe('Restricted access and status codes', function(){
   var unauth_req = request.agent();
 
 
-  beforeEach(function(done){
+  before(function(done){
     me = new model.Me({});
     referenceId = me._id;
     me.save();
@@ -21,13 +21,14 @@ describe('Restricted access and status codes', function(){
       .send({'username': 'admin', 'password': '1234'})
       .end(function(err, res){
         should.not.exist(err);
+        should.not.exist(res.header.cvappauth);
         done();
     });
 
 
   });
 
-  afterEach(function(done){
+  after(function(done){
     model.Me.remove({}, function(){
       done();
     });
@@ -40,6 +41,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/me')
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -50,6 +52,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/me/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -60,6 +63,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/me')
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -70,6 +74,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/me/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -86,6 +91,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(201);
           done();
         });
@@ -97,6 +103,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -111,7 +118,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
-          should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(201);
           done();
         });
@@ -123,6 +130,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -136,19 +144,18 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
-          done();
-        });
-    });
 
-    it('Should return 204 when getting the deleted item', function(done){
-      auth_req
-        .get('http://localhost:3000/api/bucketlist/' + referenceId)
-        .send({})
-        .end(function(err, res){
-          should.not.exist(err);
-          res.statusCode.should.be.equal(204);
-          done();
+          auth_req
+            .get('http://localhost:3000/api/me/' + referenceId)
+            .send({})
+            .end(function(err, res){
+              should.not.exist(err);
+              res.statusCode.should.be.equal(204);
+              should.not.exist(res.header.cvappauth);
+              done();
+            });
         });
     });
 
@@ -158,6 +165,7 @@ describe('Restricted access and status codes', function(){
         .send({})
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });

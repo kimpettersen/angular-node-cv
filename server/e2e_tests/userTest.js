@@ -12,7 +12,7 @@ describe('Restricted access and status codes', function(){
   var unauth_req = request.agent();
 
 
-  beforeEach(function(done){
+  before(function(done){
     user = new model.UserModel({});
     referenceId = user._id;
     user.save();
@@ -21,6 +21,7 @@ describe('Restricted access and status codes', function(){
       .send({'username': 'admin', 'password': '1234'})
       .end(function(err, res){
         should.not.exist(err);
+        should.not.exist(res.header.cvappauth);
         done();
     });
 
@@ -43,11 +44,12 @@ describe('Restricted access and status codes', function(){
 
 
   describe('GET user', function(){
-    it('should return 200 when getting all bucket list', function(done){
+    it('should return 200 when getting all users', function(done){
       auth_req
         .get('http://localhost:3000/api/user')
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
@@ -58,16 +60,18 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/user/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
+          should.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(200);
           done();
         });
     });
 
-    it('should return 403 when getting all bucket list when not authenticated', function(done){
+    it('should return 403 when getting all users when not authenticated', function(done){
       unauth_req
         .get('http://localhost:3000/api/user')
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -78,6 +82,7 @@ describe('Restricted access and status codes', function(){
         .get('http://localhost:3000/api/user/' + referenceId)
         .end(function(err, res){
           should.not.exist(err);
+          should.not.exist(res.header.cvappauth);
           res.statusCode.should.be.equal(403);
           done();
         });
@@ -94,6 +99,7 @@ describe('Restricted access and status codes', function(){
         .post('http://localhost:3000/api/user/')
         .send({ username: 'uniqueusername' + random, password: '1234' })
         .end(function(err, res){
+          should.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(201);
           done();
@@ -107,6 +113,7 @@ describe('Restricted access and status codes', function(){
         .post('http://localhost:3000/api/user/')
         .send({ username: '', password: '1234' })
         .end(function(err, res){
+          should.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(409);
           res.body.error.should.be.equal('A username can only be contain A-Z, a-z, - and numbers 0-9');
@@ -116,6 +123,7 @@ describe('Restricted access and status codes', function(){
             .post('http://localhost:3000/api/user/')
             .send({ password: '1234' })
             .end(function(err, res){
+              should.exist(res.header.cvappauth);
               should.not.exist(err);
               res.statusCode.should.be.equal(409);
               res.body.error.should.be.equal('A username can only be contain A-Z, a-z, - and numbers 0-9');
@@ -125,6 +133,7 @@ describe('Restricted access and status codes', function(){
                 .post('http://localhost:3000/api/user/')
                 .send({ username: 'abc$', password: '1234' })
                 .end(function(err, res){
+                  should.exist(res.header.cvappauth);
                   should.not.exist(err);
                   res.statusCode.should.be.equal(409);
                   res.body.error.should.be.equal('A username can only be contain A-Z, a-z, - and numbers 0-9');
@@ -141,6 +150,7 @@ describe('Restricted access and status codes', function(){
         .post('http://localhost:3000/api/user/')
         .send({ username: 'kim2', password: '' })
         .end(function(err, res){
+          should.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(409);
           res.body.error.should.be.equal('Password can not be empty');
@@ -150,6 +160,7 @@ describe('Restricted access and status codes', function(){
             .post('http://localhost:3000/api/user/')
             .send({ username: 'kim2' })
             .end(function(err, res){
+              should.exist(res.header.cvappauth);
               should.not.exist(err);
               res.statusCode.should.be.equal(409);
               res.body.error.should.be.equal('Password can not be empty');
@@ -163,6 +174,7 @@ describe('Restricted access and status codes', function(){
         .post('http://localhost:3000/api/user/')
         .send({ username: 'admin', password: '1234' })
         .end(function(err, res){
+          should.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(409);
           res.body.error.should.be.equal('username not available');
@@ -175,6 +187,7 @@ describe('Restricted access and status codes', function(){
         .post('http://localhost:3000/api/user/')
         .send({})
         .end(function(err, res){
+          should.not.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(403);
           done();
@@ -186,6 +199,7 @@ describe('Restricted access and status codes', function(){
         .post('http://localhost:3000/api/user/')
         .send({ username: 'admin', password: '1234' })
         .end(function(err, res){
+          should.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(409);
           done();
@@ -200,6 +214,7 @@ describe('Restricted access and status codes', function(){
         .put('http://localhost:3000/api/user/' + referenceId)
         .send({})
         .end(function(err, res){
+          should.exist(res.header.cvappauth);
           should.not.exist(err);
           should.not.exist(err);
           res.statusCode.should.be.equal(201);
@@ -212,6 +227,7 @@ describe('Restricted access and status codes', function(){
         .put('http://localhost:3000/api/user/' + referenceId)
         .send({})
         .end(function(err, res){
+          should.not.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(403);
           done();
@@ -225,20 +241,19 @@ describe('Restricted access and status codes', function(){
         .del('http://localhost:3000/api/user/' + referenceId)
         .send({})
         .end(function(err, res){
+          should.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(200);
-          done();
-        });
-    });
 
-    it('Should return 204 when getting the deleted item', function(done){
-      auth_req
-        .get('http://localhost:3000/api/bucketlist/' + referenceId)
-        .send({})
-        .end(function(err, res){
-          should.not.exist(err);
-          res.statusCode.should.be.equal(204);
-          done();
+          auth_req
+            .get('http://localhost:3000/api/user/' + referenceId)
+            .send({})
+            .end(function(err, res){
+              should.exist(res.header.cvappauth);
+              should.not.exist(err);
+              res.statusCode.should.be.equal(204);
+              done();
+            });
         });
     });
 
@@ -247,6 +262,7 @@ describe('Restricted access and status codes', function(){
         .del('http://localhost:3000/api/user/' + referenceId)
         .send({})
         .end(function(err, res){
+          should.not.exist(res.header.cvappauth);
           should.not.exist(err);
           res.statusCode.should.be.equal(403);
           done();

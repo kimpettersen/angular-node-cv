@@ -1,3 +1,6 @@
+var userModel = require('./user/model.js');
+
+
 module.exports.resultHandler = function(error, result, response, returnCode, callback){
     //Default to 200
     var statusCode = returnCode ? returnCode : 200;
@@ -16,7 +19,9 @@ module.exports.resultHandler = function(error, result, response, returnCode, cal
 module.exports.protect = function(req, res, next) {
   if(!req.session.user_id) {
     res.status(403);
-    res.setHeader('CVAppAuth', 'false');
+    if (res.headers.CVAppAuth !== undefined){
+      delete res.headers.CVAppAuth;
+    }
     res.json('You are not authorized to view this page');
   } else {
     res.setHeader('CVAppAuth', 'true');

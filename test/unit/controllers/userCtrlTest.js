@@ -1,7 +1,7 @@
 'use strict';
-describe('Controller: BucketlistCtrl', function() {
+describe('Controller: UserCtrl', function() {
   var $httpBackend,
-      BucketlistCtrl,
+      UserCtrl,
       ctrl,
       scope;
 
@@ -11,14 +11,14 @@ describe('Controller: BucketlistCtrl', function() {
   beforeEach(inject(function(_$httpBackend_, adminService) {
   $httpBackend = _$httpBackend_;
 
-  $httpBackend.whenGET('/api/bucketlist')
+  $httpBackend.whenGET('/api/user')
     .respond([
       {_id: '123', title: 'Angular', description: 'desc2', rating: '1'}]);
   }));
 
   beforeEach(inject(function($rootScope, $controller, adminService) {
     scope = $rootScope.$new();
-    ctrl = $controller('BucketlistCtrl', {
+    ctrl = $controller('UserCtrl', {
       $scope: scope,
       adminService: adminService
     });

@@ -1,5 +1,5 @@
 'use strict';
-describe('Controller: BucketlistCtrl', function() {
+describe('Controller: MenuCtrl', function() {
   var $httpBackend,
       ctrl,
       scope;
@@ -20,10 +20,28 @@ describe('Controller: BucketlistCtrl', function() {
     });
   }));
 
-  describe('Logout', function(){
-    it('shoul log a user out', function() {
-
+  describe('Check if user is logged in', function(){
+    it('should have loggedIn set to false if not logged in', function(){
+      $httpBackend.whenGET('/auth/userstatus').respond(403, '');
+      scope.userstatus();
+      $httpBackend.flush();
+      expect(scope.loggedIn).toBe(false);
     });
 
+    it('should have loggedIn set to true if logged in', function(){
+      $httpBackend.whenGET('/auth/userstatus').respond({status: 200, headers: { CVAppAuth: true } });
+      scope.userstatus();
+      $httpBackend.flush();
+      expect(scope.loggedIn).toBe(true);
+    });
+  })
+
+  describe('Logout', function(){
+    it('shoul log a user out', function() {
+      $httpBackend.whenGET('/auth/logout').respond(200, '');
+      scope.logout()
+      $httpBackend.flush();
+      expect(scope.loggedIn).toBe(false);
+    });
   });
 });

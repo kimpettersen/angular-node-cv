@@ -41,8 +41,7 @@ describe('Testing routes', function() {
     });
 
     it('should have a pre field with displaying: "Current item: {}" ', function(){
-      // console.log(element(document));
-      // expect(element(document).find('.pre-json')).toContain('Current item: {}');
+      expect(element('.pre-json')).toContain('Current item: {}');
     });
 
     it('should have a pre field displaying "tags": []', function(){

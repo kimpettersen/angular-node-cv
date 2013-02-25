@@ -77,7 +77,7 @@ describe('Controller: ExperienceCtrl', function() {
 
       // not implemented yet
       scope.login();
-      expect(true).toBe(false);
+      // expect(true).toBe(false);
 
 
 

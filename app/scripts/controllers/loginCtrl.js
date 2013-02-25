@@ -10,7 +10,7 @@ Controllers.controller('LoginCtrl', ['$scope', '$http', function($scope, $http)
         if (status === 200){
           $scope.status = data;
         }else {
-          $scope.status = 'Server could not log in user';
+          $scope.status = 'Wrong username or password';
         }
       }).error(function(res){
         $scope.status = 'Wrong username or password';

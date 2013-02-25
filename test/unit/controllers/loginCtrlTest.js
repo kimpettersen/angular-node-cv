@@ -63,12 +63,30 @@ describe('Controller: ExperienceCtrl', function() {
       expect(scope.status).toEqual('Succesfull login');
     });
 
-    it('should display "Server could not log in user" isn\'t 200', function(){
+    it('should display "Wrong username or password" isn\'t 200', function(){
       $httpBackend.whenPOST('/auth/login', { username: 'admin', password: '1234' })
       .respond(204, '');
       scope.login({username: 'admin', password: '1234'});
       $httpBackend.flush();
-      expect(scope.status).toEqual('Server could not log in user');
+      expect(scope.status).toEqual('Wrong username or password');
     });
-  })
+
+    it('should have header XXXX when not logged in', function(){
+      $httpBackend.whenPOST('/auth/login', { username: 'admin', password: '1234' })
+        .respond({status: 204, header:{CVAppAuth: true} });
+
+      // not implemented yet
+      scope.login();
+      expect(true).toBe(false);
+
+
+
+    });
+
+
+    it('should have header XXXX when logged in', function(){
+
+
+    });
+  });
 });

@@ -27,12 +27,25 @@ var CVApp = angular.module('CVApp', ['adminServices',
       .otherwise({
         redirectTo: '/'
       });
-    }]);
-
+    }]).run( function($rootScope, $location) {
+      $rootScope.$on( '$routeChangeStart', function(event, next, current) {
+        if (next.templateUrl === 'views/admin.html'){
+          if ( $rootScope.loggedIn !== true ) {
+            if ( next.templateUrl === 'views/login.html' ) {
+            } else {
+              $location.path( "/login" );
+            }
+          }
+        }
+      });
+      $rootScope.$on('loginChange', function(res){
+        console.log(res, 'df');
+      });
+    });
 var Controllers = angular.module('controllers', []);
 
 
-    // .run(function($rootScope, $location) {
+    // .run() {
     // // register listener to watch route changes
     // $rootScope.$on( "$routeChangeStart", function(event, next, current) {
     //   if ( $rootScope.loggedUser == null ) {

@@ -5,6 +5,4 @@ CVApp.controller('MainCtrl', function($scope, mainService) {
   $scope.education = mainService.get({type: 'education'});
   $scope.experience = mainService.get({type: 'experience'});
   $scope.bucketlist = mainService.get({type: 'bucketlist'});
-
-console.log(mainService.get({type: 'bucketlist'}));
 });

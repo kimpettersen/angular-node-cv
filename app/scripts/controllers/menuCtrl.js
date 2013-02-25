@@ -1,7 +1,7 @@
 'use strict'
 
-Controllers.controller('MenuCtrl', ['$scope', '$location', '$http', function($scope, $location, $http){
-  $scope.loggedIn = false;
+Controllers.controller('MenuCtrl', function($scope, $location, $http, $rootScope){
+
   $scope.changeView = function(view){
     $location.path(view);
   };
@@ -15,17 +15,19 @@ Controllers.controller('MenuCtrl', ['$scope', '$location', '$http', function($s
   }
 
   $scope.userstatus = function(){
-    $http.get('/auth/userstatus').success(function(res){
-      if (res.status === 200){
+    $http.get('/auth/userstatus').success(function(res, status){
+      if (status === 200){
+        console.log('here');
         $scope.loggedIn = true;
       }else{
         $scope.loggedIn = false;
       }
-    }).error(function(res){
-      $scope.loggedIn = false;
-      console.log(res);
     });
   }
 
+  $scope.userstatus();
 
-}]);
+  $scope.$watch('loggedIn', function(){
+    $rootScope.loggedIn = $scope.loggedIn;
+  })
+});

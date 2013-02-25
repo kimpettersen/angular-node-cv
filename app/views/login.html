@@ -1,0 +1,8 @@
+<div class="hero-unit" ng-controller="LoginCtrl">
+  <h1>LOGIN</h1>
+  <br>
+  <p> Status: <span class="text-info"> {{ status }}</span></p>
+  Username: <input ng-model="user.username" type="text" required> <br>
+  Password: <input ng-model="user.password" type="password" required><br>
+  <button ng-click="login(user)">login</button>
+</div>

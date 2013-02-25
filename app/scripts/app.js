@@ -1,6 +1,8 @@
 'use strict';
 
-var CVApp = angular.module('CVApp', ['adminServices', 'mainServices', 'controllers'])
+var CVApp = angular.module('CVApp', ['adminServices',
+                                      'mainServices',
+                                      'controllers'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -18,9 +20,13 @@ var CVApp = angular.module('CVApp', ['adminServices', 'mainServices', 'controlle
       .when('/admin', {
         templateUrl: 'views/admin.html'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .otherwise({
         redirectTo: '/'
-      })
+      });
     }]);
 
 var Controllers = angular.module('controllers', []);

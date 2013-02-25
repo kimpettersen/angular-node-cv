@@ -3,6 +3,7 @@ basePath = './';
 files = [
   ANGULAR_SCENARIO,
   ANGULAR_SCENARIO_ADAPTER,
+  'components/jquery/jquery.js',
   'test/e2e/*.js'
 ];
 

@@ -5,9 +5,9 @@ describe('Testing routes', function() {
     browser().navigateTo('../../app/index.html');
   });
 
-  it('', function(){
-      expect(browser().location().path()).toBe('/#/');
-  });
+  // it('Initial load should be /#/', function(){
+  //   expect(browser().location().path()).toBe('/#/')
+  // });
 
 
 //    it('should set the default category to match the category_id

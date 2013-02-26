@@ -1,6 +1,6 @@
 'use strict'
 
-Controllers.controller('LoginCtrl', function($scope, $http, loginStatus){
+Controllers.controller('LoginCtrl', function($scope, $http, loginService){
   $scope.status = '';
   $scope.loggedIn;
   $scope.login = function(args){
@@ -18,6 +18,6 @@ Controllers.controller('LoginCtrl', function($scope, $http, loginStatus){
     }else{
       $scope.status = 'Fields can not be blank';
     }
-    loginStatus.updateStatus();
+    loginService.updateStatus();
   };
 });

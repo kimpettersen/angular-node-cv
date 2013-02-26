@@ -1,5 +1,5 @@
-angular.module('loginStatus', [])
-.factory('loginStatus', function($http){
+angular.module('loginServices', [])
+.factory('loginService', function($http){
       var service = {};
 
       var updateStatus = function(){

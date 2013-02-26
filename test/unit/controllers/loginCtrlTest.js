@@ -1,5 +1,5 @@
 'use strict';
-describe('Controller: ExperienceCtrl', function() {
+describe('Controller: LoginCtrl', function() {
   var $httpBackend,
       ctrl,
       scope;
@@ -76,7 +76,7 @@ describe('Controller: ExperienceCtrl', function() {
         .respond({status: 204, header:{CVAppAuth: true} });
 
       // not implemented yet
-      scope.login();
+      // scope.login();
       // expect(true).toBe(false);
 
 

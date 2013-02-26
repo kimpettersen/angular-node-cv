@@ -1,15 +1,12 @@
 'use strict'
 
-Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http, loginStatus){
+Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http, loginService){
 
-  $scope.loginStatus = loginStatus;
-
-  console.log(loginStatus.loggedIn, $scope.loggedIn);
-
-  $scope.loginStatus.updateStatus();
+  $scope.loginService = loginService;
+  $scope.loginService.updateStatus();
 
   $scope.isLoggedIn = function(){
-    return $scope.loginStatus.loggedIn;
+    return $scope.loginService.loggedIn;
   };
 
   $scope.changeView = function(view){
@@ -18,7 +15,7 @@ Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http
 
   $scope.logout = function(){
     $http.get('/auth/logout').success(function(res){
-      $scope.loginStatus.updateStatus();
+      $scope.loginService.updateStatus();
     }).error(function(res){
       alert('Error logging out!');
     });

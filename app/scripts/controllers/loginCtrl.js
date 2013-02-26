@@ -5,7 +5,7 @@ Controllers.controller('LoginCtrl', function($scope, $http, loginService){
   $scope.loggedIn;
   $scope.login = function(args){
     var user = args || {};
-    if (user.username !== undefined && user.password !== undefined){
+    if (user.username && user.password){
       $http.post('/auth/login', user).success(function(data, status, headers, config){
         if (status === 200){
           $scope.status = data;

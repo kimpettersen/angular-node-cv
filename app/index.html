@@ -32,9 +32,9 @@
                 <ul class="nav">
                   <li class="main-button active"><a href="javascript:;" ng-click="changeView('/main')">Main</a></li>
                   <li class="doc-button"><a href="javascript:;" ng-click="changeView('/documentation')">Documentation</a></li>
-                  <li ng-show="loggedIn" class="admin-button"><a href="javascript:;" ng-click="changeView('/admin')">Admin</a></li>
-                  <li ng-show="!loggedIn" class="login-button"><a href="javascript:;" ng-click="changeView('/login')">Login</a></li>
-                  <li ng-show="loggedIn" class="logout-button"><a href="javascript:;" ng-click="logout()">Logout</a></li>
+                  <li ng-show="isLoggedIn()" class="admin-button"><a href="javascript:;" ng-click="changeView('/admin')">Admin</a></li>
+                  <li ng-show="!isLoggedIn()" class="login-button"><a href="javascript:;" ng-click="changeView('/login')">Login</a></li>
+                  <li ng-show="isLoggedIn()" class="logout-button"><a href="javascript:;" ng-click="logout()">Logout</a></li>
                 </ul>
                 </div>
               </div>
@@ -52,6 +52,8 @@
 
         <script src="scripts/services/adminServices.js"></script>
         <script src="scripts/services/mainServices.js"></script>
+        <script src="scripts/services/loginStatus.js"></script>
+
         <script src="scripts/app.js"></script>
 
         <script src="scripts/controllers/mainCtrl.js"></script>

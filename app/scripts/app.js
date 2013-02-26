@@ -2,6 +2,7 @@
 
 var CVApp = angular.module('CVApp', ['adminServices',
                                       'mainServices',
+                                      'loginStatus',
                                       'controllers'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -27,10 +28,13 @@ var CVApp = angular.module('CVApp', ['adminServices',
       .otherwise({
         redirectTo: '/'
       });
-    }]).run( function($rootScope, $location) {
+    }]).run( function($rootScope, $location, loginStatus) {
+      $rootScope.loginStatus = loginStatus;
+
       $rootScope.$on( '$routeChangeStart', function(event, next, current) {
         if (next.templateUrl === 'views/admin.html'){
-          if ( $rootScope.loggedIn !== true ) {
+
+          if ( $rootScope.loginStatus.loggedIn !== true ) {
             if ( next.templateUrl === 'views/login.html' ) {
             } else {
               $location.path( "/login" );
@@ -38,10 +42,11 @@ var CVApp = angular.module('CVApp', ['adminServices',
           }
         }
       });
-      $rootScope.$on('loginChange', function(res){
-        console.log(res, 'df');
-      });
+
     });
+
+
+
 var Controllers = angular.module('controllers', []);
 
 

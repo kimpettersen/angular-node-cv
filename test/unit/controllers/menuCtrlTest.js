@@ -23,6 +23,7 @@ describe('Controller: MenuCtrl', function() {
   describe('Check if user is logged in', function(){
     it('should have loggedIn set to false if not logged in', function(){
       $httpBackend.whenGET('/auth/userstatus').respond(403, '');
+
       scope.userstatus();
       $httpBackend.flush();
       expect(scope.loggedIn).toBe(false);

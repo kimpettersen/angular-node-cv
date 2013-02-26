@@ -26,16 +26,22 @@ describe('Controller: LoginCtrl', function() {
   });
 
   describe('login action', function(){
-    it('should display "Fields can not be blank if on of the fields are blank"', function(){
+    it('should display "Fields can not be blank" if one of the fields are blank', function(){
+      $httpBackend.whenPOST('/auth/login').respond('Fields can not be blank');
+      $httpBackend.whenPOST('/auth/login').respond('Fields can not be blank');
+      $httpBackend.whenPOST('/auth/login').respond('Fields can not be blank');
       var both = {},
           username = {password: '123'},
           password = {username: '123'};
 
       scope.login(both);
+      $httpBackend.flush();
       expect(scope.status).toEqual('Fields can not be blank');
       scope.login(username);
+      $httpBackend.flush();
       expect(scope.status).toEqual('Fields can not be blank');
       scope.login(password);
+      $httpBackend.flush();
       expect(scope.status).toEqual('Fields can not be blank');
     });
 

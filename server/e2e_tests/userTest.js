@@ -12,7 +12,7 @@ describe('Restricted access and status codes', function(){
   var unauth_req = request.agent();
 
 
-  before(function(done){
+  beforeEach(function(done){
     user = new model.UserModel({});
     referenceId = user._id;
     user.save();
@@ -28,7 +28,7 @@ describe('Restricted access and status codes', function(){
 
   });
 
-  after(function(done){
+  afterEach(function(done){
     model.UserModel.remove({}, function(){
       //re initialize user
       var testuser = {

@@ -34,7 +34,7 @@
                   <li class="doc-button"><a href="javascript:;" ng-click="changeView('/documentation')">Documentation</a></li>
                   <li ng-show="isLoggedIn()" class="admin-button"><a href="javascript:;" ng-click="changeView('/admin')">Admin</a></li>
                   <li ng-show="!isLoggedIn()" class="login-button"><a href="javascript:;" ng-click="changeView('/login')">Login</a></li>
-                  <li ng-show="isLoggedIn()" class="logout-button"><a href="javascript:;" ng-click="logout()">Logout</a></li>
+                  <li ng-show="isLoggedIn()" class="logout-button"><a id="logout-button" href="javascript:;" ng-click="logout()">Logout</a></li>
                 </ul>
                 </div>
               </div>

@@ -12,12 +12,12 @@ Controllers.controller('LoginCtrl', function($scope, $http, loginService){
         }else {
           $scope.status = 'Wrong username or password';
         }
+        loginService.updateStatus();
       }).error(function(res){
         $scope.status = 'Wrong username or password';
       });
     }else{
       $scope.status = 'Fields can not be blank';
     }
-    loginService.updateStatus();
   };
 });

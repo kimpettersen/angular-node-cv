@@ -59,17 +59,21 @@ describe('Testing routes', function() {
   });
 
   describe('Access admin', function(){
+
     it('should redirect to / if user access admin without being logged in', function(){
+
       browser().navigateTo('/#/admin');
+      expect(browser().location().path()).toBe('/login');
+      element('#admin-button').click();
       expect(browser().location().path()).toBe('/login');
     });
 
-    it('should redirect to / if user access admin without being logged in', function(){
+    it('should open admin if user is logged in', function(){
       input('user.username').enter('admin');
       input('user.password').enter('1234');
-      element('#login-button').click();
+      element('.login-button').click();
       expect(element('#status').text()).toContain('Succesful login');
-      browser().navigateTo('/#/admin');
+      element('#admin-button').click();
       expect(browser().location().path()).toBe('/admin');
     });
 

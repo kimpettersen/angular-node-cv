@@ -33,7 +33,6 @@ var CVApp = angular.module('CVApp', ['adminServices',
 
       $rootScope.$on( '$routeChangeStart', function(event, next, current) {
         if (next.templateUrl === 'views/admin.html'){
-
           if ( $rootScope.loginService.loggedIn !== true ) {
             if ( next.templateUrl === 'views/login.html' ) {
             } else {
@@ -48,19 +47,3 @@ var CVApp = angular.module('CVApp', ['adminServices',
 
 
 var Controllers = angular.module('controllers', []);
-
-
-    // .run() {
-    // // register listener to watch route changes
-    // $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-    //   if ( $rootScope.loggedUser == null ) {
-    //     // no logged user, we should be going to #login
-    //     if ( next.$route.templateUrl == "partials/login.html" ) {
-    //       // already going to #login, no redirect needed
-    //     } else {
-    //       // not going to #login, we should redirect now
-    //       $location.path( "/login" );
-    //     }
-    //   }
-    // });
-

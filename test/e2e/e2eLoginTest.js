@@ -56,6 +56,24 @@ describe('Testing routes', function() {
       element('#login-button').click();
       expect(element('#status').text()).toContain('Succesful login');
     });
+  });
+
+  describe('Access admin', function(){
+    it('should redirect to / if user access admin without being logged in', function(){
+      browser().navigateTo('/#/admin');
+      expect(browser().location().path()).toBe('/login');
+    });
+
+    it('should redirect to / if user access admin without being logged in', function(){
+      input('user.username').enter('admin');
+      input('user.password').enter('1234');
+      element('#login-button').click();
+      expect(element('#status').text()).toContain('Succesful login');
+      browser().navigateTo('/#/admin');
+      expect(browser().location().path()).toBe('/admin');
+    });
 
   });
+
+
 });

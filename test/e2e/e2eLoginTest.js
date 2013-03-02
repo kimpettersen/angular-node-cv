@@ -67,16 +67,6 @@ describe('Testing routes', function() {
       element('.admin-button').click();
       expect(browser().location().path()).toBe('/login');
     });
-
-    it('should open admin if user is logged in', function(){
-      input('user.username').enter('admin');
-      input('user.password').enter('1234');
-      element('#login-button').click();
-      expect(element('#status').text()).toContain('Succesful login');
-      element('.admin-button').click();
-      expect(browser().location().path()).toBe('/admin');
-    });
-
   });
 
 

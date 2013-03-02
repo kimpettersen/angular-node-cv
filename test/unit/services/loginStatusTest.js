@@ -11,20 +11,23 @@ describe('LoginService', function() {
     }));
 
   describe('Update status', function(){
-    it('should have loggedIn = false when 403', inject(function(loginService){
+    var res;
+    it('should have localStorage loggedIn = false when 403', inject(function(loginService){
       $httpBackend.whenGET('/auth/userstatus')
         .respond(403, '');
       loginService.updateStatus();
       $httpBackend.flush();
-      expect(loginService.loggedIn).toBe(false);
+      res = localStorage.getItem('loggedIn') === 'true' ? true : false;
+      expect(res).toBe(false);
     }));
 
-    it('should have logged in = true when loggen in', inject(function(loginService){
+    it('should have localStorage loggedIn = true when loggen in', inject(function(loginService){
       $httpBackend.whenGET('/auth/userstatus')
         .respond(200, '');
       loginService.updateStatus();
       $httpBackend.flush();
-      expect(loginService.loggedIn).toBe(true);
+      res = localStorage.getItem('loggedIn') === 'true' ? true : false;
+      expect(res).toBe(true);
     }));
   });
 

@@ -28,12 +28,12 @@ var CVApp = angular.module('CVApp', ['adminServices',
       .otherwise({
         redirectTo: '/'
       });
-    }]).run( function($rootScope, $location, loginService) {
-      $rootScope.loginService = loginService;
-
+    }]).run( function($rootScope, $location) {
       $rootScope.$on( '$routeChangeStart', function(event, next, current) {
+        var loggedIn = localStorage.getItem('loggedIn') === 'true' ? true : false;
+
         if (next.templateUrl === 'views/admin.html'){
-          if ( $rootScope.loginService.loggedIn !== true ) {
+          if ( loggedIn !== true ) {
             if ( next.templateUrl === 'views/login.html' ) {
             } else {
               $location.path( "/login" );

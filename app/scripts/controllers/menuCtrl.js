@@ -5,8 +5,11 @@ Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http
   $scope.loginService = loginService;
   $scope.loginService.updateStatus();
 
+
   $scope.isLoggedIn = function(){
-    return $scope.loginService.loggedIn;
+    //LocalStorage only stores strings
+    var res = localStorage.getItem('loggedIn') === 'true' ? true : false;
+    return res;
   };
 
   $scope.changeView = function(view){
@@ -14,6 +17,7 @@ Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http
   };
 
   $scope.logout = function(){
+    localStorage.setItem('loggedIn', false);
     $http.get('/auth/logout').success(function(res){
       $scope.loginService.updateStatus();
     }).error(function(res){

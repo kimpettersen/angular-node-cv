@@ -29,6 +29,8 @@ browsers = ['Chrome'];
 
 singleRun = !autoWatch;
 
+urlRoot = '/__testacular__';
+
 proxies = {
   '/': 'http://localhost:3000/'
 };

@@ -20,9 +20,7 @@ Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http
     localStorage.setItem('loggedIn', false);
     $http.get('/auth/logout').success(function(res){
       $scope.loginService.updateStatus();
-    }).error(function(res){
-      alert('Error logging out!');
-    });
+    })
   };
 
 });

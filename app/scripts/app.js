@@ -44,6 +44,4 @@ var CVApp = angular.module('CVApp', ['adminServices',
 
     });
 
-
-
 var Controllers = angular.module('controllers', []);

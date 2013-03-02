@@ -7,13 +7,8 @@ describe('Testing admin page', function() {
 
   beforeEach(function() {
     browser().navigateTo('../../app/index.html');
-    browser().navigateTo('/#/login');
-
-    input('user.username').enter('admin');
-    input('user.password').enter('1234');
-    element('#login-button').click();
-    expect(element('#status').text()).toContain('Succesful login');
-    element('#admin-nav-button').click();
+    localStorage.setItem('loggedIn', true);
+    browser().navigateTo('/#/admin');
   });
 
   describe('Initial state', function(){
@@ -46,20 +41,23 @@ describe('Testing admin page', function() {
     });
 
     it('should have a pre field with displaying: "Current item: {}" ', function(){
-      expect(element('.pre-json')).toContain('Current item: {}');
+      expect(element('#bucketlist-pre').html()).toContain('Current item: {}');
+      expect(element('#education-pre').html()).toContain('Current item: {');
+      expect(element('#education-pre').html()).toContain('"tags": []');
+      expect(element('#experience-pre').html()).toContain('Current item: {');
+      expect(element('#experience-pre').html()).toContain('"tags": []');
+      expect(element('#me-pre').html()).toContain('Current item: {');
+      expect(element('#me-pre').html()).toContain('"tags": []');
+      expect(element('#user-pre').html()).toContain('Current item: {}');
     });
 
     it('should have a pre field displaying "tags": []', function(){
       expect(element('.pre-tag').html()).toContain('"tags": []');
     });
+  });
+
+  describe('Testing bucketlist admin', function(){
 
   });
 
-  // describe('Protected page', function(){
-  //   it('should open admin if user is logged in', function(loginService){
-  //     loginService.loggedIn = true;
-  //     element('#admin-nav-button').click();
-  //     expect(browser().location().url()).toBe('/admin');
-  //   });
-  // });
 });

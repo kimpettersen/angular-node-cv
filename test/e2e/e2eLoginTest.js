@@ -1,9 +1,4 @@
 describe('Testing routes', function() {
-  // var scope,
-  //     browser,
-  //     location;
-
-  // beforeEach(angular.mock.module('CVApp'));
 
   beforeEach(function() {
     browser().navigateTo('../../app/index.html');

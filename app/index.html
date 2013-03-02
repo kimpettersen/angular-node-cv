@@ -30,11 +30,11 @@
               <a class="brand" href="#">kimpettersen.org</a>
               <div class="nav-collapse collapse" ng-controller="MenuCtrl">
                 <ul class="nav">
-                  <li class="main-button active"><a href="javascript:;" ng-click="changeView('/main')">Main</a></li>
-                  <li class="doc-button"><a href="javascript:;" ng-click="changeView('/documentation')">Documentation</a></li>
-                  <li ng-show="isLoggedIn()" class="admin-button"><a id="admin-nav-button" href="javascript:;" ng-click="changeView('/admin')">Admin</a></li>
-                  <li ng-show="!isLoggedIn()" class="login-button"><a id="login-nav-button" href="javascript:;" ng-click="changeView('/login')">Login</a></li>
-                  <li ng-show="isLoggedIn()" class="logout-button"><a id="logout-nav-button" href="javascript:;" ng-click="logout()">Logout</a></li>
+                  <li class="main-button active"><a href ng-click="changeView('/main')">Main</a></li>
+                  <li class="doc-button"><a href ng-click="changeView('/documentation')">Documentation</a></li>
+                  <li ng-show="isLoggedIn()" class="admin-button"><a id="admin-nav-button" href ng-click="changeView('/admin')">Admin</a></li>
+                  <li ng-show="!isLoggedIn()" class="login-button"><a id="login-nav-button" href ng-click="changeView('/login')">Login</a></li>
+                  <li ng-show="isLoggedIn()" class="logout-button"><a id="logout-nav-button" href ng-click="logout()">Logout</a></li>
                 </ul>
                 </div>
               </div>

@@ -1,142 +1,155 @@
-<div class="admin-content hero-unit">
-
-  <div ng-controller="BucketlistCtrl">
-    <div>
-      <h1 class="resource-title">Bucket list item</h1>
-      <form class="form-vertical">
-        <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
-        <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
-        <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
-                        <option value="">Rating</option>
-                      </select><br />
-        <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
-        <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'bucketlist', item: adminService.bucketlist.item })">SAVE</button>
-        <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
-        <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
-      </form>
-    </div>
-    <p> Status: <span class="text-info"> {{ status }}</span></p>
-    <pre class="pre-json">Current item: {{ currentItem | json }} </pre>
-    <br />
-    <br />
-    <div>
-      Resources: <div class="resource-list" resources list="adminService.bucketlist.resources" display="title" edit="edit(item)" del="del(adminService.delItem(item))" type="bucketlist"></div>
-    </div>
-  </div>
-  <br />
-  <hr>
-  <br />
-
-  <div ng-controller="EducationCtrl">
-    <div>
-      <h1 class="resource-title">Education item</h1>
-      <form class="form-vertical">
-        <input placeholder="Institution" type="text" name="institution" ng-model="adminService.education.item.institution" /><br />
-        <input placeholder="Degree" type="text" name="degree" ng-model="adminService.education.item.degree" /><br />
-        <textarea placeholder="Description" name="description" ng-model="adminService.education.item.description"></textarea><br />
-        <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
-        <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
-        <br />
-        <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
-        <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'education', item: adminService.education.item })">SAVE</button>
-        <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
-        <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
-      </form>
-    </div>
-    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-    <p> Status: <span class="text-info"> {{ status }}</span></p>
-    <pre class="pre-json pre-tag">Currsent item: {{ currentItem | json }} </pre>
-    <br />
-    <br />
-    <div>
-      Resources: <div class="resource-list" resources list="adminService.education.resources" display="institution" edit="edit(item)" del="del(adminService.delItem(item))" type="education"></div>
-    </div>
+<div class="row-fluid">
+  <div class="span2 sidebar-nav sidebar-nav-fixed">
+    <ul class="nav nav-list">
+      <li><a href="" ng-href="/#/admin/#bucketlist">Bucket list</a></li>
+      <li><a href="" ng-href="/#/admin/#education">Education</a></li>
+      <li><a href="" ng-href="/#/admin/#experience">Experience</a></li>
+      <li><a href="" ng-href="/#/admin/#me">Me</a></li>
+      <li><a href="" ng-href="/#/admin/#user">User</a></li>
+    </ul>
   </div>
 
+
+  <div class="admin-content offset2 span8">
+
+    <div id="bucketlist" ng-controller="BucketlistCtrl">
+      <div>
+        <h1 class="resource-title">Bucket list item</h1>
+        <form class="form-vertical">
+          <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title" /><br />
+          <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description"></textarea><br />
+          <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
+                          <option value="">Rating</option>
+                        </select><br />
+          <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
+          <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'bucketlist', item: adminService.bucketlist.item })">SAVE</button>
+          <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+          <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
+        </form>
+      </div>
+      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <pre class="pre-json">Current item: {{ currentItem | json }} </pre>
+      <br />
+      <br />
+      <div>
+        Resources: <div class="resource-list" resources list="adminService.bucketlist.resources" display="title" edit="edit(item)" del="del(adminService.delItem(item))" type="bucketlist"></div>
+      </div>
+    </div>
+    <br />
+    <hr>
+    <br />
+
+    <div id="education" ng-controller="EducationCtrl">
+      <div>
+        <h1 class="resource-title">Education item</h1>
+        <form class="form-vertical">
+          <input placeholder="Institution" type="text" name="institution" ng-model="adminService.education.item.institution" /><br />
+          <input placeholder="Degree" type="text" name="degree" ng-model="adminService.education.item.degree" /><br />
+          <textarea placeholder="Description" name="description" ng-model="adminService.education.item.description"></textarea><br />
+          <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
+          <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
+          <br />
+          <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
+          <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'education', item: adminService.education.item })">SAVE</button>
+          <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+          <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
+        </form>
+      </div>
+      <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
+      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <pre class="pre-json pre-tag">Currsent item: {{ currentItem | json }} </pre>
+      <br />
+      <br />
+      <div>
+        Resources: <div class="resource-list" resources list="adminService.education.resources" display="institution" edit="edit(item)" del="del(adminService.delItem(item))" type="education"></div>
+      </div>
+    </div>
+
+    <br />
+    <hr>
+    <br />
+
+
+    <div id="experience" ng-controller="ExperienceCtrl">
+      <div>
+        <h1 class="resource-title">Experience item</h1>
+        <form class="form-vertical">
+          <input placeholder="Company" type="text" name="company" ng-model="adminService.experience.item.company" /><br />
+          <input placeholder="Duration" type="text" name="duration" ng-model="adminService.experience.item.duration" /><br />
+          <textarea placeholder="Description" name="description" ng-model="adminService.experience.item.description"></textarea><br />
+          <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
+          <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
+          <br />
+          <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
+          <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'experience', item: adminService.experience.item })">SAVE</button>
+          <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+          <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'experience', item: adminService.experience.item })">CREATE</button>
+        </form>
+      </div>
+      <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
+      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <pre class="pre-json pre-tag">Current item: {{ currentItem | json }} </pre>
+      <br />
+      <br />
+      <div>
+        Resources: <div class="resource-list" resources list="adminService.experience.resources" display="company" edit="edit(item)" del="del(adminService.delItem(item))" type="experience"></div>
+      </div>
+    </div>
+
+    <br />
+    <hr>
+    <br />
+
+    <div id="me" ng-controller="MeCtrl">
+      <div>
+        <h1 class="resource-title">Me item</h1>
+        <form class="form-vertical">
+          <input placeholder="Title" type="text" name="title" ng-model="adminService.me.item.title" /><br />
+          <textarea placeholder="Description" name="description" ng-model="adminService.me.item.description"></textarea><br />
+          <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
+          <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
+          <br />
+          <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
+          <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'me', item: adminService.me.item })">SAVE</button>
+          <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+          <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'me', item: adminService.me.item })">CREATE</button>
+        </form>
+      </div>
+      <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
+      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <pre class="pre-json pre-tag">Current item: {{ currentItem | json }} </pre>
+      <br />
+      <br />
+      <div>
+        Resources: <div class="resource-list" resources list="adminService.me.resources" display="title" edit="edit(item)" del="del(adminService.delItem(item))" type="me"></div>
+      </div>
+    </div>
+
   <br />
-  <hr>
-  <br />
-
-
-  <div ng-controller="ExperienceCtrl">
-    <div>
-      <h1 class="resource-title">Experience item</h1>
-      <form class="form-vertical">
-        <input placeholder="Company" type="text" name="company" ng-model="adminService.experience.item.company" /><br />
-        <input placeholder="Duration" type="text" name="duration" ng-model="adminService.experience.item.duration" /><br />
-        <textarea placeholder="Description" name="description" ng-model="adminService.experience.item.description"></textarea><br />
-        <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
-        <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
-        <br />
-        <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
-        <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'experience', item: adminService.experience.item })">SAVE</button>
-        <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
-        <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'experience', item: adminService.experience.item })">CREATE</button>
-      </form>
-    </div>
-    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-    <p> Status: <span class="text-info"> {{ status }}</span></p>
-    <pre class="pre-json pre-tag">Current item: {{ currentItem | json }} </pre>
+    <hr>
     <br />
-    <br />
-    <div>
-      Resources: <div class="resource-list" resources list="adminService.experience.resources" display="company" edit="edit(item)" del="del(adminService.delItem(item))" type="experience"></div>
-    </div>
-  </div>
 
-  <br />
-  <hr>
-  <br />
+    <div id="user" ng-controller="UserCtrl">
+      <div>
+        <h1 class="resource-title">User</h1>
+        <form class="form-vertical">
+          <input placeholder="username" type="text" name="username" ng-model="adminService.user.item.username" /><br />
+          <input placeholder="password" type="password" name="password" ng-model="adminService.user.item.password" /><br />
+          <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
+          <button class="btn edit-button"  ng-disabled="isCreateMode()" ng-click="editResource({type: 'user', item: adminService.user.item })">SAVE</button>
+          <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+          <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'user', item: adminService.user.item })">CREATE</button>
+        </form>
+      </div>
+      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <pre class="pre-json">Current item: {{ currentItem | json }} </pre>
+      <br />
+      <br />
+      <div>
+        Resources: <div class="resource-list" resources list="adminService.user.resources" display="username" edit="edit(item)" del="del(adminService.delItem(item))" type="user"></div>
+      </div>
+    </div>
 
-  <div ng-controller="MeCtrl">
-    <div>
-      <h1 class="resource-title">Me item</h1>
-      <form class="form-vertical">
-        <input placeholder="Title" type="text" name="title" ng-model="adminService.me.item.title" /><br />
-        <textarea placeholder="Description" name="description" ng-model="adminService.me.item.description"></textarea><br />
-        <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
-        <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
-        <br />
-        <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
-        <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'me', item: adminService.me.item })">SAVE</button>
-        <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
-        <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'me', item: adminService.me.item })">CREATE</button>
-      </form>
-    </div>
-    <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-    <p> Status: <span class="text-info"> {{ status }}</span></p>
-    <pre class="pre-json pre-tag">Current item: {{ currentItem | json }} </pre>
-    <br />
-    <br />
-    <div>
-      Resources: <div class="resource-list" resources list="adminService.me.resources" display="title" edit="edit(item)" del="del(adminService.delItem(item))" type="me"></div>
-    </div>
-  </div>
-
-<br />
-  <hr>
-  <br />
-
-  <div ng-controller="UserCtrl">
-    <div>
-      <h1 class="resource-title">User</h1>
-      <form class="form-vertical">
-        <input placeholder="username" type="text" name="username" ng-model="adminService.user.item.username" /><br />
-        <input placeholder="password" type="password" name="password" ng-model="adminService.user.item.password" /><br />
-        <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
-        <button class="btn edit-button"  ng-disabled="isCreateMode()" ng-click="editResource({type: 'user', item: adminService.user.item })">SAVE</button>
-        <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
-        <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'user', item: adminService.user.item })">CREATE</button>
-      </form>
-    </div>
-    <p> Status: <span class="text-info"> {{ status }}</span></p>
-    <pre class="pre-json">Current item: {{ currentItem | json }} </pre>
-    <br />
-    <br />
-    <div>
-      Resources: <div class="resource-list" resources list="adminService.user.resources" display="username" edit="edit(item)" del="del(adminService.delItem(item))" type="user"></div>
-    </div>
   </div>
 
 </div>
-

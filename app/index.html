@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="styles/main.css"/>
 
     </head>
-    <body ng-app="CVApp">
+    <body data-spy="scroll" data-target=".nav-list" ng-app="CVApp">
 
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
@@ -24,7 +24,7 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="MenuCtrl">
+        <div class="navbar navbar-fixed-top" ng-controller="MenuCtrl">
           <div class="navbar-inner">
             <div class="container">
               <a class="brand" href="#">kimpettersen.org</a>
@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <div class="container" ng-view>
+        <div class="container-fluid cont" ng-view>
         </div>
 
         <script src="scripts/vendor/angular.js"></script>

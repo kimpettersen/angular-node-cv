@@ -6,7 +6,7 @@ var controller = require('../api/baseController'),
     model = require('../api/baseModel');
 
 
-mongoose.connect('localhost', 'angularcv_tests');
+mongoose.connect('localhost', 'angularcv_test');
 //mocha server/tests --reporter spec -u bdd -r should
 
 describe('BaseModel', function(){
@@ -21,9 +21,13 @@ describe('BaseModel', function(){
       isDeleted: true
     });
 
-    model1.save();
-    model2.save();
-    done();
+    model1.save(function(){
+      model2.save(function(){
+        done();
+      });
+    });
+
+
   });
 
   afterEach(function(done){
@@ -37,8 +41,12 @@ describe('BaseModel', function(){
     it('should return all result that matches the parameters and is not deleted', function(done){
       model.BaseModel.get({}, function(err, res){
         should.not.exist(err);
-        res.should.have.lengthOf(1);
-        res[0].isDeleted.should.be.equal(false);
+        console.log();
+        res.should.not.be.empty;
+        for (var i = 0; i < res.length; i++){
+          res[i].isDeleted.should.be.equal(false);
+        }
+
         done();
       });
     });
@@ -100,8 +108,9 @@ describe('BaseModel', function(){
       model.BaseModel.deleteDocument({'_id': model1._id }, function(err, res){
         should.not.exist(err);
         res.isDeleted.should.be.equal(true);
-        model.BaseModel.get({'_id': model1._id},function(e, r){
-          r.should.have.lengthOf(0);
+        model.BaseModel.get({'_id': res._id},function(error, result){
+          should.not.exist(error);
+          result.should.have.lengthOf(0);
           done();
         });
       });

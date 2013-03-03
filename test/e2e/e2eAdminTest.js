@@ -57,6 +57,13 @@ describe('Testing admin page', function() {
   });
 
   describe('Testing bucketlist admin', function(){
+    it('should have elements in resource list', function(){
+      expect(element('#bucketlist .resource-list > div').count()).toBeGreaterThan(0);
+    });
+
+    it('Should display the element when clicking show', function(){
+
+    });
 
   });
 

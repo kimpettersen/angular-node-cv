@@ -71,8 +71,7 @@ var createTestData = function(callback){
   experience = new experienceModel.Experience({
                             company: 'exp company',
                             description: 'exp description',
-                            startDate: 'exp startDate',
-                            endDate: 'exp endDate',
+                            duration: 'exp duration',
                             tags: ['exp tag1', 'exp tag2']
                             });
   me = new meModel.Me({

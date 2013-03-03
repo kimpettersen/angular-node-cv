@@ -5,8 +5,7 @@ var mongoose = require("mongoose"),
 var ExperienceSchema = model.BaseSchema.extend({
   company: String,
   description: String,
-  startDate: String,
-  endDate: String,
+  duration: String,
   tags: [String]
 });
 

@@ -40,8 +40,7 @@ describe('Config file', function(){
         res.length.should.be.equal(1);
         res[0].company.should.include('exp company');
         res[0].description.should.include('exp description');
-        res[0].startDate.should.include('exp startDate');
-        res[0].endDate.should.include('exp endDate');
+        res[0].duration.should.include('exp duration');
         res[0].tags.should.contain('exp tag1', 'exp tag2');
         done();
       });

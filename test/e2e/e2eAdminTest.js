@@ -56,13 +56,50 @@ describe('Testing admin page', function() {
     });
   });
 
+  describe('Button behaviour', function(){
+
+  });
+
   describe('Testing bucketlist admin', function(){
     it('should have elements in resource list', function(){
       expect(element('#bucketlist .resource-list > div').count()).toBeGreaterThan(0);
     });
 
     it('Should display the element when clicking show', function(){
+      element('#bucketlist .show-item-button').click();
+      expect(element('#bucketlist-pre').html()).toContain('"title": "bucket title"');
+      expect(element('#bucketlist-pre').html()).toContain('"description": "bucket description"');
+      expect(element('#bucketlist-pre').html()).toContain('1');
+    });
 
+    it('should edit the item when pressing save', function(){
+      element('#bucketlist .show-item-button').click();
+      input('adminService.bucketlist.item.title').enter('title2');
+      input('adminService.bucketlist.item.description').enter('desc2');
+      select('adminService.bucketlist.item.rating').option('2');
+      pause()
+      element('#bucketlist .edit-button').click();
+
+      expect(element('#bucketlist-pre').html()).toContain('"title": "title2"');
+      expect(element('#bucketlist-pre').html()).toContain('"description": "desc2"');
+      expect(element('#bucketlist-pre').html()).toContain('"rating": 2');
+    });
+
+    it('should delete an item if delete is clicked', function(){
+      element('#bucketlist .delete-item-button').click();
+      expect(element('#bucketlist .resource-list > div').count()).toBe(0);
+    });
+
+    it('should create an item when clicking create', function(){
+      input('adminService.bucketlist.item.title').enter('bucket title');
+      input('adminService.bucketlist.item.description').enter('bucket description');
+      select('adminService.bucketlist.item.rating').option('1');
+
+      element('#bucketlist .edit-button').click();
+
+      expect(element('#bucketlist-pre').html()).toContain('"title": "bucket title"');
+      expect(element('#bucketlist-pre').html()).toContain('"description": "bucket description"');
+      expect(element('#bucketlist-pre').html()).toContain('1');
     });
 
   });

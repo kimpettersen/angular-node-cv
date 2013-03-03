@@ -11,3 +11,6 @@ mocha server/e2e_tests --reporter spec -u bdd
 
 Why not REST
 each request from client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. Session state is therefore kept entirely on the client
+
+
+Running e2e tests on test database screws up the content. restart server

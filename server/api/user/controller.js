@@ -26,6 +26,8 @@ module.exports = function(app){
   app.post('/api/user/?', controller.protect, function(request, response) {
     var id;
     var regex = /^[a-zA-Z0-9]+$/;
+
+
     //Check if username is passed and not empty string
     if (request.body.username === undefined || request.body.username.match(regex) === null){
       response.status(409);
@@ -42,11 +44,14 @@ module.exports = function(app){
 
     //Check if username already exists
     model.UserModel.find({username: request.body.username}, function(err, res){
-
       if (res.length !== 0){
-        response.status(409);
-        response.json({ error: 'username not available' });
-        return;
+        console.log(res[0].isDeleted !== true);
+        if (res[0].isDeleted === false){
+          console.log(res);
+          response.status(409);
+          response.json({ error: 'username not available' });
+          return;
+        }
       }
 
       // User can be created

@@ -13,7 +13,7 @@ describe('Restricted access and status codes', function(){
 
 
   beforeEach(function(done){
-    user = new model.UserModel({});
+    user = new model.UserModel({username: 'testuser', password: 'pass'});
     referenceId = user._id;
     user.save();
 
@@ -24,7 +24,6 @@ describe('Restricted access and status codes', function(){
         should.not.exist(res.header.cvappauth);
         done();
     });
-
 
   });
 
@@ -180,6 +179,30 @@ describe('Restricted access and status codes', function(){
           res.body.error.should.be.equal('username not available');
           done();
       });
+    });
+
+    it('Should return an instance if username exist but is deleted', function(done){
+
+      auth_req
+        .del('http://localhost:3000/api/user/' + referenceId)
+        .send({})
+        .end(function(err, res){
+          should.exist(res.header.cvappauth);
+          should.not.exist(err);
+          res.statusCode.should.be.equal(200);
+
+          auth_req
+            .post('http://localhost:3000/api/user/')
+            .send({username: 'testuser', password: '22'})
+            .end(function(err, res){
+              should.exist(res.header.cvappauth);
+              should.not.exist(err);
+              res.statusCode.should.be.equal(201);
+              done();
+          });
+        });
+
+
     });
 
     it('should return 403 when creating a new user when not authenticated', function(done){

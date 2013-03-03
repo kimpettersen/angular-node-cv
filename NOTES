@@ -14,3 +14,9 @@ each request from client to server must contain all of the information necessary
 
 
 Running e2e tests on test database screws up the content. restart server
+
+Juggling
+
+Test optimization
+
+Document tests

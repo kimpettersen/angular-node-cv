@@ -23,7 +23,7 @@ files = [
 //   'test/e2e/*.js'
 // ];
 
-autoWatch = true;
+autoWatch = false;
 
 browsers = ['Chrome'];
 

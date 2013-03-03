@@ -27,7 +27,7 @@
           <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
         </form>
       </div>
-      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
       <pre class="pre-json" id="bucketlist-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
@@ -56,7 +56,7 @@
         </form>
       </div>
       <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
       <pre class="pre-json pre-tag" id="education-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
@@ -87,7 +87,7 @@
         </form>
       </div>
       <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
       <pre class="pre-json pre-tag" id="experience-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
@@ -116,7 +116,7 @@
         </form>
       </div>
       <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
       <pre class="pre-json pre-tag" id="me-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
@@ -141,7 +141,7 @@
           <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'user', item: adminService.user.item })">CREATE</button>
         </form>
       </div>
-      <p> Status: <span class="text-info"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
       <pre class="pre-json" id="user-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />

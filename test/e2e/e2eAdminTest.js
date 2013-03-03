@@ -1,13 +1,15 @@
 describe('Testing admin page', function() {
-  // var scope,
-  //     browser,
-  //     location;
 
-  // beforeEach(angular.mock.module('CVApp'));
+  //Tests generall behaviour and initial state of the admin page
+
 
   beforeEach(function() {
-    browser().navigateTo('../../app/index.html');
-    localStorage.setItem('loggedIn', true);
+    browser().navigateTo('/#/login');
+    input('user.username').enter('admin');
+    input('user.password').enter('1234');
+
+    element('#login-button').click();
+    expect(element('#status').text()).toContain('Succesful login');
     browser().navigateTo('/#/admin');
   });
 
@@ -25,19 +27,21 @@ describe('Testing admin page', function() {
 
     });
 
-    it('should have deactivated save and clear buttons', function(){
-      expect(element('.create-button').prop('disabled')).toBeFalsy();
-      expect(element('.clear-button').prop('disabled')).toBeTruthy();
-      expect(element('.edit-button').prop('disabled')).toBeTruthy();
-    });
-
     it('should all have create mode', function(){
-      expect(element('.mode-field').html()).toContain('CREATE MODE');
+      expect(element('#bucketlist .mode-field').html()).toContain('CREATE MODE');
+      expect(element('#education .mode-field').html()).toContain('CREATE MODE');
+      expect(element('#experience .mode-field').html()).toContain('CREATE MODE');
+      expect(element('#me .mode-field').html()).toContain('CREATE MODE');
+      expect(element('#user .mode-field').html()).toContain('CREATE MODE');
+
     });
 
     it('should have a list of resources with text, edit and show buttons', function(){
-      expect(repeater('.resource-list').count()).toBeGreaterThan(0);
-      // expect(element('.resource-list *')).
+      expect(repeater('#bucketlist .resource-list').count()).toBeGreaterThan(0);
+      expect(repeater('#education .resource-list').count()).toBeGreaterThan(0);
+      expect(repeater('#experience .resource-list').count()).toBeGreaterThan(0);
+      expect(repeater('#me .resource-list').count()).toBeGreaterThan(0);
+      expect(repeater('#user .resource-list').count()).toBeGreaterThan(0);
     });
 
     it('should have a pre field with displaying: "Current item: {}" ', function(){
@@ -52,56 +56,9 @@ describe('Testing admin page', function() {
     });
 
     it('should have a pre field displaying "tags": []', function(){
-      expect(element('.pre-tag').html()).toContain('"tags": []');
+      expect(element('#education .pre-tag').html()).toContain('"tags": []');
+      expect(element('#experience .pre-tag').html()).toContain('"tags": []');
+      expect(element('#me .pre-tag').html()).toContain('"tags": []');
     });
   });
-
-  describe('Button behaviour', function(){
-
-  });
-
-  describe('Testing bucketlist admin', function(){
-    it('should have elements in resource list', function(){
-      expect(element('#bucketlist .resource-list > div').count()).toBeGreaterThan(0);
-    });
-
-    it('Should display the element when clicking show', function(){
-      element('#bucketlist .show-item-button').click();
-      expect(element('#bucketlist-pre').html()).toContain('"title": "bucket title"');
-      expect(element('#bucketlist-pre').html()).toContain('"description": "bucket description"');
-      expect(element('#bucketlist-pre').html()).toContain('1');
-    });
-
-    it('should edit the item when pressing save', function(){
-      element('#bucketlist .show-item-button').click();
-      input('adminService.bucketlist.item.title').enter('title2');
-      input('adminService.bucketlist.item.description').enter('desc2');
-      select('adminService.bucketlist.item.rating').option('2');
-      pause()
-      element('#bucketlist .edit-button').click();
-
-      expect(element('#bucketlist-pre').html()).toContain('"title": "title2"');
-      expect(element('#bucketlist-pre').html()).toContain('"description": "desc2"');
-      expect(element('#bucketlist-pre').html()).toContain('"rating": 2');
-    });
-
-    it('should delete an item if delete is clicked', function(){
-      element('#bucketlist .delete-item-button').click();
-      expect(element('#bucketlist .resource-list > div').count()).toBe(0);
-    });
-
-    it('should create an item when clicking create', function(){
-      input('adminService.bucketlist.item.title').enter('bucket title');
-      input('adminService.bucketlist.item.description').enter('bucket description');
-      select('adminService.bucketlist.item.rating').option('1');
-
-      element('#bucketlist .edit-button').click();
-
-      expect(element('#bucketlist-pre').html()).toContain('"title": "bucket title"');
-      expect(element('#bucketlist-pre').html()).toContain('"description": "bucket description"');
-      expect(element('#bucketlist-pre').html()).toContain('1');
-    });
-
-  });
-
 });

@@ -6,19 +6,22 @@ CVApp.controller('UserCtrl', function( $scope, adminService ) {
   $scope.adminService.updateResources('user');
   $scope.currentItem = {};
   $scope.status = '';
-  $scope.mode = '';
+  $scope.mode = 'create';
 
   $scope.show = function(item){
     $scope.currentItem = adminService.findById(item);
   };
 
   $scope.edit = function(item){
+    $scope.mode = 'edit';
     $scope.currentItem = adminService.findById(item);
     adminService.editItem(item);
   };
 
   $scope.resetCurrent = function(){
     $scope.currentItem = {};
+    $scope.mode = 'create';
+    adminService.user.item = {};
   };
 
   $scope.editResource = function(options){

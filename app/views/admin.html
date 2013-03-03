@@ -46,8 +46,8 @@
           <input placeholder="Institution" type="text" name="institution" ng-model="adminService.education.item.institution" /><br />
           <input placeholder="Degree" type="text" name="degree" ng-model="adminService.education.item.degree" /><br />
           <textarea placeholder="Description" name="description" ng-model="adminService.education.item.description"></textarea><br />
-          <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
-          <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
+          <input placeholder="Tag" type="text" name="tag" ng-model="education.tag"/>
+          <button class="btn tag-button" ng-click="addTag(education.tag)">ADD TAG</button>
           <br />
           <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
           <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'education', item: adminService.education.item })">SAVE</button>
@@ -77,8 +77,8 @@
           <input placeholder="Company" type="text" name="company" ng-model="adminService.experience.item.company" /><br />
           <input placeholder="Duration" type="text" name="duration" ng-model="adminService.experience.item.duration" /><br />
           <textarea placeholder="Description" name="description" ng-model="adminService.experience.item.description"></textarea><br />
-          <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
-          <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
+          <input placeholder="Tag" type="text" name="tag" ng-model="experience.tag"/>
+          <button class="btn tag-button" ng-click="addTag(experience.tag)">ADD TAG</button>
           <br />
           <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
           <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'experience', item: adminService.experience.item })">SAVE</button>
@@ -106,8 +106,8 @@
         <form class="form-vertical">
           <input placeholder="Title" type="text" name="title" ng-model="adminService.me.item.title" /><br />
           <textarea placeholder="Description" name="description" ng-model="adminService.me.item.description"></textarea><br />
-          <input placeholder="Tag" type="text" name="tag" ng-model="tag"/>
-          <button class="btn tag-button" ng-click="addTag(tag)">ADD TAG</button>
+          <input placeholder="Tag" type="text" name="tag" ng-model="me.tag"/>
+          <button class="btn tag-button" ng-click="addTag(me.tag)">ADD TAG</button>
           <br />
           <span class="text-info mode-field"> {{ mode|uppercase }} MODE </span><br>
           <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'me', item: adminService.me.item })">SAVE</button>

@@ -8,7 +8,7 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
   $scope.currentItem = {};
   $scope.currentItem.tags = [];
   $scope.status = '';
-  $scope.mode = '';
+  $scope.mode = 'create';
 
 
   $scope.addTag = function(tag){
@@ -40,6 +40,7 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
   };
 
   $scope.edit = function(item){
+    $scope.mode = 'edit';
     $scope.currentItem = adminService.findById(item);
     adminService.editItem(item);
   };
@@ -47,19 +48,12 @@ CVApp.controller('EducationCtrl', function($scope, adminService) {
   $scope.resetCurrent = function(){
     $scope.currentItem = {};
     $scope.currentItem.tags = [];
+    $scope.mode = 'create';
+    adminService.education.item = {};
   };
 
   $scope.isCreateMode = function(){
     return $scope.mode === 'create';
   };
-
-  $scope.$watch('currentItem', function(){
-    if (Object.keys($scope.currentItem).length === 1 && $scope.currentItem.tags.length === 0){
-      $scope.mode = 'create';
-    }else{
-      $scope.mode = 'edit';
-    }
-  }, true);
-
 
 });

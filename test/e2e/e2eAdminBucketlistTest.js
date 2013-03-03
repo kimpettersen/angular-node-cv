@@ -73,6 +73,7 @@ describe('Admin page bucketlist items', function(){
       expect(element('#bucketlist .resource-list > div').count()).toBeGreaterThan(0);
     });
 
+
     it('Should display the element when clicking show', function(){
       element('#bucketlist .show-item-button').click();
       expect(element('#bucketlist-pre').html()).toContain('"title": "bucket title"');

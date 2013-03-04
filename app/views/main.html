@@ -1,10 +1,10 @@
 <div class="row-fluid">
   <div class="span2 sidebar-nav sidebar-nav-fixed">
     <ul class="nav nav-list ">
-      <li><a href="/#/admin/#me">About Me</a></li>
-      <li><a href="/#/admin/#education">Education</a></li>
-      <li><a href="/#/admin/#experience">Experience</a></li>
-      <li><a href="/#/admin/#bucketlist">Bucket list</a></li>
+      <li class="active"><a href="/#/#about">About Me</a></li>
+      <li><a href="/#/#education">Education</a></li>
+      <li><a href="/#/#experience">Experience</a></li>
+      <li><a href="/#/#bucketlist">Bucket list</a></li>
     </ul>
   </div>
   <div class="offset2 span8" ng-controller="MainCtrl">
@@ -19,10 +19,21 @@
       You can also <a href="javascript:;">print</a>, or <a href="javascript:;">download</a> it as a PDF.
     </div>
 
-  <hr><div ng-repeat="t in about">{{t.title}}</div>
-  <hr><div ng-repeat="t in education">{{t.institution}}</div>
-  <hr><div ng-repeat="t in experience">{{t.company}}</div>
-  <hr><div ng-repeat="t in bucketlist">{{t.title}}</div>
+  <section id="about">
+    <hr><div ng-repeat="t in about">{{t.title}}</div>
+  </section>
+
+  <section id="education">
+    <hr><div ng-repeat="t in education">{{t.institution}}</div>
+  </section>
+
+  <section id="experience">
+    <hr><div ng-repeat="t in experience">{{t.company}}</div>
+  </section>
+
+  <section id="bucketlist">
+    <hr><div ng-repeat="t in bucketlist">{{t.title}}</div>
+  </section>
 
   </div>
 </div>

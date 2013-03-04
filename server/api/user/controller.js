@@ -45,9 +45,7 @@ module.exports = function(app){
     //Check if username already exists
     model.UserModel.find({username: request.body.username}, function(err, res){
       if (res.length !== 0){
-        console.log(res[0].isDeleted !== true);
         if (res[0].isDeleted === false){
-          console.log(res);
           response.status(409);
           response.json({ error: 'username not available' });
           return;

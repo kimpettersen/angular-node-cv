@@ -8,7 +8,7 @@ describe('Testing routes', function() {
 
   describe('Initial state', function(){
     it('should have status blank', function(){
-      expect(element('#status').text()).toEqual(' ');
+      expect(element('#status').text()).toEqual('');
     });
   });
 

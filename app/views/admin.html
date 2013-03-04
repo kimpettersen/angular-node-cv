@@ -27,12 +27,12 @@
           <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">CREATE</button>
         </form>
       </div>
-      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status">{{ status }}</span></p>
       <pre class="pre-json" id="bucketlist-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
       <div>
-        Resources: <div class="resource-list" resources list="adminService.bucketlist.resources" display="title" edit="edit(item)" del="del(adminService.delItem(item))" type="bucketlist"></div>
+        Resources: <div class="resource-list" resources list="adminService.bucketlist.resources" display="title" edit="edit(item)" del="del(item)" type="bucketlist"></div>
       </div>
     </div>
     <br />
@@ -56,12 +56,12 @@
         </form>
       </div>
       <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status">{{ status }}</span></p>
       <pre class="pre-json pre-tag" id="education-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
       <div>
-        Resources: <div class="resource-list" resources list="adminService.education.resources" display="institution" edit="edit(item)" del="del(adminService.delItem(item))" type="education"></div>
+        Resources: <div class="resource-list" resources list="adminService.education.resources" display="institution" edit="edit(item)" del="del(item)" type="education"></div>
       </div>
     </div>
 
@@ -87,12 +87,12 @@
         </form>
       </div>
       <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status">{{ status }}</span></p>
       <pre class="pre-json pre-tag" id="experience-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
       <div>
-        Resources: <div class="resource-list" resources list="adminService.experience.resources" display="company" edit="edit(item)" del="del(adminService.delItem(item))" type="experience"></div>
+        Resources: <div class="resource-list" resources list="adminService.experience.resources" display="company" edit="edit(item)" del="del(item)" type="experience"></div>
       </div>
     </div>
 
@@ -116,12 +116,12 @@
         </form>
       </div>
       <button class="btn btn-danger btn-mini" ng-repeat="tag in currentItem.tags" ng-click="removeTag(tag)">Remove: {{tag}}</button>
-      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status">{{ status }}</span></p>
       <pre class="pre-json pre-tag" id="me-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
       <div>
-        Resources: <div class="resource-list" resources list="adminService.me.resources" display="title" edit="edit(item)" del="del(adminService.delItem(item))" type="me"></div>
+        Resources: <div class="resource-list" resources list="adminService.me.resources" display="title" edit="edit(item)" del="del(item)" type="me"></div>
       </div>
     </div>
 
@@ -141,12 +141,12 @@
           <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'user', item: adminService.user.item })">CREATE</button>
         </form>
       </div>
-      <p> Status: <span class="text-info edit-status"> {{ status }}</span></p>
+      <p> Status: <span class="text-info edit-status">{{ status }}</span></p>
       <pre class="pre-json" id="user-pre">Current item: {{ currentItem | json }} </pre>
       <br />
       <br />
       <div>
-        Resources: <div class="resource-list" resources list="adminService.user.resources" display="username" edit="edit(item)" del="del(adminService.delItem(item))" type="user"></div>
+        Resources: <div class="resource-list" resources list="adminService.user.resources" display="username" edit="edit(item)" del="del(item)" type="user"></div>
       </div>
     </div>
 

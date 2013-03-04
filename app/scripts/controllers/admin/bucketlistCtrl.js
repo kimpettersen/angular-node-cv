@@ -19,6 +19,12 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
     adminService.editItem(item);
   };
 
+  $scope.del = function(item){
+    adminService.delItem(item, function(res){
+      $scope.status = res;
+    });
+  };
+
   $scope.resetCurrent = function(){
     $scope.currentItem = {};
     $scope.mode = 'create';

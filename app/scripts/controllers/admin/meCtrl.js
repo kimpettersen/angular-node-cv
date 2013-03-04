@@ -49,6 +49,12 @@ CVApp.controller('MeCtrl', function($scope, adminService) {
     $scope.mode = 'edit';
   };
 
+  $scope.del = function(item){
+    adminService.delItem(item, function(res){
+      $scope.status = res;
+    });
+  };
+
   $scope.resetCurrent = function(){
     $scope.currentItem = {};
     $scope.currentItem.tags = [];

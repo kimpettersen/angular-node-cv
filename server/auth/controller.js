@@ -10,6 +10,7 @@ module.exports = function(app){
         res.json('Error getting user');
         return;
       }else if(!user || user.isDeleted === true){
+        console.log('user is deleted', user);
         res.status(204);
         res.json('Unsuccesful login');
         return;

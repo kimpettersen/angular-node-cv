@@ -8,7 +8,7 @@ describe('Admin page bucketlist items', function(){
     element('#login-button').click();
     expect(element('#status').text()).toContain('Succesful login');
     browser().navigateTo('/#/admin');
-    expect(element('#bucketlist .edit-status').html()).toBe(' ');
+    expect(element('#bucketlist .edit-status').html()).toBe('');
   });
 
   describe('Button behaviour', function(){
@@ -50,6 +50,7 @@ describe('Admin page bucketlist items', function(){
   describe('Testing bucketlist admin', function(){
     it('should delete an item if delete is clicked', function(){
       element('#bucketlist .delete-item-button').click();
+      expect(element('#bucketlist .edit-status').html()).toContain('Succesfully deleted item');
       expect(element('#bucketlist .resource-list > div').count()).toBe(0);
     });
 
@@ -60,7 +61,7 @@ describe('Admin page bucketlist items', function(){
 
       element('#bucketlist .create-button').click();
 
-      expect(element('#bucketlist .edit-status').html()).toContain(' Succesfully created a new bucketlist');
+      expect(element('#bucketlist .edit-status').html()).toContain('Succesfully created a new bucketlist');
 
       element('#bucketlist .show-item-button').click();
 

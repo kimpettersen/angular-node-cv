@@ -8,7 +8,7 @@ describe('Admin page education items', function(){
     element('#login-button').click();
     expect(element('#status').text()).toContain('Succesful login');
     browser().navigateTo('/#/admin');
-    expect(element('#education .edit-status').html()).toBe(' ');
+    expect(element('#education .edit-status').html()).toBe('');
   });
 
   describe('Button behaviour', function(){
@@ -51,6 +51,7 @@ describe('Admin page education items', function(){
 
     it('should delete an item if delete is clicked', function(){
       element('#education .delete-item-button').click();
+      expect(element('#education .edit-status').html()).toContain('Succesfully deleted item');
       expect(element('#education .resource-list > div').count()).toBe(0);
     });
 

@@ -40,6 +40,8 @@ describe('Admin page user items', function(){
 
     it('should set up db for user tests ', function(){
       browser().navigateTo('/#/admin');
+      // Create a test user since the isDeleted flag is a mess
+
       input('adminService.user.item.username').enter('aaaaa');
       input('adminService.user.item.password').enter(1234);
       element('#user .create-button').click();
@@ -49,14 +51,15 @@ describe('Admin page user items', function(){
 
 
     it('should delete an item if delete is clicked', function(){
+      //Makes sure to pick the last item
       element('#user .delete-item-button:last').click();
       expect(element('#user .edit-status').html()).toContain('Succesfully deleted item');
       expect(element('#user .resource-list > div').count()).toBe(1);
     });
 
     it('should create an item when clicking create', function(){
-      // create random user
-      username = Math.floor(Math.random() * 100)
+      // create random user, or else the test will only run once
+      username = Math.floor(Math.random() * 100);
       input('adminService.user.item.username').enter('admin' + username);
       input('adminService.user.item.password').enter('1234');
       element('#user .create-button').click();
@@ -89,15 +92,6 @@ describe('Admin page user items', function(){
       expect(element('#user-pre').html()).toContain('"username": "user2"');
       expect(element('#user-pre').html()).toContain('"password": "pass2"');
     });
-
-
-    // it('should teardown and reset db', function(){
-    //   browser().navigateTo('/#/admin');
-    //   input('adminService.user.item.username').enter('admin');
-    //   input('adminService.user.item.password').enter(1234);
-    //   element('#user .create-button').click();
-    //   expect(element('#user .edit-status').html()).toContain('Succesfully created a new user');
-    // });
 
   });
 });

@@ -41,7 +41,6 @@ describe('BaseModel', function(){
     it('should return all result that matches the parameters and is not deleted', function(done){
       model.BaseModel.get({}, function(err, res){
         should.not.exist(err);
-        console.log();
         res.should.not.be.empty;
         for (var i = 0; i < res.length; i++){
           res[i].isDeleted.should.be.equal(false);

@@ -1,6 +1,6 @@
 'use strict'
 
-Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http, loginService){
+Controllers.controller('MenuCtrl', ['$scope', '$rootScope', '$location', '$http', 'loginService', function($scope, $rootScope, $location, $http, loginService){
 
   $scope.loginService = loginService;
   $scope.loginService.updateStatus();
@@ -23,4 +23,4 @@ Controllers.controller('MenuCtrl', function($scope, $rootScope, $location, $http
     });
   };
 
-});
+}]);

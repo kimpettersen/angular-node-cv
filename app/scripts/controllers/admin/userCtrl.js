@@ -1,7 +1,8 @@
 
 'use strict';
 
-CVApp.controller('UserCtrl', function( $scope, adminService ) {
+Controllers.controller('UserCtrl', ['$scope', 'adminService', function($scope, adminService){
+
   $scope.adminService = adminService;
   $scope.adminService.updateResources('user');
   $scope.currentItem = {};
@@ -55,4 +56,4 @@ CVApp.controller('UserCtrl', function( $scope, adminService ) {
     }
   }, true);
 
-});
+}]);

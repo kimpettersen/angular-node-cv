@@ -1,6 +1,6 @@
 
 'use strict';
 
-CVApp.controller('DocCtrl', function($scope){
+Controllers.controller('DocCtrl', ['$scope', function($scope){
 
-});
+}]);

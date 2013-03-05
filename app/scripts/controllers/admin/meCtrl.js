@@ -1,7 +1,8 @@
 
 'use strict';
 
-CVApp.controller('MeCtrl', function($scope, adminService) {
+Controllers.controller('MeCtrl', ['$scope', 'adminService', function($scope, adminService){
+
 
   $scope.adminService = adminService;
   $scope.adminService.updateResources('me');
@@ -66,4 +67,4 @@ CVApp.controller('MeCtrl', function($scope, adminService) {
     return $scope.mode === 'create';
   };
 
-});
+}]);

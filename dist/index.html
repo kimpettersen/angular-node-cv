@@ -9,10 +9,10 @@
         <title></title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="styles/dadf530e.main.css"/>
+        <link rel="stylesheet" href="styles/b8c15dce.main.css"/>
 
     </head>
-    <body ng-app="CVApp">
+    <body ng-app="CVApp" data-spy="scroll" data-target=".sidebar-nav-fixed">
 
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
@@ -24,15 +24,17 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="MenuCtrl">
+        <div class="navbar navbar-fixed-top" ng-controller="MenuCtrl">
           <div class="navbar-inner">
             <div class="container">
               <a class="brand" href="#">kimpettersen.org</a>
               <div class="nav-collapse collapse" ng-controller="MenuCtrl">
                 <ul class="nav">
-                  <li class="active"><a href="javascript:;" ng-click="changeView('/main')">Main</a></li>
-                  <li><a href="javascript:;" ng-click="changeView('/documentation')">Documentation</a></li>
-                  <li><a href="javascript:;" ng-click="changeView('/admin')">Admin</a></li>
+                  <li class="main-button active"><a href ng-click="changeView('/main')">Main</a></li>
+                  <li class="doc-button"><a href ng-click="changeView('/documentation')">Documentation</a></li>
+                  <li ng-show="isLoggedIn()" class="admin-button"><a id="admin-nav-button" href ng-click="changeView('/admin')">Admin</a></li>
+                  <li ng-show="!isLoggedIn()" class="login-button"><a id="login-nav-button" href ng-click="changeView('/login')">Login</a></li>
+                  <li ng-show="isLoggedIn()" class="logout-button"><a id="logout-nav-button" href ng-click="logout()">Logout</a></li>
                 </ul>
                 </div>
               </div>
@@ -40,13 +42,15 @@
           </div>
         </div>
 
-        <div class="container" ng-view>
+        <div class="container-fluid cont" ng-view>
         </div>
 
         <script src="scripts/vendor/d10639ae.angular.js"></script>
         <script src="components/angular-resource/angular-resource.js"></script>
+        <script src="components/jquery/jquery.js"></script>
+        <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
 
-        <script src="scripts/833f3e33.scripts.js"></script>
+        <script src="scripts/740b0204.scripts.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

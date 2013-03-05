@@ -1,33 +1,10 @@
-# Error: Unknown provider: aProvider <- a
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:2627
-    at getService (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2755)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:2632
-    at getService (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2755)
-    at invoke (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2773)
-    at instantiate (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2805)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:4620
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:4201
-    at forEach (http://localhost:3501/scripts/vendor/d10639ae.angular.js:117)
-    at nodeLinkFn (http://localhost:3501/scripts/vendor/d10639ae.angular.js:4202)
-    at compositeLinkFn (http://localhost:3501/scripts/vendor/d10639ae.angular.js:3838)
-    at compositeLinkFn (http://localhost:3501/scripts/vendor/d10639ae.angular.js:3841)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:3750
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:932
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:7770
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:7850
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:933
-    at invoke (http://localhost:3501/scripts/vendor/d10639ae.angular.js:2788)
-    at bootstrap (http://localhost:3501/scripts/vendor/d10639ae.angular.js:934)
-    at angularInit (http://localhost:3501/scripts/vendor/d10639ae.angular.js:904)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:14323
-    at trigger (http://localhost:3501/scripts/vendor/d10639ae.angular.js:1695)
-    at http://localhost:3501/scripts/vendor/d10639ae.angular.js:1930 (undefined, #undefined)
+# Error: Unknown provider: aProvider <- a (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Wed Feb 20 2013 13:02:53 GMT-0500 (EST)
+# Time: Mon Mar 04 2013 08:15:33 GMT-0500 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
-# Retrieved URL: http://localhost:3501/#/
+# Retrieved URL: http://localhost:3501/
 # User-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
 #
 # Config:
@@ -42,16 +19,18 @@ CACHE MANIFEST
 #   cacheFilter: .*
 #   networkFilter: null
 #  url: http://localhost:3501
-#  configFile: /Users/kimpettersen/Desktop/yeomen_test/yeoman/yeoman-custom/cli/lib/support/confess.json
+#  configFile: /Users/kim/applications_from_source/yeoman/yeoman-custom/cli/lib/support/confess.json
 
 CACHE:
 components/angular-resource/angular-resource.js
+components/jquery/jquery.js
 http://localhost:3501/img/glyphicons-halflings-white.png
 http://localhost:3501/img/glyphicons-halflings.png
+http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js
 http://www.google-analytics.com/ga.js
-scripts/833f3e33.scripts.js
+scripts/740b0204.scripts.js
 scripts/vendor/d10639ae.angular.js
-styles/dadf530e.main.css
+styles/b8c15dce.main.css
 
 NETWORK:
 *

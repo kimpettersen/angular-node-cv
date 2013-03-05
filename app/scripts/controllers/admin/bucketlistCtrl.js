@@ -9,9 +9,6 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
   $scope.mode = 'create';
   $scope.adminService.updateResources('bucketlist');
 
-  $scope.show = function(item){
-    $scope.currentItem = adminService.findById(item);
-  };
 
   $scope.edit = function(item){
     $scope.mode = 'edit';

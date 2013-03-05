@@ -9,10 +9,6 @@ Controllers.controller('UserCtrl', ['$scope', 'adminService', function($scope, 
   $scope.status = '';
   $scope.mode = 'create';
 
-  $scope.show = function(item){
-    $scope.currentItem = adminService.findById(item);
-  };
-
   $scope.edit = function(item){
     $scope.mode = 'edit';
     $scope.currentItem = adminService.findById(item);
@@ -47,13 +43,5 @@ Controllers.controller('UserCtrl', ['$scope', 'adminService', function($scope, 
   $scope.isCreateMode = function(){
     return $scope.mode === 'create';
   };
-
-  $scope.$watch('currentItem', function(){
-    if (Object.keys($scope.currentItem).length === 0){
-      $scope.mode = 'create';
-    }else{
-      $scope.mode = 'edit';
-    }
-  }, true);
 
 }]);

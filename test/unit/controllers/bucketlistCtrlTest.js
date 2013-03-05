@@ -48,17 +48,6 @@ describe('Controller: BucketlistCtrl', function() {
     });
   });
 
-  describe('show functionality', function(){
-    it('should set currentItem to the one returned by adminService.findById', function(){
-      var item = {
-        item: 'myItem'
-      }
-      expect(scope.currentItem).toEqual({});
-      scope.show(item);
-      expect(scope.currentItem).toEqual(item);
-    });
-  });
-
    describe('edit functionality', function(){
 
     it('should set mode to edit when edit is called', function(){

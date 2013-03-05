@@ -3,7 +3,7 @@
 var CVApp = angular.module('CVApp', ['adminServices',
                                       'mainServices',
                                       'loginServices',
-                                      'adminServicesMock', // Only for testing
+                                      'CVServicesMock',
                                       'controllers'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider

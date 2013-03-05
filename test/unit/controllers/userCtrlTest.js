@@ -16,8 +16,8 @@ describe('Controller: UserCtrl', function() {
       {_id: '123', title: 'Angular', description: 'desc2', rating: '1'}]);
   }));
 
-  beforeEach(inject(function($rootScope, $controller, adminServiceMock) {
-    var adminServiceInst = new adminServiceMock('user');
+  beforeEach(inject(function($rootScope, $controller, CVServiceMock) {
+    var adminServiceInst = new CVServiceMock.adminService('user');
     scope = $rootScope.$new();
     ctrl = $controller('UserCtrl', {
       $scope: scope,

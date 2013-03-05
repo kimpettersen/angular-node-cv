@@ -16,10 +16,10 @@ describe('Controller: EducationCtrl', function() {
       {_id: '123'}]);
   }));
 
-  beforeEach(inject(function($rootScope, $controller, adminServiceMock) {
+  beforeEach(inject(function($rootScope, $controller, CVServiceMock) {
     var adminServiceInst;
     scope = $rootScope.$new();
-    adminServiceInst = new adminServiceMock('education');
+    adminServiceInst = new CVServiceMock.adminService('education');
     ctrl = $controller('EducationCtrl', {
       $scope: scope,
       adminService: adminServiceInst

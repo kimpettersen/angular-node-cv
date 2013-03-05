@@ -16,10 +16,10 @@ describe('Controller: BucketlistCtrl', function() {
       {_id: '123', title: 'Angular', description: 'desc2', rating: '1'}]);
   }));
 
-  beforeEach(inject(function($rootScope, $controller, adminServiceMock) {
+  beforeEach(inject(function($rootScope, $controller, CVServiceMock) {
     var adminServiceInst;
     scope = $rootScope.$new();
-    adminServiceInst = new adminServiceMock('bucketlist');
+    adminServiceInst = new CVServiceMock.adminService('bucketlist');
     ctrl = $controller('BucketlistCtrl', {
       $scope: scope,
       adminService: adminServiceInst

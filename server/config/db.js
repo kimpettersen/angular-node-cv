@@ -11,20 +11,20 @@ var user,
 
 var blue  = '\033[34m',
     reset = '\033[0m';
-// mongoose.connect('mongodb://kimpettersen:nrrnrr7@ds047427.mongolab.com:47427/cv');
+
+
 
 
 //May add more envs
 switch(process.env.NODE_ENV){
         case 'test':
           dbName = 'angularcv_test';
+          mongoose.connect('localhost', dbName);
           break;
         default:
+          mongoose.connect('mongodb://kimpettersen:nrrnrr7@ds047427.mongolab.com:47427/cv');
           dbName = 'angularcv';
-
 }
-
-mongoose.connect('localhost', dbName);
 
 var removeTestData = function(callback){
     bucketModel.BucketList.remove({}, function(){

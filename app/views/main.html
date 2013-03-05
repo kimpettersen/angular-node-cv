@@ -28,7 +28,7 @@
   </section>
 
   <section id="experience">
-    <hr><div ng-repeat="t in experience">{{t.company}}</div>
+    <hr><div ng-repeat="t in experience">{{t.company}}<br><div ng-bind-html="t.description">{{t.description}}</div></div>
   </section>
 
   <section id="bucketlist">

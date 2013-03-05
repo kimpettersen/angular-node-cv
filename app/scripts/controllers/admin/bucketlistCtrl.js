@@ -32,6 +32,7 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
   };
 
   $scope.editResource = function(options){
+    //Perform HTTP PUT and saves the changes
     adminService.editResource(options, function(res){
       $scope.status = res;
     });

@@ -1,6 +1,6 @@
 'use strict';
 
-Controllers.controller('MainCtrl', ['$scope', 'mainService', function($scope, mainService){
+Controllers.controller('MainCtrl', ['$scope', 'MainCtrl', function($scope, MainCtrl){
 
   $scope.about = mainService.get({type: 'me'});
   $scope.education = mainService.get({type: 'education'});

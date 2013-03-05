@@ -1,7 +1,7 @@
 # Error: Unknown provider: aProvider <- a (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Mon Mar 04 2013 08:15:33 GMT-0500 (EST)
+# Time: Mon Mar 04 2013 21:02:20 GMT-0500 (EST)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/
@@ -19,7 +19,7 @@ CACHE MANIFEST
 #   cacheFilter: .*
 #   networkFilter: null
 #  url: http://localhost:3501
-#  configFile: /Users/kim/applications_from_source/yeoman/yeoman-custom/cli/lib/support/confess.json
+#  configFile: /usr/local/lib/node_modules/yeoman/lib/support/confess.json
 
 CACHE:
 components/angular-resource/angular-resource.js
@@ -28,7 +28,7 @@ http://localhost:3501/img/glyphicons-halflings-white.png
 http://localhost:3501/img/glyphicons-halflings.png
 http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js
 http://www.google-analytics.com/ga.js
-scripts/740b0204.scripts.js
+scripts/bd526178.scripts.js
 scripts/vendor/d10639ae.angular.js
 styles/b8c15dce.main.css
 

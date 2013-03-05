@@ -18,17 +18,42 @@ angular.module('CVServicesMock', [])
 
   adminService.prototype.delItem = function(options, callback){
     //pass the message you want back
-    return callback(options.message);
+    var opt = options === undefined ? {message: 'std message'} : options;
+    var cb = callback === undefined ? function(){} : callback;
+    if (opt.message === undefined){
+      opt.message = 'std message';
+    }
+    return cb(opt.message);
+  };
+
+  adminService.prototype.editItem = function(options, callback){
+    //pass the message you want back
+    var opt = options === undefined ? {message: 'std message'} : options;
+    var cb = callback === undefined ? function(){} : callback;
+    if (opt.message === undefined){
+      opt.message = 'std message';
+    }
+    return cb(opt.message);
   };
 
   adminService.prototype.editResource = function(options, callback){
     //pass the message you want back
-    return callback(options.message);
+    var opt = options === undefined ? {message: 'std message'} : options;
+    var cb = callback === undefined ? function(){} : callback;
+    if (opt.message === undefined){
+      opt.message = 'std message';
+    }
+    return cb(opt.message);
   };
 
   adminService.prototype.createResource = function(options, callback){
     //pass the message you want back
-    return callback(options.message);
+    var opt = options === undefined ? {message: 'std message'} : options;
+    var cb = callback === undefined ? function(){} : callback;
+    if (opt.message === undefined){
+      opt.message = 'std message';
+    }
+    return cb(opt.message);
   };
 
   return {

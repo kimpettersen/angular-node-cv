@@ -41,22 +41,5 @@ describe('Testing admin page', function() {
       expect(repeater('#me .resource-list').count()).toBeGreaterThan(0);
       expect(repeater('#user .resource-list').count()).toBeGreaterThan(0);
     });
-
-    // it('should have a pre field with displaying: "Current item: {}" ', function(){
-    //   expect(element('#bucketlist-item').html()).toContain('');
-    //   expect(element('#education-pre').html()).toContain('Current item: {');
-    //   expect(element('#education-pre').html()).toContain('"tags": []');
-    //   expect(element('#experience-pre').html()).toContain('Current item: {');
-    //   expect(element('#experience-pre').html()).toContain('"tags": []');
-    //   expect(element('#me-pre').html()).toContain('Current item: {');
-    //   expect(element('#me-pre').html()).toContain('"tags": []');
-    //   expect(element('#user-pre').html()).toContain('Current item: {}');
-    // });
-
-    // it('should have a pre field displaying "tags": []', function(){
-    //   expect(element('#education .pre-tag').html()).toContain('"tags": []');
-    //   expect(element('#experience .pre-tag').html()).toContain('"tags": []');
-    //   expect(element('#me .pre-tag').html()).toContain('"tags": []');
-    // });
   });
 });

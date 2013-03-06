@@ -6226,3 +6226,11 @@ div.subnav-fixed {
 .cont {
   padding-top: 86px;
 }
+
+.admin-content input, .admin-content textarea {
+  width:80%;
+}
+
+.admin-content textarea {
+  height: 300px;
+}

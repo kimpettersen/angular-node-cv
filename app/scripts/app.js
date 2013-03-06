@@ -4,6 +4,7 @@ var CVApp = angular.module('CVApp', ['adminServices',
                                       'mainServices',
                                       'loginServices',
                                       'CVServicesMock',
+                                      'ngSanitize',
                                       'controllers'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider

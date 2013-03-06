@@ -8,7 +8,6 @@ describe('Admin page bucketlist items', function(){
     element('#login-button').click();
     expect(element('#status').text()).toContain('Succesful login');
     browser().navigateTo('/#/admin');
-    expect(element('#bucketlist .edit-status').html()).toBe('');
   });
 
   describe('Button behaviour', function(){
@@ -48,6 +47,7 @@ describe('Admin page bucketlist items', function(){
   });
 
   describe('Testing bucketlist admin', function(){
+
     it('should delete an item if delete is clicked', function(){
       element('#bucketlist .delete-item-button').click();
       expect(element('#bucketlist .edit-status').html()).toContain('Succesfully deleted item');
@@ -65,9 +65,9 @@ describe('Admin page bucketlist items', function(){
 
       element('#bucketlist .show-item-button').click();
 
-      expect(element('#bucketlist-pre').html()).toContain('"title": "bucket title"');
-      expect(element('#bucketlist-pre').html()).toContain('"description": "bucket description"');
-      expect(element('#bucketlist-pre').html()).toContain('1');
+      expect(element('#bucketlist-item .item-title').html()).toContain('bucket title');
+      expect(element('#bucketlist-item .item-description').html()).toContain('bucket description');
+      expect(element('#bucketlist-item .item-rating').html()).toContain('1');
     });
 
     it('should have elements in resource list', function(){
@@ -77,9 +77,9 @@ describe('Admin page bucketlist items', function(){
 
     it('Should display the element when clicking show', function(){
       element('#bucketlist .show-item-button').click();
-      expect(element('#bucketlist-pre').html()).toContain('"title": "bucket title"');
-      expect(element('#bucketlist-pre').html()).toContain('"description": "bucket description"');
-      expect(element('#bucketlist-pre').html()).toContain('1');
+      expect(element('#bucketlist-item .item-title').html()).toContain('bucket title');
+      expect(element('#bucketlist-item .item-description').html()).toContain('bucket description');
+      expect(element('#bucketlist-item .item-rating').html()).toContain('1');
     });
 
     it('should edit the item when pressing save', function(){
@@ -90,9 +90,10 @@ describe('Admin page bucketlist items', function(){
       element('#bucketlist .edit-button').click();
       expect(element('#bucketlist .edit-status').html()).toContain('Succesfully edited bucketlist');
 
-      expect(element('#bucketlist-pre').html()).toContain('"title": "title2"');
-      expect(element('#bucketlist-pre').html()).toContain('"description": "desc2"');
-      expect(element('#bucketlist-pre').html()).toContain('"rating": 3');
+      expect(element('#bucketlist-item .item-title').html()).toContain('title2');
+      expect(element('#bucketlist-item .item-description').html()).toContain('desc2');
+      expect(element('#bucketlist-item .item-rating').html()).toContain('3');
+
     });
 
   });

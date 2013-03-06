@@ -67,8 +67,8 @@ describe('Admin page user items', function(){
 
       element('#user .show-item-button').click();
 
-      expect(element('#user-pre').html()).toContain(username);
-      expect(element('#user-pre').html()).toContain('"password": "1234"');
+      expect(element('#user-item .item-username').html()).toContain(username);
+      expect(element('#user-item .item-password').html()).toContain('1234');
     });
 
     it('should have elements in resource list', function(){
@@ -77,8 +77,8 @@ describe('Admin page user items', function(){
 
     it('Should display the element when clicking show', function(){
       element('#user .show-item-button').click();
-      expect(element('#user-pre').html()).toContain(username);
-      expect(element('#user-pre').html()).toContain('"password": "1234"');
+      expect(element('#user-item .item-username').html()).toContain(username);
+      expect(element('#user-item .item-password').html()).toContain('1234');
     });
 
     it('should edit the item when pressing save', function(){
@@ -89,8 +89,8 @@ describe('Admin page user items', function(){
       element('#user .edit-button').click();
       expect(element('#user .edit-status').html()).toContain('Succesfully edited user');
 
-      expect(element('#user-pre').html()).toContain('"username": "user2"');
-      expect(element('#user-pre').html()).toContain('"password": "pass2"');
+      expect(element('#user-item .item-username').html()).toContain('user2');
+      expect(element('#user-item .item-password').html()).toContain('pass2');
     });
 
   });

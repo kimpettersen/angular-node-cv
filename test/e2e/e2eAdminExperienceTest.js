@@ -8,7 +8,6 @@ describe('Admin page experience items', function(){
     element('#login-button').click();
     expect(element('#status').text()).toContain('Succesful login');
     browser().navigateTo('/#/admin');
-    expect(element('#experience .edit-status').html()).toBe('');
   });
 
   describe('Button behaviour', function(){
@@ -49,6 +48,14 @@ describe('Admin page experience items', function(){
 
   describe('Testing experience admin', function(){
 
+    it('should delete a tag if removed is pressed', function(){
+      element('#experience .show-item-button').click();
+      expect(element('#experience .item-tag').count()).toBe(2);
+      expect(element('#experience .item-tag').html()).toContain('exp tag');
+      element('#experience .item-tag .btn').click();
+      expect(element('#experience .item-tag').count()).toBe(0);
+    });
+
     it('should delete an item if delete is clicked', function(){
       element('#experience .delete-item-button').click();
       expect(element('#experience .edit-status').html()).toContain('Succesfully deleted item');
@@ -56,12 +63,12 @@ describe('Admin page experience items', function(){
     });
 
     it('should create an item when clicking create', function(){
-      input('adminService.experience.item.company').enter('edu company');
-      input('adminService.experience.item.duration').enter('edu duration');
-      input('adminService.experience.item.description').enter('edu description');
-      input('experience.tag').enter('edu tag1');
+      input('adminService.experience.item.company').enter('exp company');
+      input('adminService.experience.item.duration').enter('exp duration');
+      input('adminService.experience.item.description').enter('exp description');
+      input('experience.tag').enter('exp tag1');
       element('#experience .tag-button').click();
-      input('experience.tag').enter('edu tag2');
+      input('experience.tag').enter('exp tag2');
       element('#experience .tag-button').click();
 
       element('#experience .create-button').click();
@@ -69,11 +76,11 @@ describe('Admin page experience items', function(){
 
       element('#experience .show-item-button').click();
 
-      expect(element('#experience-pre').html()).toContain('"company": "edu company"');
-      expect(element('#experience-pre').html()).toContain('"duration": "edu duration"');
-      expect(element('#experience-pre').html()).toContain('"description": "edu description"');
-      expect(element('#experience-pre').html()).toContain('edu tag1');
-      expect(element('#experience-pre').html()).toContain('edu tag2');
+      expect(element('#experience .item-company').html()).toContain('company');
+      expect(element('#experience .item-duration').html()).toContain('duration');
+      expect(element('#experience .item-description').html()).toContain('description');
+      expect(element('#experience .item-tag').html()).toContain('exp tag1');
+      expect(element('#experience .item-tag').count()).toBe(2);
     });
 
     it('should have elements in resource list', function(){
@@ -82,32 +89,33 @@ describe('Admin page experience items', function(){
 
     it('Should display the element when clicking show', function(){
       element('#experience .show-item-button').click();
-      expect(element('#experience-pre').html()).toContain('"company": "edu company"');
-      expect(element('#experience-pre').html()).toContain('"duration": "edu duration"');
-      expect(element('#experience-pre').html()).toContain('"description": "edu description"');
-      expect(element('#experience-pre').html()).toContain('edu tag1');
-      expect(element('#experience-pre').html()).toContain('edu tag2');
+      expect(element('#experience .item-company').html()).toContain('company');
+      expect(element('#experience .item-duration').html()).toContain('duration');
+      expect(element('#experience .item-description').html()).toContain('description');
+      expect(element('#experience .item-tag').html()).toContain('exp tag1');
+      expect(element('#experience .item-tag').count()).toBe(2);
     });
 
     it('should edit the item when pressing save', function(){
       element('#experience .show-item-button').click();
+      element('#experience .item-tag .btn').click();
       input('adminService.experience.item.company').enter('company2');
-      input('adminService.experience.item.duration').enter('edu duration2');
+      input('adminService.experience.item.duration').enter('exp duration2');
       input('adminService.experience.item.description').enter('desc2');
-      input('experience.tag').enter('edu tag3');
+      input('experience.tag').enter('exp tag3');
       element('#experience .tag-button').click();
-      input('experience.tag').enter('edu tag4');
+      input('experience.tag').enter('exp tag4');
       element('#experience .tag-button').click();
 
       element('#experience .edit-button').click();
       expect(element('#experience .edit-status').html()).toContain('Succesfully edited experience');
 
-      expect(element('#experience-pre').html()).toContain('"company": "company2"');
-      expect(element('#experience-pre').html()).toContain('"duration": "edu duration2"');
-      expect(element('#experience-pre').html()).toContain('"description": "desc2"');
+      expect(element('#experience .item-company').html()).toContain('company');
+      expect(element('#experience .item-duration').html()).toContain('duration');
+      expect(element('#experience .item-description').html()).toContain('desc2');
+      expect(element('#experience .item-tag').html()).toContain('exp tag3');
+      expect(element('#experience .item-tag').count()).toBe(2);
 
-      expect(element('#experience-pre').html()).toContain('edu tag3');
-      expect(element('#experience-pre').html()).toContain('edu tag4');
     });
 
   });

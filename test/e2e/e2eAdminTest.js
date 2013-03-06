@@ -23,8 +23,6 @@ describe('Testing admin page', function() {
       expect(repeater('.edit-button').count()).toBe(5);
       expect(repeater('.mode-field').count()).toBe(5);
       expect(repeater('.tag-button').count()).toBe(3);
-      expect(repeater('.pre-tag').count()).toBe(3);
-
     });
 
     it('should all have create mode', function(){
@@ -44,21 +42,21 @@ describe('Testing admin page', function() {
       expect(repeater('#user .resource-list').count()).toBeGreaterThan(0);
     });
 
-    it('should have a pre field with displaying: "Current item: {}" ', function(){
-      expect(element('#bucketlist-pre').html()).toContain('Current item: {}');
-      expect(element('#education-pre').html()).toContain('Current item: {');
-      expect(element('#education-pre').html()).toContain('"tags": []');
-      expect(element('#experience-pre').html()).toContain('Current item: {');
-      expect(element('#experience-pre').html()).toContain('"tags": []');
-      expect(element('#me-pre').html()).toContain('Current item: {');
-      expect(element('#me-pre').html()).toContain('"tags": []');
-      expect(element('#user-pre').html()).toContain('Current item: {}');
-    });
+    // it('should have a pre field with displaying: "Current item: {}" ', function(){
+    //   expect(element('#bucketlist-item').html()).toContain('');
+    //   expect(element('#education-pre').html()).toContain('Current item: {');
+    //   expect(element('#education-pre').html()).toContain('"tags": []');
+    //   expect(element('#experience-pre').html()).toContain('Current item: {');
+    //   expect(element('#experience-pre').html()).toContain('"tags": []');
+    //   expect(element('#me-pre').html()).toContain('Current item: {');
+    //   expect(element('#me-pre').html()).toContain('"tags": []');
+    //   expect(element('#user-pre').html()).toContain('Current item: {}');
+    // });
 
-    it('should have a pre field displaying "tags": []', function(){
-      expect(element('#education .pre-tag').html()).toContain('"tags": []');
-      expect(element('#experience .pre-tag').html()).toContain('"tags": []');
-      expect(element('#me .pre-tag').html()).toContain('"tags": []');
-    });
+    // it('should have a pre field displaying "tags": []', function(){
+    //   expect(element('#education .pre-tag').html()).toContain('"tags": []');
+    //   expect(element('#experience .pre-tag').html()).toContain('"tags": []');
+    //   expect(element('#me .pre-tag').html()).toContain('"tags": []');
+    // });
   });
 });

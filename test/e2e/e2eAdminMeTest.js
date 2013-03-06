@@ -8,7 +8,6 @@ describe('Admin page me items', function(){
     element('#login-button').click();
     expect(element('#status').text()).toContain('Succesful login');
     browser().navigateTo('/#/admin');
-    expect(element('#me .edit-status').html()).toBe('');
   });
 
   describe('Button behaviour', function(){
@@ -49,10 +48,19 @@ describe('Admin page me items', function(){
 
   describe('Testing me admin', function(){
 
+    it('should delete a tag if removed is pressed', function(){
+      element('#me .show-item-button').click();
+      expect(element('#me .item-tag').count()).toBe(2);
+      expect(element('#me .item-tag').html()).toContain('me tag');
+      element('#me .item-tag .btn').click();
+      expect(element('#me .item-tag').count()).toBe(0);
+    });
+
+
     it('should delete an item if delete is clicked', function(){
-      element('#me .delete-item-button').click();
+      element('#me-item .delete-item-button').click();
       expect(element('#me .edit-status').html()).toContain('Succesfully deleted item');
-      expect(element('#me .resource-list > div').count()).toBe(0);
+      expect(element('#me .resource-list > show-item-button').count()).toBe(0);
     });
 
     it('should create an item when clicking create', function(){
@@ -68,10 +76,10 @@ describe('Admin page me items', function(){
 
       element('#me .show-item-button').click();
 
-      expect(element('#me-pre').html()).toContain('"title": "me title"');
-      expect(element('#me-pre').html()).toContain('"description": "me description"');
-      expect(element('#me-pre').html()).toContain('me tag1');
-      expect(element('#me-pre').html()).toContain('me tag2');
+      expect(element('#me-item .item-title').html()).toContain('me title');
+      expect(element('#me-item .item-description').html()).toContain('me description');
+      expect(element('#me-item .item-tag').count()).toBe(2);
+      expect(element('#me-item .item-tag').html()).toContain('me tag1');
     });
 
     it('should have elements in resource list', function(){
@@ -80,14 +88,15 @@ describe('Admin page me items', function(){
 
     it('Should display the element when clicking show', function(){
       element('#me .show-item-button').click();
-      expect(element('#me-pre').html()).toContain('"title": "me title"');
-      expect(element('#me-pre').html()).toContain('"description": "me description"');
-      expect(element('#me-pre').html()).toContain('me tag1');
-      expect(element('#me-pre').html()).toContain('me tag2');
+      expect(element('#me-item .item-title').html()).toContain('me title');
+      expect(element('#me-item .item-description').html()).toContain('me description');
+      expect(element('#me-item .item-tag').count()).toBe(2);
+      expect(element('#me-item .item-tag').html()).toContain('me tag1');
     });
 
     it('should edit the item when pressing save', function(){
       element('#me .show-item-button').click();
+      element('#me .item-tag .btn').click();
       input('adminService.me.item.title').enter('title2');
       input('adminService.me.item.description').enter('desc2');
       input('me.tag').enter('me tag3');
@@ -98,11 +107,11 @@ describe('Admin page me items', function(){
       element('#me .edit-button').click();
       expect(element('#me .edit-status').html()).toContain('Succesfully edited me');
 
-      expect(element('#me-pre').html()).toContain('"title": "title2"');
-      expect(element('#me-pre').html()).toContain('"description": "desc2"');
+      expect(element('#me-item .item-title').html()).toContain('title2');
+      expect(element('#me-item .item-description').html()).toContain('desc2');
+      expect(element('#me-item .item-tag').count()).toBe(2);
+      expect(element('#me-item .item-tag').html()).toContain('me tag3');
 
-      expect(element('#me-pre').html()).toContain('me tag3');
-      expect(element('#me-pre').html()).toContain('me tag4');
     });
 
   });

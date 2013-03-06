@@ -45,6 +45,14 @@ describe('Testing routes', function() {
       element('#login-button').click();
       expect(element('#status').text()).toContain('Succesful login');
     });
+
+    it('should redirect to admin when successfully logged in', function(){
+      input('user.username').enter('admin');
+      input('user.password').enter('1234');
+      element('#login-button').click();
+      expect(browser().location().path()).toBe('/admin');
+    });
+
   });
 
   describe('Access admin', function(){

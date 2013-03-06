@@ -71,23 +71,5 @@ describe('Controller: LoginCtrl', function() {
       $httpBackend.flush();
       expect(scope.status).toEqual('Wrong username or password');
     });
-
-    it('should have header XXXX when not logged in', function(){
-      $httpBackend.whenPOST('/auth/login', { username: 'admin', password: '1234' })
-        .respond({status: 204, header:{CVAppAuth: true} });
-
-      // not implemented yet
-      // scope.login();
-      // expect(true).toBe(false);
-
-
-
-    });
-
-
-    it('should have header XXXX when logged in', function(){
-
-
-    });
   });
 });

@@ -1,6 +1,6 @@
 'use strict'
 
-Controllers.controller('LoginCtrl', ['$scope', '$http', 'loginService', function($scope, $http, loginService){
+Controllers.controller('LoginCtrl', ['$scope', '$http', '$location','loginService', function($scope, $http, $location, loginService){
   $scope.status = '';
 
   $scope.login = function(args){
@@ -10,6 +10,7 @@ Controllers.controller('LoginCtrl', ['$scope', '$http', 'loginService', functio
         if (status === 200){
           $scope.status = data;
           localStorage.setItem('loggedIn', true);
+          $location.path('/admin');
         }else {
           localStorage.setItem('loggedIn', false);
           $scope.status = 'Wrong username or password';

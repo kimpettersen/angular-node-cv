@@ -6,12 +6,6 @@ describe('Testing routes', function() {
 
   });
 
-  describe('Initial state', function(){
-    it('should have status blank', function(){
-      expect(element('#status').text()).toEqual('');
-    });
-  });
-
   describe('Submitting', function(){
     it('should have status "Fields can not be blank" when submitting blank', function(){
       element('#login-button').click();

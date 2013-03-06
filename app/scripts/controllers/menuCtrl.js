@@ -4,6 +4,7 @@ Controllers.controller('MenuCtrl', ['$scope', '$rootScope', '$location', '$http'
 
   $scope.loginService = loginService;
   $scope.loginService.updateStatus();
+  $scope.activePage = $location.path();
 
 
   $scope.isLoggedIn = function(){
@@ -14,6 +15,12 @@ Controllers.controller('MenuCtrl', ['$scope', '$rootScope', '$location', '$http'
 
   $scope.changeView = function(view){
     $location.path(view);
+    $scope.activePage = $location.path();
+  };
+
+  $scope.getActivePage = function(page){
+    var res = $scope.activePage === page ? 'active' : '';
+    return res;
   };
 
   $scope.logout = function(){

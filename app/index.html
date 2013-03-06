@@ -46,16 +46,16 @@
                                 <a class="brand" href="#">kimpettersen.org</a>
                                 <div class="nav-collapse collapse" ng-controller="MenuCtrl">
                                     <ul class="nav">
-                                        <li class="main-button active">
+                                        <li class="main-button" ng-class="getActivePage('/main')">
                                             <a href ng-click="changeView('/main')">Main</a>
                                         </li>
-                                        <li class="doc-button">
+                                        <li class="doc-button" ng-class="getActivePage('/documentation')">
                                             <a href ng-click="changeView('/documentation')">Documentation</a>
                                         </li>
-                                        <li ng-show="isLoggedIn()" class="admin-button">
+                                        <li ng-show="isLoggedIn()" class="admin-button" ng-class="getActivePage('/admin')">
                                             <a id="admin-nav-button" href ng-click="changeView('/admin')">Admin</a>
                                         </li>
-                                        <li ng-show="!isLoggedIn()" class="login-button">
+                                        <li ng-show="!isLoggedIn()" class="login-button" ng-class="getActivePage('/login')">
                                             <a id="login-nav-button" href ng-click="changeView('/login')">Login</a>
                                         </li>
                                         <li ng-show="isLoggedIn()" class="logout-button">

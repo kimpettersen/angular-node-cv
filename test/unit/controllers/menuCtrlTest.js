@@ -9,6 +9,7 @@ describe('Controller: MenuCtrl', function() {
 
   beforeEach(inject(function(_$httpBackend_) {
     $httpBackend = _$httpBackend_;
+    $httpBackend.whenGET('/auth/userstatus').respond(200, '');
   }));
 
   beforeEach(inject(function($rootScope, $controller, $location, $http) {
@@ -19,4 +20,21 @@ describe('Controller: MenuCtrl', function() {
       $http: $http
     });
   }));
+
+  // describe('setting path', function(){
+  //   // it('should set the browser path to the passed path', function(){
+  //   //   expect(browser().location.path()).toEqual('/admin');
+  //   //   scope.changeView('/main');
+
+  //   // });
+  // })
+
+  describe('active menu functions', function(){
+    it('should return active if passed name equals scope.activePage', function(){
+      scope.activePage = '/admin';
+      expect(scope.getActivePage('/admin')).toBe('active');
+      expect(scope.getActivePage('/documentation')).toBe('');
+    });
+  });
+
 });

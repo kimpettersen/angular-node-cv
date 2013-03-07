@@ -24,7 +24,9 @@
   </section>
 
   <section id="education">
-    <hr><div ng-repeat="t in education">{{t.institution}}</div>
+    <hr><div ng-repeat="t in education"><h3 ng-bind-html="t.institution"></h3><br>
+    <p ng-bind-html="t.degree"></p>
+      <div ng-bind-html="t.description" ng-html-bind="t.description"></div></div>
   </section>
 
   <section id="experience">

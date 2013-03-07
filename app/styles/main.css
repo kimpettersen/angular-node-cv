@@ -6234,3 +6234,11 @@ div.subnav-fixed {
 .admin-content textarea {
   height: 300px;
 }
+
+.container .brand:hover{
+  cursor:default;
+}
+
+.admin-section{
+  margin-bottom:276px;
+}

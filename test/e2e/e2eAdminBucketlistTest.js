@@ -6,8 +6,6 @@ describe('Admin page bucketlist items', function(){
     input('user.password').enter('1234');
 
     element('#login-button').click();
-    expect(element('#status').text()).toContain('Succesful login');
-    browser().navigateTo('/#/admin');
   });
 
   describe('Button behaviour', function(){

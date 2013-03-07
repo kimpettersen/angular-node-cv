@@ -16,7 +16,6 @@ describe('Testing routes', function() {
       input('user.username').enter('admin');
       input('user.password').enter('1234');
       element('#login-button').click();
-      expect(element('#status').text()).toContain('Succesful login');
 
       expect(element('.login-button:visible').count()).toBe(0);
       expect(element('.logout-button:visible').count()).toBe(1);

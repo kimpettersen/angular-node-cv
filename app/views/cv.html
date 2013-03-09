@@ -4,7 +4,6 @@
       <li class="active"><a ng-href="/#/#about">About Me</a></li>
       <li><a ng-href="/#/#education">Education</a></li>
       <li><a ng-href="/#/#experience">Experience</a></li>
-      <li><a ng-href="/#/#bucketlist">Bucket list</a></li>
     </ul>
   </div>
   <div class="offset2 span8" ng-controller="CVCtrl">
@@ -17,21 +16,6 @@
 
       See <a ng-href="/#/about">About page for more information.</a><br>
       You can also <a href="javascript:;">print</a>, or <a href="javascript:;">download</a> it as a PDF.
-    </div>
-
-    <hr>
-    <h3>About me</h3>
-    <div ng-repeat="t in about">
-      <b ng-bind-html="t.title"></b>
-      <div ng-bind-html="t.description" ng-html-bind="t.description">
-      </div>
-      <div>
-        <br>
-        <b>Get in touch:</b>
-        <ul ng-repeat="tag in t.tags">
-          <li>{{tag}}</li>
-        </ul>
-      </div>
     </div>
 
     <hr>
@@ -52,19 +36,19 @@
       <br>
     </div>
 
-    <h3>My programming "bucket list"</h3>
-    <div ng-repeat="t in bucketlist">
-      <ul>
-        <li>
-            <b>{{t.title}}</b>
-            <div ng-bind-html="t.description" ng-html-bind="t.description">
-            </div>
-            <div>Importance: {{t.rating}}</div>
-        </li>
-      </ul>
-        <div ng-bind-html="t.description" ng-html-bind="t.description">
-        </div>
-      <br>
+    <hr>
+    <h3>About me</h3>
+    <div ng-repeat="t in about">
+      <b ng-bind-html="t.title"></b>
+      <div ng-bind-html="t.description" ng-html-bind="t.description">
+      </div>
+      <div>
+        <br>
+        <b>Get in touch:</b>
+        <ul ng-repeat="tag in t.tags">
+          <li>{{tag}}</li>
+        </ul>
+      </div>
     </div>
 
   </div>

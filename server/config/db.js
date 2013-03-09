@@ -3,7 +3,8 @@ var mongoose = require ('mongoose'),
     educationModel = require('../api/education/model.js'),
     experienceModel = require('../api/experience/model.js'),
     meModel = require('../api/me/model.js'),
-    userModel = require('../api/user/model.js');
+    userModel = require('../api/user/model.js'),
+    sessionSettings = {};
 
 var user,
     testuser,
@@ -12,19 +13,30 @@ var user,
 var blue  = '\033[34m',
     reset = '\033[0m';
 
+        // db: connection.dbName,
+        // mongoose_connection: connection.db,
+        // host:'ds047427.mongolab.com',
+        // port:'47427',
+        // username:'kimpettersen',
+        // password: 'nrrnrr7'
 
 
-
-//May add more envs
 switch(process.env.NODE_ENV){
         case 'test':
           dbName = 'angularcv_test';
           mongoose.connect('localhost', dbName);
           break;
         default:
+          sessionSettings.host = 'ds047427.mongolab.com',
+          sessionSettings.port = '47427';
+          sessionSettings.username = 'kimpettersen';
+          sessionSettings.password = 'nrrnrr7';
+
           mongoose.connect('mongodb://kimpettersen:nrrnrr7@ds047427.mongolab.com:47427/cv');
           dbName = 'cv';
 }
+
+sessionSettings.db = dbName;
 
 var removeTestData = function(callback){
     bucketModel.BucketList.remove({}, function(){
@@ -131,3 +143,4 @@ userModel.UserModel.find(testuser, function(err, res){
 });
 
 module.exports.dbName = dbName;
+module.exports.sessionSettings = sessionSettings;

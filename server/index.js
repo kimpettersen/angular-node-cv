@@ -16,7 +16,7 @@ var app = express();
 var path = __dirname + '/../app';
 var type  = mime.lookup(path);
 
-
+console.log('connection', connection.sessionSettings);
 app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
@@ -24,14 +24,7 @@ app.configure(function () {
     app.use(express.static(__dirname + '/../app'));
     app.use(express.session({
       secret: '6C4DDD52C3E48F97574F67DF7251ABEF77BDAA28CE23676B18DD50DAB615BEAA',
-      store: new MongoStore({
-        db: connection.dbName,
-        mongoose_connection: connection.db,
-        host:'ds047427.mongolab.com',
-        port:'47427',
-        username:'kimpettersen',
-        password: 'nrrnrr7'
-      })
+      store: new MongoStore(connection.sessionSettings)
     }));
     app.use(app.router);
     app.use(function(req, res) {

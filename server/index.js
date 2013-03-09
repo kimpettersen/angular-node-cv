@@ -26,7 +26,11 @@ app.configure(function () {
       secret: '6C4DDD52C3E48F97574F67DF7251ABEF77BDAA28CE23676B18DD50DAB615BEAA',
       store: new MongoStore({
         db: connection.dbName,
-        mongoose_connection: connection.db
+        mongoose_connection: connection.db,
+        host:'ds047427.mongolab.com',
+        port:'47427',
+        username:'kimpettersen',
+        password: 'nrrnrr7'
       })
     }));
     app.use(app.router);

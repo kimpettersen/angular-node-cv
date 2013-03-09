@@ -23,7 +23,7 @@ switch(process.env.NODE_ENV){
           break;
         default:
           mongoose.connect('mongodb://kimpettersen:nrrnrr7@ds047427.mongolab.com:47427/cv');
-          dbName = 'angularcv';
+          dbName = 'cv';
 }
 
 var removeTestData = function(callback){

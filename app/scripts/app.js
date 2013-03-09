@@ -9,16 +9,16 @@ var CVApp = angular.module('CVApp', ['adminServices',
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/cv.html',
+        controller: 'CVCtrl'
       })
-      .when('/main', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/cv', {
+        templateUrl: 'views/cv.html',
+        controller: 'CVCtrl'
       })
-      .when('/documentation', {
-        templateUrl: 'views/documentation.html',
-        controller: 'DocCtrl'
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       })
       .when('/admin', {
         templateUrl: 'views/admin.html'

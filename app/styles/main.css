@@ -6222,11 +6222,6 @@ div.subnav-fixed {
      }
  }
 
-
-.cont {
-  padding-top: 86px;
-}
-
 .admin-content input, .admin-content textarea {
   width:80%;
 }
@@ -6235,10 +6230,19 @@ div.subnav-fixed {
   height: 300px;
 }
 
+.cont{
+  padding-top:61px;
+}
+
 .container .brand:hover{
   cursor:default;
 }
 
-.admin-section{
-  margin-bottom:276px;
+
+#admin-anchor{
+    position: absolute;
+  top: -200px;
+  margin: 0;
+  padding: 0;
+  float: left;
 }

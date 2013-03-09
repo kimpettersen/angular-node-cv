@@ -46,11 +46,11 @@
                                 <a class="brand">kimpettersen.org</a>
                                 <div class="nav-collapse collapse" ng-controller="MenuCtrl">
                                     <ul class="nav">
-                                        <li class="main-button" ng-class="getActivePage('/main')">
+                                        <li class="main-button" ng-class="getActivePage('/cv')">
                                             <a href ng-click="changeView('/main')">Main</a>
                                         </li>
-                                        <li class="doc-button" ng-class="getActivePage('/documentation')">
-                                            <a href ng-click="changeView('/documentation')">Documentation</a>
+                                        <li class="doc-button" ng-class="getActivePage('/about')">
+                                            <a href ng-click="changeView('/about')">About</a>
                                         </li>
                                         <li ng-show="isLoggedIn()" class="admin-button" ng-class="getActivePage('/admin')">
                                             <a id="admin-nav-button" href ng-click="changeView('/admin')">Admin</a>
@@ -81,8 +81,8 @@
                     <script src="scripts/services/loginServices.js"></script>
                     <script src="scripts/services/cv-service-mock.js"></script>
                     <script src="scripts/app.js"></script>
-                    <script src="scripts/controllers/mainCtrl.js"></script>
-                    <script src="scripts/controllers/docCtrl.js"></script>
+                    <script src="scripts/controllers/cvCtrl.js"></script>
+                    <script src="scripts/controllers/aboutCtrl.js"></script>
                     <script src="scripts/controllers/menuCtrl.js"></script>
                     <script src="scripts/controllers/admin/bucketlistCtrl.js"></script>
                     <script src="scripts/controllers/admin/educationCtrl.js"></script>

@@ -47,19 +47,19 @@
                                 <div class="nav-collapse collapse" ng-controller="MenuCtrl">
                                     <ul class="nav">
                                         <li class="main-button" ng-class="getActivePage('/cv')">
-                                            <a href ng-click="changeView('/main')">Main</a>
+                                            <a ng-href="/#/cv">CV</a>
                                         </li>
                                         <li class="doc-button" ng-class="getActivePage('/about')">
-                                            <a href ng-click="changeView('/about')">About</a>
+                                            <a ng-href="/#/about">About</a>
                                         </li>
                                         <li ng-show="isLoggedIn()" class="admin-button" ng-class="getActivePage('/admin')">
-                                            <a id="admin-nav-button" href ng-click="changeView('/admin')">Admin</a>
+                                            <a id="admin-nav-button" ng-href="/#/admin">Admin</a>
                                         </li>
                                         <li ng-show="!isLoggedIn()" class="login-button" ng-class="getActivePage('/login')">
-                                            <a id="login-nav-button" href ng-click="changeView('/login')">Login</a>
+                                            <a id="login-nav-button" ng-href="/#/login">Login</a>
                                         </li>
                                         <li ng-show="isLoggedIn()" class="logout-button">
-                                            <a id="logout-nav-button" href ng-click="logout()">Logout</a>
+                                            <a id="logout-nav-button" ng-href="/#/logout" ng-click="logout()">Logout</a>
                                         </li>
                                     </ul>
                                 </div>

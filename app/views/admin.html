@@ -256,5 +256,71 @@
                     </div>
                 </div>
             </div>
+            <hr>
+            <div id="bucketlist" ng-controller="BucketlistCtrl">
+                <div>
+                    <h1 class="resource-title">
+                        Bucket list item
+                    </h1>
+                    <form class="form-vertical">
+                        <input placeholder="Title" type="text" name="title" ng-model="adminService.bucketlist.item.title">
+                        <br>
+                        <textarea placeholder="Description" name="description" ng-model="adminService.bucketlist.item.description">
+                        </textarea>
+                        <br>
+                        <select ng-model="adminService.bucketlist.item.rating" ng-options="rating for rating in ratings">
+                            <option value="">
+                                Rating
+                            </option>
+                        </select>
+                        <br>
+                        <span class="text-info mode-field">
+                            {{ mode|uppercase }} MODE
+                        </span>
+                        <br>
+                        <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'bucketlist', item: adminService.bucketlist.item })">
+                            SAVE
+                        </button>
+                        <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">
+                            CLEAR
+                        </button>
+                        <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'bucketlist', item: adminService.bucketlist.item })">
+                            CREATE
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <b>
+                        Status:
+                    </b>
+                    <span class="text-info edit-status">
+                        {{ status }}
+                    </span>
+                </div>
+                <div class="pre-json" id="bucketlist-item">
+                    <h3 class="item-title">
+                        {{currentItem.title}}
+                    </h3>
+                    <div class="item-description">
+                        {{currentItem.description}}
+                    </div>
+                    <br>
+                    <div class="item-rating">
+                        <b ng-hide="!currentItem.rating">
+                            Rating:
+                        </b>
+                        {{currentItem.rating}}
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div>
+                    Resources:
+                    <div class="resource-list" resources="" list="adminService.bucketlist.resources"
+                    display="title" edit="edit(item)" del="del(item)" type="bucketlist">
+                    </div>
+                </div>
+            </div>
+        <hr>
         </div>
     </div>

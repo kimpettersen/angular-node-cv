@@ -31,7 +31,6 @@ describe('Controller: MenuCtrl', function() {
 
   describe('active menu functions', function(){
     it('should return active if passed name equals scope.activePage', function(){
-      scope.activePage = '/admin';
       expect(scope.getActivePage('/admin')).toBe('active');
       expect(scope.getActivePage('/documentation')).toBe('');
     });

@@ -4,8 +4,6 @@ Controllers.controller('MenuCtrl', ['$scope', '$rootScope', '$location', '$http'
 
   $scope.loginService = loginService;
   $scope.loginService.updateStatus();
-  $scope.activePage = $location.path();
-
 
   $scope.isLoggedIn = function(){
     //LocalStorage only stores strings
@@ -13,14 +11,9 @@ Controllers.controller('MenuCtrl', ['$scope', '$rootScope', '$location', '$http'
     return res;
   };
 
-  $scope.changeView = function(view){
-    $location.path(view);
-    $scope.activePage = $location.path();
-  };
-
   $scope.getActivePage = function(page){
-    var res = $scope.activePage === page ? 'active' : '';
-    return res;
+   var res = $location.path().substr(0, page.length) === page ? 'active' : '';
+   return res;
   };
 
   $scope.logout = function(){

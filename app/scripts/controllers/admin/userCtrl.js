@@ -37,6 +37,8 @@ Controllers.controller('UserCtrl', ['$scope', 'adminService', function($scope, 
   $scope.createResource = function(options){
     adminService.createResource(options, function(res){
       $scope.status = res;
+      $scope.currentItem = {};
+      adminService.user.item = {};
     });
   };
 

@@ -39,6 +39,8 @@ Controllers.controller('BucketlistCtrl', ['$scope', 'adminService', function($s
   $scope.createResource = function(options){
     adminService.createResource(options, function(res){
       $scope.status = res;
+      $scope.currentItem = {};
+      adminService.bucketlist.item = {};
     });
   };
 

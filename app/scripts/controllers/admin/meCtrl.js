@@ -40,6 +40,9 @@ Controllers.controller('MeCtrl', ['$scope', 'adminService', function($scope, ad
     options.item.tags = $scope.currentItem.tags;
     adminService.createResource(options, function(res){
       $scope.status = res;
+      $scope.currentItem = {};
+      adminService.me.item = {};
+      $scope.currentItem.tags = [];
     });
   };
 

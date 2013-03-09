@@ -38,6 +38,9 @@ Controllers.controller('ExperienceCtrl', ['$scope', 'adminService', function($s
     options.item.tags = $scope.currentItem.tags;
     adminService.createResource(options, function(res){
       $scope.status = res;
+      $scope.currentItem = {};
+      adminService.experience.item = {};
+      $scope.currentItem.tags = [];
     });
   };
 

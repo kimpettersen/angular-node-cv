@@ -33,9 +33,15 @@ Controllers.controller('EducationCtrl', ['$scope', 'adminService', function($sc
 
   // Wrapper to attach tags to the item
   $scope.createResource = function(options){
+    if ($scope.currentItem === undefined){
+      return;
+    }
     options.item.tags = $scope.currentItem.tags;
     adminService.createResource(options, function(res){
       $scope.status = res;
+      $scope.currentItem = {};
+      $scope.currentItem.tags = [];
+      adminService.education.item = {};
     });
   };
 

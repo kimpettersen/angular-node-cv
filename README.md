@@ -31,7 +31,7 @@ What can you do with it?
 
 * Run it locally
 * Create, read, update and delete different items through the admin page and the API
-* 
+ 
 
 
 Requirements
@@ -39,3 +39,17 @@ Requirements
 
 * [Mongodb](http://www.mongodb.org/) running locally 
 * [Node JS](http://nodejs.org/) 0.8.x
+
+
+Tests
+=====
+
+Since this is an experimental project I decided to follow a few different approaches. I use Mocha to run tests
+on the server, and Jasmine and testacular for the tests on the front-end. I am also depending on the database content
+in the e2e tests. I made this decission to figure out if mocking results actually gives you any benefits (it definitely does!).
+
+##important!##
+
+Once you start the server with NODE_ENV set to test, it generates test data that the tests depends on.
+You should therefor restart the node server when you switch between test types. Unittests are not affected by this,
+but a failed e2e test can mess up the order.

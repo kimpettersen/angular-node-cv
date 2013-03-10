@@ -64,4 +64,32 @@ but a failed e2e test can mess up the order.
 
 *Angular unittests*: sh test.sh
 
-*server unittests*: sh e2e_test.sh 
+*server unittests*: sh e2e_test.sh
+
+
+Summary, conclusion, and what not
+===================================
+
+##Did I reach my goals for this project?##
+
+Yes, I most certanly did. I feel like i am in a position where I can say that I know the pitfalls of testing,
+I know a lot of Node JS and Angular JS. The project certanly changed the way I write code to the better, and I can now make decissions
+based on the testability.
+
+##Would I have done anything differently?##
+
+Yes, for sure. The project simply took too much of my time, so there's some parts I would have done differntly.
+
+Added parts "to make it more interesting" I created a isDeleted flag instead of just performing a proper deletion.
+
+Code reuse was something I took very seriously, but I still decided to add five different resources.
+This was sort of to make sure I could create a base controllers and models, so it would be less testing, and more modular.
+However all of these resources did basically the same thing. It stored text and tags. This led to a lot of time being wasted on
+copying and pasting tests and code five different places.
+
+This would have made sense if it was only an API: Since this is so tightly coupled to the front-end, and the 
+difference between the resources are minimal, it would have been a lot smarter to do this dynamically.
+
+With a dynamic way of creating your own resources out of a combination of input and text areas, I would have had a
+basic CMS. This is something I think the Javascript community needs, and something I intend to turns this project into.
+

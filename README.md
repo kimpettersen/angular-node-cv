@@ -8,14 +8,8 @@ format.
 The project is developed using BDD
 
 
-Why am I doing this? 
+Why am I doing this?
 ===================
 
-Because writing both an API and an application in AngularJS, using BDD, have been on my bucketlist for a while.
-
-
-Scope
-=====
-The scope of this project includes ...
-
+Testing renamed repo
 

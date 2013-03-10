@@ -1,5 +1,5 @@
 var mongoose = require ('mongoose'),
-    bucketModel = require('../api/bucketlist/model.js'),
+    bucketModel = require('../api/bucketList/model.js'),
     educationModel = require('../api/education/model.js'),
     experienceModel = require('../api/experience/model.js'),
     meModel = require('../api/me/model.js'),

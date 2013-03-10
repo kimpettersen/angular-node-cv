@@ -1,7 +1,7 @@
 var request = require('superagent'),
     should = require('should'),
     mongoose = require('mongoose'),
-    model = require('../api/bucketlist/model.js');
+    model = require('../api/bucketList/model.js');
 
 var referenceId;
 var bl;

@@ -48,8 +48,20 @@ Since this is an experimental project I decided to follow a few different approa
 on the server, and Jasmine and testacular for the tests on the front-end. I am also depending on the database content
 in the e2e tests. I made this decission to figure out if mocking results actually gives you any benefits (it definitely does!).
 
-##important!##
+##Important!##
 
 Once you start the server with NODE_ENV set to test, it generates test data that the tests depends on.
 You should therefor restart the node server when you switch between test types. Unittests are not affected by this,
 but a failed e2e test can mess up the order.
+
+##Run the tests##
+
+*server unittests*: sh server_test.sh 
+
+*server e2e tests*: sh server_e2e.sh 
+
+*Restart server*
+
+*Angular unittests*: sh test.sh
+
+*server unittests*: sh e2e_test.sh 

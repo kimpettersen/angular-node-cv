@@ -8,10 +8,6 @@ var CVApp = angular.module('CVApp', ['adminServices',
                                       'controllers'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/cv.html',
-        controller: 'CVCtrl'
-      })
       .when('/cv', {
         templateUrl: 'views/cv.html',
         controller: 'CVCtrl'
@@ -28,7 +24,7 @@ var CVApp = angular.module('CVApp', ['adminServices',
         controller: 'LoginCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/cv'
       });
     }]).run( function($rootScope, $location) {
       $rootScope.$on( '$routeChangeStart', function(event, next, current) {

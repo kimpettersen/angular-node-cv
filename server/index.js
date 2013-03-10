@@ -16,7 +16,6 @@ var app = express();
 var path = __dirname + '/../app';
 var type  = mime.lookup(path);
 
-console.log('connection', connection.sessionSettings);
 app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());

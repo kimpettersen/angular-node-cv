@@ -19,8 +19,9 @@
                     <title>
                     </title>
                     <meta name="description" content="" />
-                    <meta name="viewport" content="width=device-width" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link rel="stylesheet" href="styles/main.css" />
+                    <link href="components/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
                 </head>
 
                 <body ng-app="CVApp">
@@ -40,40 +41,51 @@
                         </script>
                     <![endif]-->
                     <!-- Add your site or application content here -->
-                    <div class="navbar navbar-fixed-top" ng-controller="MenuCtrl">
-                        <div class="navbar-inner">
-                            <div class="container">
-                                <a class="brand">kimpettersen.org</a>
-                                <div class="nav-collapse collapse" ng-controller="MenuCtrl">
-                                    <ul class="nav">
-                                        <li class="main-button" ng-class="getActivePage('/cv')">
-                                            <a ng-href="/#/cv">CV</a>
-                                        </li>
-                                        <li class="doc-button" ng-class="getActivePage('/blog')">
-                                            <a ng-href="/#/blog">Blog</a>
-                                        </li>
-                                        <li ng-show="isLoggedIn()" class="admin-button" ng-class="getActivePage('/admin')">
-                                            <a id="admin-nav-button" ng-href="/#/admin">Admin</a>
-                                        </li>
-                                        <li ng-show="!isLoggedIn()" class="login-button" ng-class="getActivePage('/login')">
-                                            <a id="login-nav-button" ng-href="/#/login">Login</a>
-                                        </li>
-                                        <li ng-show="isLoggedIn()" class="logout-button">
-                                            <a id="logout-nav-button" ng-href="/#/logout" ng-click="logout()">Logout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
+
+                      <div class="navbar navbar-fixed-top" ng-controller="MenuCtrl">
+                          <div class="navbar-inner">
+                              <div class="container">
+                                      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </a>
+
+                                    <a ng-href="/#/cv" class="brand">kimpettersen.org</a>
+                                    <div class="nav-collapse collapse" ng-controller="MenuCtrl">
+                                        <ul class="nav">
+                                            <li class="main-button" ng-class="getActivePage('/cv')">
+                                                <a ng-href="/#/cv">CV</a>
+                                            </li>
+                                            <li class="doc-button" ng-class="getActivePage('/blog')">
+                                                <a ng-href="/#/blog">Blog</a>
+                                            </li>
+                                            <li ng-show="isLoggedIn()" class="admin-button" ng-class="getActivePage('/admin')">
+                                                <a id="admin-nav-button" ng-href="/#/admin">Admin</a>
+                                            </li>
+                                            <li ng-show="!isLoggedIn()" class="login-button" ng-class="getActivePage('/login')">
+                                                <a id="login-nav-button" ng-href="/#/login">Login</a>
+                                            </li>
+                                            <li ng-show="isLoggedIn()" class="logout-button">
+                                                <a id="logout-nav-button" ng-href="/#/logout" ng-click="logout()">Logout</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+
+                              </div>
+                          </div>
                         </div>
                     </div>
-                    </div>
-                    <div class="container-fluid cont" ng-view>
+                    <div class="container cont" ng-view>
                     </div>
                     <script src="scripts/vendor/angular.js"></script>
                     <script src="components/angular-resource/angular-resource.js"></script>
                     <script src="components/angular-sanitize/angular-sanitize.js"></script>
                     <script src="components/jquery/jquery.js"></script>
-                    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
+
+                    <script src="components/bootstrap/js/bootstrap.min.js"></script>
 
                     <!-- build:js scripts/scripts.js -->
                     <script src="scripts/services/adminServices.js"></script>
@@ -82,7 +94,7 @@
                     <script src="scripts/services/cv-service-mock.js"></script>
                     <script src="scripts/app.js"></script>
                     <script src="scripts/controllers/cvCtrl.js"></script>
-                    <script src="scripts/controllers/aboutCtrl.js"></script>
+                    <script src="scripts/controllers/blogCtrl.js"></script>
                     <script src="scripts/controllers/menuCtrl.js"></script>
                     <script src="scripts/controllers/admin/bucketlistCtrl.js"></script>
                     <script src="scripts/controllers/admin/educationCtrl.js"></script>

@@ -1,7 +1,7 @@
 {
   "author": "",
   "name": "ANUGULARCV",
-  "version": "0.0.2-14",
+  "version": "0.0.2-18",
   "dependencies": {
     "express": "3.0.6",
     "mongodb": "1.2.9",

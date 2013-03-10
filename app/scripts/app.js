@@ -16,9 +16,9 @@ var CVApp = angular.module('CVApp', ['adminServices',
         templateUrl: 'views/cv.html',
         controller: 'CVCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/blog', {
+        templateUrl: 'views/blog.html',
+        controller: 'BlogCtrl'
       })
       .when('/admin', {
         templateUrl: 'views/admin.html'

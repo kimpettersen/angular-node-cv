@@ -21,16 +21,17 @@ What can you do with it?
 ####Without installing anything you can:####
 
 
+* Give me a job offer!
 * Perform a GET request to the APU (There's list of things I want to do in the API)
 * Look through the code
 * Give me a code review or any type of feedback
-* Give me a job offer
+
 
 ####If you chose to install it you can also:####
 
-* Log in locally
-* Create, read, update and delete different items
-*
+* Run it locally
+* Create, read, update and delete different items through the admin page and the API
+* 
 
 
 Requirements

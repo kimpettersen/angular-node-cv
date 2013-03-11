@@ -8,7 +8,8 @@ The project is hosted at [kimpettersen.org](http://angularcv.jit.su)
 
 If you have any questions or just want to say hello, Talk to me on [Twitter](https://twitter.com/PettersenKim)
 
-This is the documentation, and my genreal thoughts about the result and process of this project.
+This is the documentation, and my genreal thoughts about the result and process of this project. I will write a part 2
+of this explaining my biggest obsticles in the process.
 
 Why did I do this?
 ===================
@@ -230,17 +231,74 @@ and you need to Mock the model, which probably has its own dependencies, and so 
 
 
 ###Solution###
-*Put your logic in the model*. It is as simple as that. This way you realize right away that you are putting method in the
+*Put your logic in the model*. It is as simple as that. This way you realize right away that you are putting a function in the
 wrong place. This makes the model testable, since it can be treated as a separate module and will definitely have less
 dependencies than if it was inside the controller.
-Now that the method belongs to a model, you can easily reuse it in all your controllers.
+Now that the function belongs to a model, you can easily reuse it in all your controllers.
 
 
+Here I have to check input, prepare arguments and all of that in *every single controller* this is very difficult to test.
 
+      app.get('/api/bucketlist/:id', function(request, response) {
+          var id = request.body.id
+          if (id === undefined) {
+            response.status(204);
+            //handle the result
+          }
+          
+          args = {};
+          args.isDeleted = { '$ne': true };
+          args.id = { id: id}
+          model.find(args, function(err, res){
+            response.status(200);
+            //prepare response
+            response.send();
+          });    
+      });
+
+
+Instead I put the logic in my model: 
+
+    BaseSchema.statics.get = function(args, callback){
+      args = Object.prototype.toString.call(args) === '[object Object]' ? args : {};
+      args.isDeleted = { '$ne': true };
+      this.find(args, function(err, res){
+        callback(err, res);
+      });
+    };
+
+This is easy to test.
+
+And in the controllers I do this:
+
+      app.get('/api/education/?', function(request, response) {
+        model.Education.get({}, function(error, result){
+         //base controller that sets right status code, and handles errors
+         controller.resultHandler(error, result, response, 200, function(data){
+             response.json(data);
+         });
+        });
+      });
+
+Now I can just test my response codes with an e2e test.
+
+
+This is not very difficult, it can actually be a lot easier than trying to figure out some insane loginc in some controller.
+And if you think back on what you learned in University, they actually told us about this many times, we did it like this many times.
+I just for some reason did not apply this for web development, and I think this is the case for a lot of people.
+
+*NOTE* This theory isn't just as true for Angular JS, since Angular uses Dependency Injection it is actually pretty easy to
+test controllers. It doesn't mean that you shouldn't get your logic out of your controller.
 
 
 ##Mock VS Data from a database##
-
+I once read about someone defending doing testing with real database content rather than mocking data. 
+I feel like it is kind of like you are constantly learning how to juggle, but can't really get there. 
+I decided to try this for my e2e tests, while I mocked the unittests. I had the idea that, the optimal way to test is
+to test the complete system from interface to database. This took a lot of time, and it did not give me the feeling of writing
+better code, just wasting my time. 
+I will not do this again, unless I was strongly convinced otherwise. Mocking makes it possible to isolate the system, and that,s how it 
+should be done.
 
 
 About the technologies I've used.
@@ -262,6 +320,7 @@ Example:
     MyAapp.controller('Ctrl', function($scope, adminService){
 
     }
+
 
 This controller depends on Angular's $scope variable, and my custom service adminService.
 

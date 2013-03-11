@@ -164,7 +164,7 @@ The json object to pass to the server should look something like this:
     }
 
 
-Summary, conclusion, and what not  THIS WILL GO SOMEWHERE ELSE
+About the process and the result.
 ===================================
 
 ##Did I reach my goals for this project?##
@@ -196,6 +196,25 @@ The API is not completly RESTful, for starters it doesn't have any versioning an
 
 My experience testing
 =====================
+
+I tried a few different approaches to testing in this project. I will write a longer post about this soon, but this is a short summary of my experience.
+
+My assumptions about testing:
+
+* It helps you detect error you create by fixing other other bugs.
+* It wil generally increase code quality.
+
+
+What I know think of testing:
+
+* It does helo you detect errors you create while fixing something else, but that is
+not the biggest advantage.
+
+* It helps you think make more modular code.
+* You think about dependencies and how complicated you write the code.
+* This makes the code more readable, easier to understand and easier to re-use.
+
+
 
 
 About the technologies I've used.
@@ -256,7 +275,7 @@ The biggest difference advantage Mocha has is the ability to call a callback whe
     describe('a feature', function(){
       it('should do something', function(done){
           interact(function(){
-            //the test is done,
+            //test your stuff,
             done();
           })
       });
@@ -271,4 +290,4 @@ Testacular opens a browser instance and perform whatever you defined in your scr
 
 This is very helpful, but it took me a lot of time. A lot of configuration and a lot of silly small problems. This is one of the most time consumign parts of my project.
 
-Testacular is still a young project, and it is definitely on its way to something good, but I feel that it is a bit more difficult than it needs to be.
+Testacular is still a young project, and it is definitely on its way to something good, but I feel that it is a bit more time consuming than it needs to be.

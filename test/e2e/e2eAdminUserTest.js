@@ -45,7 +45,6 @@ describe('Admin page user items', function(){
       input('adminService.user.item.username').enter('aaaaa');
       input('adminService.user.item.password').enter(1234);
       element('#user .create-button').click();
-      expect(element('#user .resource-list > div').count()).toBe(2);
       expect(element('#user .edit-status').html()).toContain('Succesfully created a new user');
     });
 
@@ -54,7 +53,6 @@ describe('Admin page user items', function(){
       //Makes sure to pick the last item
       element('#user .delete-item-button:last').click();
       expect(element('#user .edit-status').html()).toContain('Succesfully deleted item');
-      expect(element('#user .resource-list > div').count()).toBe(1);
     });
 
     it('should create an item when clicking create', function(){
@@ -92,6 +90,8 @@ describe('Admin page user items', function(){
       expect(element('#user-item .item-username').html()).toContain('user2');
       expect(element('#user-item .item-password').html()).toContain('pass2');
     });
+
+
 
   });
 });

@@ -3,6 +3,13 @@ var request = require('superagent'),
     mongoose = require('mongoose'),
     model = require('../api/user/model.js');
 
+
+var mongoose = require ('mongoose'),
+    bucketModel = require('../api/bucketList/model.js'),
+    educationModel = require('../api/education/model.js'),
+    experienceModel = require('../api/experience/model.js'),
+    meModel = require('../api/me/model.js');
+
 var referenceId;
 var user;
 
@@ -24,6 +31,8 @@ describe('Restricted access and status codes', function(){
         should.not.exist(res.header.cvappauth);
         done();
     });
+
+  });
 
   });
 

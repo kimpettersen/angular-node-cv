@@ -8,7 +8,7 @@ The project is hosted at [kimpettersen.org](http://angularcv.jit.su)
 
 If you have any questions or just want to say hello, Talk to me on [Twitter](https://twitter.com/PettersenKim)
 
-Why am I doing this?
+Why did I do this?
 ===================
 
 There was many reasons. I was not satisfied with my testing skills, I wanted implement a REST api, and I wanted to learn Angular JS.
@@ -22,7 +22,7 @@ What can you do with it?
 
 
 * Give me a job offer!
-* Perform a GET request to the APU (There's list of things I want to do in the API)
+* Perform a GET request to the API (There's list of things I want to do in the API)
 * Look through the code
 * Give me a code review or any type of feedback
 
@@ -45,7 +45,7 @@ Tests
 =====
 
 Since this is an experimental project I decided to follow a few different approaches. I use Mocha to run tests
-on the server, and Jasmine and testacular for the tests on the front-end. I am also depending on the database content
+on the server, and Jasmine and testacular for the tests on the front-end. The project is also depending on the database content
 in the e2e tests. I made this decission to figure out if mocking results actually gives you any benefits (it definitely does!).
 
 ##Important!##
@@ -66,8 +66,30 @@ but a failed e2e test can mess up the order.
 
 *server unittests*: sh e2e_test.sh
 
+API Documentation
+=================
 
-Summary, conclusion, and what not
+All users can perform GET requests to all resources except getting a user. All other resources requires authentication 
+
+The available resources are:
+
+* education - an education item
+* experience - an experience item
+* me - an item that contains information about me
+* user - the authenticated users
+* bucketlist - a little extra detail for the ones reading this.
+
+*NOTE:* Bucketlist is a list of things I want to learn. To access this list you would have to perform a GET request to:
+
+http://kimpettersen.org/api/bucketlist
+
+
+<del>You can also perform a POST request with a job offer to: http://kimpettersen.org/api/offer</del> -
+This was mented to be an experimental feature, but it is just too risky.
+
+
+
+Summary, conclusion, and what not  THIS WILL GO SOMEWHERE ELSE
 ===================================
 
 ##Did I reach my goals for this project?##
@@ -93,3 +115,4 @@ difference between the resources are minimal, it would have been a lot smarter t
 With a dynamic way of creating your own resources out of a combination of input and text areas, I would have had a
 basic CMS. This is something I think the Javascript community needs, and something I intend to turns this project into.
 
+RESTFULL

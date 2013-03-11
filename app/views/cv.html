@@ -3,15 +3,18 @@
     <br>
 
     <div>
-      <strong>Important: </strong>This is the web interface of my CV. It is an <b>Angular JS</b> application that
-      are communicating with an <b>API</b> written in <b>Node JS</b>, using <b>MongoDB</b> as a database. You are encouraged to clone the project from github and play with it.<br><br>
+      This web application is written in <b>Angular JS</b> which is communicating with an <b>API</b> written in <b>Node JS</b>, using <b>MongoDB</b> as a database. You are encouraged to clone the project from github and play with it.<br><br>
 
-      See <a ng-href="/#/about">About page for more information.</a><br>
-      You can also <a href="javascript:;">print</a>, or <a href="javascript:;">download</a> it as a PDF.
+      For instructions on how to clone and run the application, visit the <a href="www.github.com/kimpettersen/angular-node-cv">documentation</a> on Github.
+      You can also read my <a ng-href="/#blog/">post</a> about the experience gained from this project.<br><br>
+
+      If you prefer, <a href="javascript:;">download the LaTeX version</a> of my CV.
     </div>
-
+    <br>
+    <div>
+      <big><i>I am currently looking for a challenging job oportunity, preferably in NYC.</i></big>
+    </div>
     <hr>
-
     <h3>Education</h3>
     <div ng-repeat="t in education">
       <b ng-bind-html="t.institution"></b> - <span ng-bind-html="t.degree">{{t.duration}}</span>
@@ -19,15 +22,14 @@
       </div>
       <br>
     </div>
-
     <h3>Experience</h3>
     <div ng-repeat="t in experience">
-      <b ng-bind-html="t.company"></b>
+      <b ng-bind-html="t.company"></b> - {{t.duration}}
+
         <div ng-bind-html="t.description" ng-html-bind="t.description">
         </div>
-      <br>
+        <br>
     </div>
-
     <hr>
     <h3>About me</h3>
     <div ng-repeat="t in about">

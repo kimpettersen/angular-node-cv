@@ -71,6 +71,8 @@ API Documentation
 
 All users can perform GET requests to all resources except getting a user. All other resources requires authentication 
 
+The base URL for the resources is: http://kimpettersen.org/api/
+
 The available resources are:
 
 * education - an education item
@@ -79,6 +81,19 @@ The available resources are:
 * user - the authenticated users
 * bucketlist - a little extra detail for the ones reading this.
 
+####Examples:####
+
+To get all education resource: GET http://kimpettersen.org/api/education
+
+To get one specific resource: GET http://kimpettersen.org/api/education/<id>
+
+To create a new resource: POST http://kimpettersen.org/api/education/
+
+To edit a resource: PUT http://kimpettersen.org/api/education/<id>
+
+To delete a resource: DELETE http://kimpettersen.org/api/education/<id>
+
+
 *NOTE:* Bucketlist is a list of things I want to learn. To access this list you would have to perform a GET request to:
 
 http://kimpettersen.org/api/bucketlist
@@ -86,6 +101,47 @@ http://kimpettersen.org/api/bucketlist
 
 <del>You can also perform a POST request with a job offer to: http://kimpettersen.org/api/offer</del> -
 This was mented to be an experimental feature, but it is just too risky.
+
+
+##Resource details##
+
+
+####Education####
+
+* institution: String,
+* degree: String,
+* description: String,
+* tags: [String] 
+
+
+####Experience####
+
+  company: String,
+  description: String,
+  duration: String,
+  tags: [String]
+
+
+####Me####
+
+  title: String,
+  description: String,
+  tags: [String]
+
+
+####User####
+
+  username: String,
+  password: String
+
+
+####Bucketlist####
+
+  * title: String,
+  * description: String,
+  * rating: Number
+
+
 
 
 

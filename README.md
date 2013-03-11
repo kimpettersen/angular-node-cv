@@ -215,6 +215,32 @@ not the biggest advantage.
 * This makes the code more readable, easier to understand and easier to re-use.
 
 
+##Exmple##
+
+One thing I noticed during this project, was a very basic thing *that no one mentions.* Almost all frameworks out there
+follows the well known MVC patters. Whenever you try to learn one of these frameworks, you go through a tutorial that shows
+you how to handle a request, fetch some data from a model, somehow manipulate it in the controller, and return the response.
+
+By following this pattern, you make it impossible to reuse any manipulation or logic you do on the data from the model.
+Imagine having ten different controllers that are making more or less the same query on the model, this is ten
+implementations of the same thing. 
+
+That is as close to untestable code as I can imagine. You need to Mock the request object, you have to get the response object somehow, 
+and you need to Mock the model, which probably has its own dependencies, and so it goes. Following this pattern is why it took me a bit of time to understand how to test.
+
+
+###Solution###
+*Put your logic in the model*. It is as simple as that. This way you realize right away that you are putting method in the
+wrong place. This makes the model testable, since it can be treated as a separate module and will definitely have less
+dependencies than if it was inside the controller.
+Now that the method belongs to a model, you can easily reuse it in all your controllers.
+
+
+
+
+
+##Mock VS Data from a database##
+
 
 
 About the technologies I've used.

@@ -8,8 +8,7 @@ The project is hosted at [kimpettersen.org](http://angularcv.jit.su)
 
 If you have any questions or just want to say hello, talk to me on [Twitter](https://twitter.com/PettersenKim)
 
-This is the documentation and my genreal thoughts about the result and process of this project. I will write a part 2
-of this explaining my biggest obsticles in the process.
+This is the documentation and some sort of mini-report for this project.
 
 Why did I do this?
 ===================
@@ -48,16 +47,16 @@ Requirements
 Tests
 =====
 
-Since this is an experimental project I decided to follow a few different approaches. I use Mocha to run tests
-on the server, and Jasmine and Testacular for the tests front-end. The e2e tests depend on the database content, the reason
+Since this is an experimental project I decided to follow a few different approaches. I use *Mocha* to run tests
+on the server, and *Jasmine* and *Testacular testrunner* for the tests front-end. The e2e tests depend on the database content, the reason
 why is discussed further down.
 
 
-##Important!##
+##Important##
 
-Once you start the server with NODE_ENV set to test, it generates test data that the tests depend on.
-You should therefore restart the node server when you switch between test types. Unit tests are not affected by this,
-but a failed e2e test can mess up the order.
+Once you start the server with NODE_ENV=test, it generates test data that the tests depend on.
+You should therefore restart the *Node server* when you switch between test types. Unit tests are not affected by this,
+but a failed test, can affect other tests.
 
 ##Run the tests##
 *Start the server:* NODE_ENV=test node server/index.js
@@ -119,7 +118,7 @@ This was meant to be an experimental feature, but it is just too risky.
 * description: String
 * tags: [String],
 * _id: Number,
-* isDeletes: boolean
+* isDeleted: boolean
 
 
 ####Experience####
@@ -129,7 +128,7 @@ This was meant to be an experimental feature, but it is just too risky.
 * duration: String
 * tags: [String],
 * _id: Number,
-* isDeletes: boolean
+* isDeleted: boolean
 
 
 ####Me####
@@ -138,7 +137,7 @@ This was meant to be an experimental feature, but it is just too risky.
 * description: String
 * tags: [String],
 * _id: Number,
-* isDeletes: boolean
+* isDeleted: boolean
 
 
 ####User####
@@ -146,7 +145,7 @@ This was meant to be an experimental feature, but it is just too risky.
 * username: String
 * password: String,
 * _id: Number,
-* isDeletes: boolean
+* isDeleted: boolean
 
 
 ####Bucketlist####
@@ -155,7 +154,7 @@ This was meant to be an experimental feature, but it is just too risky.
 * description: String
 * rating: Number,
 * _id: Number,
-* isDeletes: boolean
+* isDeleted: boolean
 
 
 The json object to pass to the server should look something like this:
@@ -183,9 +182,9 @@ Yes, for sure. The project simply took too much of my time, so there are some pa
 
 
 Code reuse was something I took very seriously, but I still decided to add five different resources.
-This was sort of to make sure I could create a base controller and base models, so it would be less test duplication.
+This was sort of to make sure I could create a base controller and a base model, so it would be less test duplication.
 However all of these resources did basically the same thing. It stored text and tags. This led to a lot of time being wasted on
-copying and pasting tests and code five different places.
+copying and pasting tests and code five different places. 
 
 This would have made sense if it was only an API. Since this is so tightly coupled to the front-end, and the
 difference between the resources are minimal, it would have been a lot smarter to do this dynamically.
@@ -195,7 +194,7 @@ basic CMS. This is something I think the Javascript community needs, and somethi
 
 
 The API is not completly RESTful. For starters, I have completly ignored versioning and the server also handles the authentication sessions. 
-I do, however, feel satisfied with what I've learned.
+I do, however, feel satisfied with what I've learned about REST.
 
 
 My experience testing
@@ -213,14 +212,15 @@ not the biggest advantage.
 
 * It forces you to put code where it belongs.
 * You think about dependencies and how complicated you can make any logic less complicated.
-* All of this plays imprtant parts towards more reusable and cleaner code that is a lot easier to maintain and extend.
+* All of this plays important parts towards more reusable and cleaner code that is a lot easier to maintain and extend.
 
 
 ##Exmple##
 
 One thing I noticed during this project, was a very basic thing that *barely anyone* talks about.
 A lot of MV* frameworks out there follow the same pattern. Whenever you do a tutorial or read a book, it tells you
-how to handle a request, fetch some data from a model; somehow manipulate it in the controller, and return the response.
+how to handle a request, fetch some data from a data source through a model, somehow manipulate it in the controller,
+and return the response.
 
 
 This approach makes it almost impossible to reuse any manipulation or logic you perform on the data from the model.
@@ -233,13 +233,15 @@ Following this pattern is why it took me a bit of time to understand how to test
 
 
 ###A solution###
-*Put your logic in the model*. It is as simple as that. This way you realize right away that you are putting a function in the
+*Put your logic in the model*. It is as simple as that. This way you can clearly catch when you are putting a function in the
 wrong place. This makes the model testable, since it can be treated as a separate module and will definitely have less
 dependencies than if it was inside the controller.
 Now that the function belongs to a model, you can easily reuse it in all your controllers.
 
+This is something tutorial writers should at least mention.
 
-Here I have to check input, prepare arguments and all of that in *every single controller*. This is very difficult to test.
+
+Here I have to check input, prepare arguments and all of that in *every single controller*. This is very difficult to test, and it is redundant.
 
       app.get('/api/bucketlist/:id', function(request, response) {
           var id = request.body.id
@@ -275,7 +277,7 @@ And in the controllers I do this:
 
       app.get('/api/education/?', function(request, response) {
         model.Education.get({}, function(error, result){
-         //base controller that sets right status code, and handles errors
+         //resultHandler that sets right status code, and handles errors
          controller.resultHandler(error, result, response, 200, function(data){
              response.json(data);
          });
@@ -291,17 +293,13 @@ This is not very difficult, nor is it a new approach. It just seems to be forgot
 test controllers. That does not mean that you should take advantage of it.
 
 
-About the technologies I've used.
-================================
-
-This is all based on my personal experience with developing the project and deploying it on
-[Nodejitsu](https://www.nodejitsu.com/)
-
+The frameworks
+==============
 
 ##Angular JS##
 
 [Angular](http://angularjs.org) is an amazing framework! What I like the most is how much of an effort 
-the creators have put into making testing such a huge part and important part. The beginners tutorial is very 
+the creators have put into making testing such a huge part and important part. The beginner tutorial is very 
 comprehensive and teaches you how to naturally test your web app.
 
 Angular JS provides a lot of good features. *Two way binding*, that together with the *templates* makes updating the UI very simple.
@@ -326,11 +324,11 @@ Angular is the best framework I have ever used.
 
 ##Node JS and Express JS##
 
-[Node JS](http://nodejs.org/) 0.8.x is awesome, I knew that. You have low level access to a lot of stuff,
+[Node JS](http://nodejs.org/) is good, I knew that. You have low level access to a lot of stuff,
 but at the same time [Express](http://expressjs.com/) JS gives you a lot of shortcuts to make your life way easier and faster.
 *Express JS* is a lightweight framework with the neccesary functionaliy you need and would expect from a web framework.
 
-I work with Django everyday, and how big of a relief it is to work with *Express JS*. Everything just works, and there's little to no weird magic going on.
+I work with Django everyday, and it is such a relief work with *Express JS*. Everything just works, and there's little to no weird magic going on.
 
 
 ##Mocha, Jasmine and Testacular##
@@ -367,7 +365,7 @@ Both framework provides functions; *beforeEach* and *afterEach*, which runs befo
 Testacular makes it possible to run both unit and e2e tests. I did not have any problems with unittesting, however,
 the e2e tests took quite some time to figure out.
 
-It turns out that you need two different config files for this to work, and if you include the wrong files nothing seems to work.
+It turns out that you need two different config files for this to work with Angular.
 
 Testacular opens a browser instance and does whatever you defined in your script.
 It lets you pause wherever you want to investigate states and to see why your test fails in a certain scenario.

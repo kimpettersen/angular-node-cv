@@ -1,7 +1,7 @@
 Angular-node-cv
 ===============
 
-Angular-node-cv is what it sounds like: my CV written in AngularJS. The backend is an (almost)RESTful API written in NodeJS and Express.
+Angular-node-cv is what it sounds like: my CV written in AngularJS. The backend is an (almost) RESTful API written in NodeJS and Express.
 If you want you can clone this repository and download it, simply follow the instructions below.
 
 The project is hosted at [kimpettersen.org](http://angularcv.jit.su)
@@ -21,7 +21,7 @@ I am also looking for a new [job](http://kimpettersen.org).
 What can you do with it?
 ========================
 
-####Without installing anything you can:####
+####Without installing anything, you can:####
 
 
 * Give me a job offer!
@@ -30,7 +30,7 @@ What can you do with it?
 * Give me a code review or any type of feedback
 
 
-####If you chose to install it you can also:####
+####If you chose to install it, you can also:####
 
 * Run the system on localhost
 * Run tests
@@ -49,28 +49,28 @@ Tests
 =====
 
 Since this is an experimental project I decided to follow a few different approaches. I use Mocha to run tests
-on the server, and Jasmine and Testacular for the tests front-end. The e2e tests depends on the database content, the reason
+on the server, and Jasmine and Testacular for the tests front-end. The e2e tests depend on the database content, the reason
 why is discussed further down.
 
 
 ##Important!##
 
 Once you start the server with NODE_ENV set to test, it generates test data that the tests depend on.
-You should therefore restart the node server when you switch between test types. Unittests are not affected by this,
+You should therefore restart the node server when you switch between test types. Unit tests are not affected by this,
 but a failed e2e test can mess up the order.
 
 ##Run the tests##
 *Start the server:* NODE_ENV=test node server/index.js
 
-*server unittests*: sh server_test.sh
+*server unit tests*: sh server_test.sh
 
 *server e2e tests*: sh server_e2e.sh
 
 *Restart server*
 
-*Angular unittests*: sh test.sh
+*Angular unit tests*: sh test.sh
 
-*server unittests*: sh e2e_test.sh
+*server unit tests*: sh e2e_test.sh
 
 API Documentation
 =================
@@ -167,15 +167,15 @@ The json object to pass to the server should look something like this:
     }
 
 
-About the process and the result.
-===================================
+The process and result
+======================
 
 ##Did I reach my goals for this project?##
 
-Yes, I most certainly did. I feel like I am in a position where I can say that I know the pitfalls of testing,
-I am confident working with Node JS, and Angular JS. The project definitely changed the way I write code for the better, and I can now make decissions that will lead to more testable code.
+Yes, I most certainly did. I feel like has been a very educational process.
+I am confident working with both Node JS, and Angular JS, and I have definitely changed the way I write code for the better.
 
-Overall, I am very satisfied with the result. This has been a very educational process.
+Overall, I am very satisfied with the result.
 
 ##Would I have done anything differently?##
 
@@ -187,7 +187,7 @@ This was sort of to make sure I could create a base controller and base models, 
 However all of these resources did basically the same thing. It stored text and tags. This led to a lot of time being wasted on
 copying and pasting tests and code five different places.
 
-This would have made sense if it was only an API: Since this is so tightly coupled to the front-end, and the
+This would have made sense if it was only an API. Since this is so tightly coupled to the front-end, and the
 difference between the resources are minimal, it would have been a lot smarter to do this dynamically.
 
 With a dynamic way of creating your own resources out of a combination of input and text areas, I would have had a
@@ -203,13 +203,10 @@ My experience testing
 
 I tried a few different approaches to testing in this project. I will write a longer post about this soon, but this is a short summary of my experience.
 
-My assumptions about testing:
-
-* It helps you detect errors you create by fixing other other bugs.
-* It wil generally increase code quality.
+My assumptions about testing was that, testing helps you detect errors you create by fixing other other bugs.
 
 
-These assumptions were true, but testing do so much more. This was the biggest surprise I encountered during this period.
+This assumptions was true, but testing is so much more. This was the biggest surprise I encountered during this period.
 
 * It does help you detect errors you create while fixing something else, but that is
 not the biggest advantage.
@@ -221,9 +218,9 @@ not the biggest advantage.
 
 ##Exmple##
 
-One thing I noticed during this project, was a very basic thing *that barely anyone talks about*.
-A lot of MV* frameworks out there follows same pattern. Whenever you do a tutorial or read a book, it tells you
-how to handle a request, fetch some data from a model, somehow manipulate it in the controller, and return the response.
+One thing I noticed during this project, was a very basic thing that *barely anyone* talks about.
+A lot of MV* frameworks out there follow the same pattern. Whenever you do a tutorial or read a book, it tells you
+how to handle a request, fetch some data from a model; somehow manipulate it in the controller, and return the response.
 
 
 This approach makes it almost impossible to reuse any manipulation or logic you perform on the data from the model.
@@ -231,7 +228,8 @@ Imagine having ten different controllers that are making more or less the same q
 implementations of the same thing. 
 
 This is untestable code. You need to Mock the request object, you have to get the response object somehow, 
-and you need to Mock the model, which probably has its own dependencies, and so it goes. Following this pattern is why it took me a bit of time to understand how to test.
+and you need to Mock the model, which probably has its own dependencies, etc.
+Following this pattern is why it took me a bit of time to understand how to test.
 
 
 ###A solution###
@@ -241,7 +239,7 @@ dependencies than if it was inside the controller.
 Now that the function belongs to a model, you can easily reuse it in all your controllers.
 
 
-Here I have to check input, prepare arguments and all of that in *every single controller* this is very difficult to test.
+Here I have to check input, prepare arguments and all of that in *every single controller*. This is very difficult to test.
 
       app.get('/api/bucketlist/:id', function(request, response) {
           var id = request.body.id
@@ -284,12 +282,12 @@ And in the controllers I do this:
         });
       });
 
-Now I can just test my response codes with an e2e test.
+From here, I can just test my response codes with an e2e test.
 
 
-This is not very difficult, nor is it a new approach. It just seems to be a forgotten by a lot of developers.
+This is not very difficult, nor is it a new approach. It just seems to be forgotten by a lot of developers.
 
-*NOTE* This theory isn't as true for Angular JS, since Angular uses Dependency Injection it is actually pretty easy to
+*NOTE* This theory isn't as true for Angular JS. Since Angular uses *Dependency Injection* it is actually pretty easy to
 test controllers. That does not mean that you should take advantage of it.
 
 
@@ -302,15 +300,14 @@ This is all based on my personal experience with developing the project and depl
 
 ##Angular JS##
 
-[Angular](http://angularjs.org) is an amazing framework! What I like the most is how big of an effort 
+[Angular](http://angularjs.org) is an amazing framework! What I like the most is how much of an effort 
 the creators have put into making testing such a huge part and important part. The beginners tutorial is very 
 comprehensive and teaches you how to naturally test your web app.
 
-Angular JS provides a lot of good features. Two way binding, that together with the templates makes updating the UI very simple.
-Directives lets you create your own DOM elements, this is a very useful for making reusable UI components.
+Angular JS provides a lot of good features. *Two way binding*, that together with the *templates* makes updating the UI very simple.
+*Directives* lets you create your own DOM elements. This makes it very easy to create reusable UI components.
 
-
-Angular's implementation of Dependency injection works really well, and helps keeping your code modular and testable. You can inject Angular's built-in services or create your own.
+Angular's implementation of Dependency injection works really well, and helps keep your code modular and testable. You can inject Angular's built-in services or create your own.
 Simply define the services you need as parameters and they will automatically be passed to you.
 
 Example:
@@ -330,14 +327,10 @@ Angular is the best framework I have ever used.
 ##Node JS and Express JS##
 
 [Node JS](http://nodejs.org/) 0.8.x is awesome, I knew that. You have low level access to a lot of stuff,
-but at the same time [Express](http://expressjs.com/) JS gives you a lot of shortcuts to make your life a lot easier and faster.
-Express JS is a lightweight framework the neccesary functionaliy you need and would expect from a web framework.
+but at the same time [Express](http://expressjs.com/) JS gives you a lot of shortcuts to make your life way easier and faster.
+*Express JS* is a lightweight framework with the neccesary functionaliy you need and would expect from a web framework.
 
-I work with Django everyday, and how big of a relief it is to work with Express JS. Everything just works, and there's little to no weird magic going on.
-
-##Nodejitsu##
-
-[Nodejitsu](https://www.nodejitsu.com/) needs to be mentioned. It is cheap, it is simple, it has great support, and it is how hosting should be like.
+I work with Django everyday, and how big of a relief it is to work with *Express JS*. Everything just works, and there's little to no weird magic going on.
 
 
 ##Mocha, Jasmine and Testacular##
@@ -368,12 +361,13 @@ This is very benefitial if you are waiting for something to happen.
       });
     })
 
-Jasmine doesn't support before and after, test functions, only beforeEach, and afterEach, which can be annoying.
+Jasmine doesn't support *before* and *after* functions that runs code before and after all tests in a block. Mocha has this implemented.
+Both framework provides functions; *beforeEach* and *afterEach*, which runs before and after each individual test-
 
 Testacular makes it possible to run both unit and e2e tests. I did not have any problems with unittesting, however,
-the e2e tests took a quite some time to figure out.
+the e2e tests took quite some time to figure out.
 
 It turns out that you need two different config files for this to work, and if you include the wrong files nothing seems to work.
 
 Testacular opens a browser instance and does whatever you defined in your script.
-It let you pause wherever you want to investigate states and to see why your test fails in a certain scenario.
+It lets you pause wherever you want to investigate states and to see why your test fails in a certain scenario.

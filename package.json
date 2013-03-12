@@ -1,7 +1,7 @@
 {
   "author": "",
   "name": "angularcv",
-  "version": "0.0.2-24",
+  "version": "0.0.2-32",
   "dependencies": {
     "express": "3.0.6",
     "mongodb": "1.2.9",
@@ -18,7 +18,11 @@
     "superagent": "0.12.1",
     "testacular": "0.6.0"
   },
-  "subdomain": "angularcv",
+  "subdomain": "kimpettersen",
+  "domains": [
+    "kimpettersen.org",
+    "www.kimpettersen.org"
+  ],
   "scripts": {
     "start": "node server/index.js"
   },

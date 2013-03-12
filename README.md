@@ -15,7 +15,7 @@ Why did I do this?
 ===================
 
 There were many reasons. I was not satisfied with my testing skills, I wanted to implement a REST api, and I wanted to learn Angular JS.
-I am also looking for a new, job preferably in NYC.
+I am also looking for a new [job](http://kimpettersen.org).
 
 
 What can you do with it?
@@ -60,6 +60,7 @@ You should therefore restart the node server when you switch between test types.
 but a failed e2e test can mess up the order.
 
 ##Run the tests##
+*Start the server:* NODE_ENV=test node server/index.js
 
 *server unittests*: sh server_test.sh
 
@@ -336,14 +337,15 @@ I work with Django everyday, and how big of a relief it is to work with Express 
 
 ##Nodejitsu##
 
-[Nodejitsu](https://www.nodejitsu.com/) needs to be mentioned. It is cheap, it is simple, it has great support and it is how hosting should be like.
+[Nodejitsu](https://www.nodejitsu.com/) needs to be mentioned. It is cheap, it is simple, it has great support, and it is how hosting should be like.
 
 
 ##Mocha, Jasmine and Testacular##
 
-[Mocha](http://visionmedia.github.com/mocha/) and [Jasmine](http://pivotal.github.com/jasmine/) are two differnt testing framework, while [Testacular](http://testacular.github.com/) is a testrunner. You can use both Mocha and Jasmine with Testacular (I have only tried Jasmine).
+[Mocha](http://visionmedia.github.com/mocha/) and [Jasmine](http://pivotal.github.com/jasmine/) are two different testing frameworks, while [Testacular](http://testacular.github.com/) is a testrunner. You can use both Mocha and Jasmine with Testacular (I have only tried Jasmine).
 
-Both Jasmine and Mocha has pretty much the same syntax. you describe a problem and assert conditions. You can use seperate assertion libraries, such as [should.js](https://github.com/visionmedia/should.js/)
+Both Jasmine and Mocha have pretty much the same syntax: you describe a problem and assert conditions. 
+You can use separate assertion libraries, such as [should.js](https://github.com/visionmedia/should.js/)
 
 
     describe('a feature', function(){
@@ -353,7 +355,8 @@ Both Jasmine and Mocha has pretty much the same syntax. you describe a problem a
     })
 
 
-The biggest difference advantage Mocha has is the ability to call a callback whenever you are done. This is very benefitial if you are waiting for something to happen.
+The biggest advantage Mocha has is the ability to call a callback whenever you are done.
+This is very benefitial if you are waiting for something to happen.
 
 
     describe('a feature', function(){
@@ -365,12 +368,12 @@ The biggest difference advantage Mocha has is the ability to call a callback whe
       });
     })
 
+Jasmine doesn't support before and after, test functions, only beforeEach, and afterEach, which can be annoying.
 
-Testacular makes it possible to run both unit and e2e tests. I did not have any problems with unittesting. However, the e2e tests gave me some issues. It took me a long time, and  lot of fiddling to understand how this works properly.
+Testacular makes it possible to run both unit and e2e tests. I did not have any problems with unittesting, however,
+the e2e tests took a quite some time to figure out.
 
 It turns out that you need two different config files for this to work, and if you include the wrong files nothing seems to work.
 
-Testacular opens a browser instance and perform whatever you defined in your script. It let you pause wherever you want to investigate states and to see why your test fails in a certain scenario.
-
-This is very helpful, but it took me a lot of time. A lot of configuration and a lot of silly small problems.
-This was one of the most time consumign parts of my project.
+Testacular opens a browser instance and does whatever you defined in your script.
+It let you pause wherever you want to investigate states and to see why your test fails in a certain scenario.

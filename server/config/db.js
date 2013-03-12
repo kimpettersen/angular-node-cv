@@ -29,10 +29,10 @@ switch(process.env.NODE_ENV){
         default:
           sessionSettings.host = 'ds047427.mongolab.com',
           sessionSettings.port = '47427';
-          sessionSettings.username = 'kimpettersen';
-          sessionSettings.password = 'nrrnrr7';
+          sessionSettings.username = 'public';
+          sessionSettings.password = '1234';
 
-          mongoose.connect('mongodb://kimpettersen:nrrnrr7@ds047427.mongolab.com:47427/cv');
+          mongoose.connect('mongodb://public:1234@ds047427.mongolab.com:47427/cv');
           dbName = 'cv';
 }
 

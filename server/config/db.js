@@ -13,13 +13,6 @@ var user,
 var blue  = '\033[34m',
     reset = '\033[0m';
 
-        // db: connection.dbName,
-        // mongoose_connection: connection.db,
-        // host:'ds047427.mongolab.com',
-        // port:'47427',
-        // username:'kimpettersen',
-        // password: 'nrrnrr7'
-
 
 switch(process.env.NODE_ENV){
         case 'test':

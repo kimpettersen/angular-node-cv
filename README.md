@@ -111,6 +111,12 @@ http://kimpettersen.org/api/bucketlist
 <del>You can also perform a POST request with a job offer to: http://kimpettersen.org/api/offer</del> -
 This was meant to be an experimental feature, but it is just too risky.
 
+The environment is available on localhost:3000.
+
+#####A testuser is available:#####
+
+* *username*: admin
+* *password*: 1234
 
 ##Resource details##
 

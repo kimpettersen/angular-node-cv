@@ -32,22 +32,20 @@ describe('Restricted access and status codes', function(){
         done();
     });
 
-  });
-
-  });
-
   afterEach(function(done){
     model.UserModel.remove({}, function(){
-      //re initialize user
-      var testuser = {
-        'username': 'admin',
-        'password': '1234'
-      };
+        //re initialize user
+        var testuser = {
+          'username': 'admin',
+          'password': '1234'
+        };
 
-      user = new model.UserModel(testuser);
-      user.save();
-      done();
+        user = new model.UserModel(testuser);
+        user.save();
+        done();
+      });
     });
+
   });
 
 

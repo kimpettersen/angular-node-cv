@@ -1,7 +1,8 @@
 {
   "author": "",
   "name": "angularcv",
-  "version": "0.0.2-32",
+  "timeout": 1000000,
+  "version": "0.0.2-48",
   "dependencies": {
     "express": "3.0.6",
     "mongodb": "1.2.9",

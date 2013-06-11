@@ -8,26 +8,37 @@ var mongoose = require ('mongoose'),
 
 var user,
     testuser,
+    interval,
+    dbconn,
     dbName;
 
 var blue  = '\033[34m',
     reset = '\033[0m';
 
 
-switch(process.env.NODE_ENV){
-        case 'test':
-          dbName = 'angularcv_test';
-          mongoose.connect('localhost', dbName);
-          break;
-        default:
-          sessionSettings.host = 'ds047427.mongolab.com',
-          sessionSettings.port = '47427';
-          sessionSettings.username = 'public';
-          sessionSettings.password = '1234';
 
-          mongoose.connect('mongodb://public:1234@ds047427.mongolab.com:47427/cv');
-          dbName = 'cv';
-}
+
+dbName = 'angularcv_test';
+dbString = 'mongodb://127.0.0.1/' + dbName
+
+dbconn = function(){
+  mongoose.connect(dbString, {auto_reconnect: true, native_parser: true}, function(err){
+    if (err){
+      console.log(err);
+      setTimeout(function(){
+        dbconn();
+      }, 10000);
+    }
+  });
+};
+
+dbconn();
+
+
+mongoose.connection.on('error', function (err) {
+  console.log('DB Error');
+  dbconn();
+});
 
 sessionSettings.db = dbName;
 

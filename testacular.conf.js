@@ -13,6 +13,7 @@ files = [
   'test/vendor/angular-mocks.js',
   'app/components/angular-resource/*.js',
   'app/components/angular-sanitize/*.js',
+  'app/components/jquery/jquery.js',
   'app/scripts/*.js',
   'app/scripts/**/*.js',
   'app/scripts/controllers/**/*.js',

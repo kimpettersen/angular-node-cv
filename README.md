@@ -40,12 +40,6 @@ What can you do with it?
 
 
 
-
-Post-mortem
-===========
-I am very satisfied with the final result of this project. However if I would do this again, I would have done some things different. I will discuss this in the following section.
-
-
 Requirements
 ============
 
@@ -184,6 +178,12 @@ The json object to pass to the server should look something like this:
       description: 'My description',
       tags: ['one tag', 'another tag']
     }
+
+
+Post-mortem
+===========
+I am very satisfied with the final result of this project. However if I would do this again, I would have done some things different. I will discuss this in the following section.
+
 
 ####The good stuff####
 

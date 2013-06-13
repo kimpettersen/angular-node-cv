@@ -8,3 +8,4 @@ node_modules
 db.local
 db.public
 *.psd
+server/config/db.js

@@ -36,7 +36,7 @@ What can you do with it?
 
 
 ####Screenshot from the admin interface####
-![Screenshot](https://github.com/kimpettersen/angular-node-cv/blob/master/admin.png)
+![Screenshot](https://raw.github.com/kimpettersen/angular-node-cv/master/admin.png)
 
 
 

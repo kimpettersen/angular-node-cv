@@ -4,6 +4,7 @@ var mongoose = require ('mongoose'),
     experienceModel = require('../api/experience/model.js'),
     meModel = require('../api/me/model.js'),
     userModel = require('../api/user/model.js'),
+    settings = require('./settings.js'),
     sessionSettings = {};
 
 var user,
@@ -16,27 +17,28 @@ var blue  = '\033[34m',
     reset = '\033[0m';
 
 
-
-
-dbName = 'angularcv_test';
-dbString = 'mongodb://127.0.0.1/' + dbName
+switch(process.env.NODE_ENV){
+        case 'test':
+          dbName = 'angularcv_test';
+          dbString = 'mongodb://127.0.0.1/' + dbName;
+          break;
+        default:
+          sessionSettings.host = 'ds047427.mongolab.com',
+          sessionSettings.port = '47427';
+          sessionSettings.username = 'production';
+          sessionSettings.password = 'y6kge67p';
+          dbString = settings.dbString;
+          dbName = 'cv';
+}
 
 dbconn = function(){
-  mongoose.connect(dbString, {auto_reconnect: true, native_parser: true}, function(err){
-    if (err){
-      console.log(err);
-      setTimeout(function(){
-        dbconn();
-      }, 10000);
-    }
-  });
+  mongoose.connect(dbString, {auto_reconnect: true, native_parser: true});
 };
 
 dbconn();
 
 
 mongoose.connection.on('error', function (err) {
-  console.log('DB Error');
   dbconn();
 });
 

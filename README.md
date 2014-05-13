@@ -1,10 +1,10 @@
 Angular-node-cv
 ===============
 
-Angular-node-cv is what it sounds like: my CV written in AngularJS. The backend is an (almost) RESTful API written in NodeJS and Express.
+Angular-node-cv is what it sounds like: my CV written in AngularJS. The backend is an RESTful API written in Node.js and ExpressJS.
 If you want you can clone this repository and download it, simply follow the instructions below.
 
-The project is hosted at [kimpettersen.org](http://angularcv.jit.su)
+The project is hosted at [kimpettersen.org](http://kimpettersen.org)
 
 If you have any questions or just want to say hello, talk to me on [Twitter](https://twitter.com/PettersenKim)
 
@@ -23,7 +23,7 @@ What can you do with it?
 
 
 * Give me a job offer!
-* Perform a GET request to the API (There's list of things I want to do in the API)
+* Perform a GET request to the API
 * Look through the code
 * Give me a code review or any type of feedback
 
@@ -178,43 +178,3 @@ The json object to pass to the server should look something like this:
       description: 'My description',
       tags: ['one tag', 'another tag']
     }
-
-
-Post-mortem
-===========
-I am very satisfied with the final result of this project. However if I would do this again, I would have done some things different. I will discuss this in the following section.
-
-
-####The good stuff####
-
-* I had a lot of fun
-
-* I reached my personal goals far beyond my expectations. I feel very comfortable working with Node JS, Angular JS, RESTful API design.
-
-* I properly understand the concept of software testing, the benefits of testing, 
-and what testable code is. Before this project I thought that the biggest benefits of testing is that you will automatically know 
-if you some of your code broke some other functionality. What I learned is that this is not entirely true, because 
-*testing your code is beneficial in so many ways.*
-To test your code, you need to write testable code. Generally, testable code leads to more modular code, which leads to more 
-reusable, cleaner, and better code. So even if you don't write tests for your code (which is bad), you should still know how to write testable code.
-
-* As a developer, I grew a lot more from working with this project than any other project I've done since university.
-
-* I did a good job creating abstractions. Both client and server side has good abstractions for calls and communication with 
-the database.
-
-* It does what I initially wanted it to do.
-
-* It is tested.
-
-
-####The less good stuff####
-
-* Bad planning. this made the project take a lot more time than I first hoped for.
-
-* From a UX point of view, the admin interface is not great. This was out of my scope, but it would be nice to 
-have a more intuitive admin interface.
-
-* Because I chose to use Mongoose, which is an object document model for MongoDB, the system is tightly coupled. 
-I wish I created this more as a client side CMS, where I could dynamically add different fields to the different resources. 
-Angular JS, Express JS, and MongoDB is definitely capable of doing this. To do this I would have to start from scratch.

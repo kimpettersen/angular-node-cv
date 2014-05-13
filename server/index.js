@@ -5,19 +5,11 @@ var express = require('express'),
     MongoStore = require('connect-mongo')(express),
     userModel = require('./api/user/model.js'),
     cp = require('child_process');
-
-//Run grunt
-// grunt = cp.spawn('grunt', ['--force', 'default', 'watch']);
-// grunt.stdout.on('data', function(data) {
-//     console.log("%s", data);
-// });
-
-var app = express();
-var path = __dirname + '/../app';
-var type  = mime.lookup(path);
+    app = express(),
+    path = __dirname + '/../app',
+    type  = mime.lookup(path);
 
 app.configure(function () {
-    app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.static(__dirname + '/../app'));

@@ -15,20 +15,18 @@
         </ul>
 
 
-      For instructions on how to clone and run the application, visit the <a href="http://www.github.com/kimpettersen/angular-node-cv">documentation</a> on Github<br><br>
+      For <b>documentation</b> and a <b>post-mortem</b> discussion, visit the <a href="http://www.github.com/kimpettersen/angular-node-cv">documentation</a> on Github<br><br>
 
       If you prefer, <a href="cvkimpettersen.pdf">download the PDF version</a> of my CV.
     </div>
     <br>
-    <div>
-      <big><i>I am currently looking for a challenging job opportunity, in London, UK</i></big>
-    </div>
+
     <hr>
     <h3>The actual CV</h3>
       The following section is the actual CV. The Angular JS controller is using the built in <a href="http://docs.angularjs.org/api/ngResource.$resource">ng-resource</a> throug a <a href="http://docs.angularjs.org/guide/dev_guide.services.creating_services">service</a> to query the API. The result of this is rendered below. Here is a <a href="images/cv-diagram2.png" class="fancybox">diagram that demonstrates the different pieces of the system</a>
     <hr>
     <h3>Education</h3>
-    <div ng-repeat="t in education| orderBy:'_id'">
+    <div ng-repeat="t in education| orderBy:'order'">
       <b ng-bind-html="t.institution"></b> - <span ng-bind-html="t.degree">{{t.duration}}</span>
       <div ng-bind-html="t.description" ng-html-bind="t.description">
       </div>
@@ -36,7 +34,7 @@
     </div>
     <hr>
     <h3>Experience</h3>
-    <div ng-repeat="t in experience | orderBy:'_id'">
+    <div ng-repeat="t in experience | orderBy:'order'">
       <b ng-bind-html="t.company"></b> - {{t.duration}}
 
         <div ng-bind-html="t.description" ng-html-bind="t.description">

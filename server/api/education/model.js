@@ -6,6 +6,7 @@ var EducationSchema = model.BaseSchema.extend({
   institution: String,
   degree: String,
   description: String,
+  order: Number,
   tags: [String]
 });
 

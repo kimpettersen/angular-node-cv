@@ -6,6 +6,7 @@ var ExperienceSchema = model.BaseSchema.extend({
   company: String,
   description: String,
   duration: String,
+  order: Number,
   tags: [String]
 });
 

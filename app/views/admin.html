@@ -17,6 +17,8 @@
                         ADD TAG
                     </button>
                     <br>
+                    <input type="number" ng-model="adminService.education.item.order" placeholder="Order">
+                    <br>
                     <span class="text-info mode-field">
                         {{ mode|uppercase }} MODE
                     </span>
@@ -88,6 +90,8 @@
                     <button class="btn tag-button" ng-click="addTag(experience.tag)">
                         ADD TAG
                     </button>
+                    <br>
+                    <input type="number" ng-model="adminService.experience.item.order" placeholder="Order">
                     <br>
                     <span class="text-info mode-field">
                         {{ mode|uppercase }} MODE

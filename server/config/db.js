@@ -4,14 +4,12 @@ var mongoose = require ('mongoose'),
     experienceModel = require('../api/experience/model.js'),
     meModel = require('../api/me/model.js'),
     userModel = require('../api/user/model.js'),
-    settings = require('./settings.js'),
+    config = require('../../config.js')
     sessionSettings = {};
 
 var user,
     testuser,
-    interval,
-    dbconn,
-    dbName;
+    dbName = 'cv';
 
 var blue  = '\033[34m',
     reset = '\033[0m';
@@ -20,27 +18,14 @@ var blue  = '\033[34m',
 switch(process.env.NODE_ENV){
         case 'test':
           dbName = 'angularcv_test';
-          dbString = 'mongodb://127.0.0.1/' + dbName;
+          mongoose.connect('localhost', dbName);
           break;
+        case 'production':
+          sessionSettings = config.sessionSettings
+          mongoose.connect('mongodb://' + sessionSettings.username + ':' + sessionSettings.password + '@' + sessionSettings.host + ':' + sessionSettings.port + sessionSettings.dbName);
         default:
-          sessionSettings.host = 'ds047427.mongolab.com',
-          sessionSettings.port = '47427';
-          sessionSettings.username = 'production';
-          sessionSettings.password = 'y6kge67p';
-          dbString = settings.dbString;
-          dbName = 'cv';
+          mongoose.connect('localhost', dbName);
 }
-
-dbconn = function(){
-  mongoose.connect(dbString, {auto_reconnect: true, native_parser: true});
-};
-
-dbconn();
-
-
-mongoose.connection.on('error', function (err) {
-  dbconn();
-});
 
 sessionSettings.db = dbName;
 
@@ -133,8 +118,6 @@ if (dbName === 'angularcv_test'){
     });
 }
 
-
-// just to do this with the regular env as well as test
 testuser = {
   'username': 'admin',
   'password': '1234'

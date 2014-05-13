@@ -7,4 +7,4 @@ echo "Starting Testacular Server "
 echo "-------------------------------------------------------------------"
 
 # testacular start $BASE_DIR/testacular.conf.js $*
-testacular start testacular.conf.js
+node_modules/testacular/bin/testacular start testacular.conf.js

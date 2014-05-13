@@ -2,7 +2,7 @@
   "author": "",
   "name": "angularcv",
   "timeout": 1000000,
-  "version": "0.0.2-48",
+  "version": "0.0.3-8",
   "dependencies": {
     "express": "3.0.6",
     "mongodb": "1.2.9",

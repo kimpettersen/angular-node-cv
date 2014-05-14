@@ -17,7 +17,8 @@
     "nock": "0.14.4",
     "should": "1.2.1",
     "superagent": "0.12.1",
-    "protractor": "0.22.0"
+    "protractor": "0.22.0",
+    "mockgoose": "^1.10.0"
   },
   "subdomain": "kimpettersen",
   "domains": [

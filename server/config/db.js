@@ -1,4 +1,5 @@
 var mongoose = require ('mongoose'),
+    mockgoose = require('Mockgoose'),
     bucketModel = require('../api/bucketList/model.js'),
     educationModel = require('../api/education/model.js'),
     experienceModel = require('../api/experience/model.js'),
@@ -14,17 +15,24 @@ var user,
 var blue  = '\033[34m',
     reset = '\033[0m';
 
-
 switch(process.env.NODE_ENV){
         case 'test':
           dbName = 'angularcv_test';
-          mongoose.connect('localhost', dbName);
+          mongoose.connect('mongodb://localhost/' + dbName);
+          break;
+        case 'e2e':
+          dbName = 'e2eTest'
+          mongoose.connect('mongodb://localhost/' + dbName, function(){
+            mockgoose(mongoose);
+          });
           break;
         case 'production':
           sessionSettings = config.sessionSettings
           mongoose.connect('mongodb://' + sessionSettings.username + ':' + sessionSettings.password + '@' + sessionSettings.host + ':' + sessionSettings.port + sessionSettings.dbName);
+          break;
         default:
-          mongoose.connect('localhost', dbName);
+          mongoose.connect('mongodb://localhost/' + dbName);
+
 }
 
 sessionSettings.db = dbName;

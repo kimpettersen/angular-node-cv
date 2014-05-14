@@ -9,23 +9,23 @@
             <html class="no-js lt-ie9">
             <![endif]-->
             <!--[if gt IE 8]>
-                <!-->
-                <html class="no-js">
-                <!--<![endif]-->
+            <!-->
+            <html class="no-js">
+            <!--<![endif]-->
 
-                <head>
-                    <meta charset="utf-8" />
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-                    <title>
-                    </title>
-                    <meta name="description" content="" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <link rel="stylesheet" href="styles/main.css" />
-                    <link rel="stylesheet" media="print" href="styles/print.css" />
-                    <link href="components/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-                </head>
+            <head>
+              <meta charset="utf-8" />
+              <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+              <title>
+              </title>
+              <meta name="description" content="" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <link rel="stylesheet" href="styles/main.css" />
+              <link rel="stylesheet" media="print" href="styles/print.css" />
+              <link href="libs/bootstrap/bootstrap.css" rel="stylesheet">
+            </head>
 
-                <body ng-app="CVApp">
+            <body ng-app="CVApp">
                     <!--[if lt IE 7]>
                         <p class="chromeframe">
                             You are using an outdated browser.
@@ -34,81 +34,83 @@
                             <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
                             to better experience this site.
                         </p>
-                    <![endif]-->
+                        <![endif]-->
                     <!--[if lt IE 9]>
                         <script src="scripts/vendor/es5-shim.min.js">
                         </script>
                         <script src="scripts/vendor/json3.min.js">
                         </script>
-                    <![endif]-->
-                    <!-- Add your site or application content here -->
+                        <![endif]-->
+                        <!-- Add your site or application content here -->
 
 
-                      <div class="navbar navbar-fixed-top" ng-controller="MenuCtrl">
+                        <div class="navbar navbar-fixed-top" ng-controller="MenuCtrl">
                           <div class="navbar-inner">
-                              <div class="container">
-                                      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                      </a>
+                            <div class="container">
+                              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                              </a>
 
-                                    <a ng-href="/#/cv" class="brand">kimpettersen.org</a>
-                                    <div class="nav-collapse collapse" ng-controller="MenuCtrl">
-                                        <ul class="nav">
-                                            <li class="main-button" ng-class="getActivePage('/cv')">
-                                                <a ng-href="/#/cv">CV</a>
-                                            </li>
-                                            <li class="doc-button" ng-class="getActivePage('/blog')">
-                                                <a ng-href="/#/blog">About</a>
-                                            </li>
-                                            <li ng-show="isLoggedIn()" class="admin-button" ng-class="getActivePage('/admin')">
-                                                <a id="admin-nav-button" ng-href="/#/admin">Admin</a>
-                                            </li>
-                                            <li ng-show="!isLoggedIn()" class="login-button" ng-class="getActivePage('/login')">
-                                                <a id="login-nav-button" ng-href="/#/login">Login</a>
-                                            </li>
-                                            <li ng-show="isLoggedIn()" class="logout-button">
-                                                <a id="logout-nav-button" ng-href="/#/logout" ng-click="logout()">Logout</a>
-                                            </li>
-                                        </ul>
-
-                                    </div>
+                              <a ng-href="/#/cv" class="brand">kimpettersen.org</a>
+                              <div class="nav-collapse collapse" ng-controller="MenuCtrl">
+                                <ul class="nav">
+                                  <li class="main-button" ng-class="getActivePage('/cv')">
+                                    <a ng-href="/#/cv">CV</a>
+                                  </li>
+                                  <li class="doc-button" ng-class="getActivePage('/blog')">
+                                    <a ng-href="/#/blog">About</a>
+                                  </li>
+                                  <li ng-show="isLoggedIn()" class="admin-button" ng-class="getActivePage('/admin')">
+                                    <a id="admin-nav-button" ng-href="/#/admin">Admin</a>
+                                  </li>
+                                  <li ng-show="!isLoggedIn()" class="login-button" ng-class="getActivePage('/login')">
+                                    <a id="login-nav-button" ng-href="/#/login">Login</a>
+                                  </li>
+                                  <li ng-show="isLoggedIn()" class="logout-button">
+                                    <a id="logout-nav-button" ng-href="/#/logout" ng-click="logout()">Logout</a>
+                                  </li>
+                                </ul>
 
                               </div>
+
+                            </div>
                           </div>
                         </div>
-                    </div>
-                    <div class="container cont" ng-view>
-                    </div>
-                    <script src="scripts/vendor/angular.js"></script>
-                    <script src="components/angular-resource/angular-resource.js"></script>
-                    <script src="components/angular-sanitize/angular-sanitize.js"></script>
-                    <script src="components/jquery/jquery.js"></script>
-                    <link rel="stylesheet" href="components/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
-                    <script type="text/javascript" src="components/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+                      </div>
+                      <div class="container cont" ng-view>
+                      </div>
+
+                      <script src="libs/angular-1.3.js"></script>
+                      <script src="libs/angular-route.js"></script>
+                      <script src="libs/angular-resource.js"></script>
+                      <script src="libs/angular-sanitize.js"></script>
+                      <script src="libs/jquery.js"></script>
 
 
-                    <script src="components/bootstrap/js/bootstrap.min.js"></script>
+                  <link rel="stylesheet" href="libs/fancybox/fancybox.css" type="text/css" media="screen" />
+                  <script type="text/javascript" src="libs/fancybox/fancybox.js"></script>
+                  <script src="libs/bootstrap/bootstrap.min.js"></script>
 
-                    <!-- build:js scripts/scripts.js -->
-                    <script src="scripts/services/adminServices.js"></script>
-                    <script src="scripts/services/mainServices.js"></script>
-                    <script src="scripts/services/loginServices.js"></script>
-                    <script src="scripts/services/cv-service-mock.js"></script>
-                    <script src="scripts/app.js"></script>
-                    <script src="scripts/controllers/cvCtrl.js"></script>
-                    <script src="scripts/controllers/blogCtrl.js"></script>
-                    <script src="scripts/controllers/menuCtrl.js"></script>
-                    <script src="scripts/controllers/admin/bucketlistCtrl.js"></script>
-                    <script src="scripts/controllers/admin/educationCtrl.js"></script>
-                    <script src="scripts/controllers/admin/experienceCtrl.js"></script>
-                    <script src="scripts/controllers/admin/meCtrl.js"></script>
-                    <script src="scripts/controllers/admin/userCtrl.js"></script>
-                    <script src="scripts/controllers/loginCtrl.js"></script>
-                    <script src="scripts/services/loginServices.js"></script>
-                    <!-- endbuild -->
-                    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+                  <!-- build:js scripts/scripts.js -->
+                  <script src="scripts/services/adminServices.js"></script>
+                  <script src="scripts/services/mainServices.js"></script>
+                  <script src="scripts/services/loginServices.js"></script>
+                  <script src="scripts/services/cv-service-mock.js"></script>
+                  <script src="scripts/app.js"></script>
+                  <script src="scripts/controllers/cvCtrl.js"></script>
+                  <script src="scripts/controllers/blogCtrl.js"></script>
+                  <script src="scripts/controllers/menuCtrl.js"></script>
+                  <script src="scripts/controllers/admin/bucketlistCtrl.js"></script>
+                  <script src="scripts/controllers/admin/educationCtrl.js"></script>
+                  <script src="scripts/controllers/admin/experienceCtrl.js"></script>
+                  <script src="scripts/controllers/admin/meCtrl.js"></script>
+                  <script src="scripts/controllers/admin/userCtrl.js"></script>
+                  <script src="scripts/controllers/loginCtrl.js"></script>
+                  <script src="scripts/services/loginServices.js"></script>
+                  <!-- endbuild -->
+                  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
                   <script type="text/javascript">
 
                     var _gaq = _gaq || [];
@@ -124,11 +126,11 @@
                     })();
 
                   </script>
-                      <script type="text/javascript">
-                        $(".fancybox").fancybox({
-                                prevEffect      : 'none',
-                                nextEffect      : 'none',
-                        });
+                  <script type="text/javascript">
+                    $(".fancybox").fancybox({
+                      prevEffect      : 'none',
+                      nextEffect      : 'none',
+                    });
 
                   </script>
                 </body>

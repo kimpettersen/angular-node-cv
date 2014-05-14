@@ -2,11 +2,12 @@
 
 var CVApp = angular.module('CVApp', ['adminServices',
                                       'mainServices',
+                                      'ngRoute',
+                                      'ngSanitize',
                                       'loginServices',
                                       'CVServicesMock',
-                                      'ngSanitize',
                                       'controllers'])
-  .config(['$routeProvider', function($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/cv', {
         templateUrl: 'views/cv.html',
@@ -26,7 +27,7 @@ var CVApp = angular.module('CVApp', ['adminServices',
       .otherwise({
         redirectTo: '/cv'
       });
-    }]).run( function($rootScope, $location) {
+    }).run( function($rootScope, $location) {
       $rootScope.$on( '$routeChangeStart', function(event, next, current) {
         var loggedIn = localStorage.getItem('loggedIn') === 'true' ? true : false;
 

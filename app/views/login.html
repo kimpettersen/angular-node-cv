@@ -1,21 +1,14 @@
 <div class="offset4 span8" ng-controller="LoginCtrl">
-    <h1>
-        LOGIN
-    </h1>
-    <br>
-    <p>
-        Status:
-        <span id="status" class="text-info">
-            {{ status }}
-        </span>
-    </p>
-    Username:
-    <input ng-model="user.username" type="text" required>
-    <br>
-    Password:
-    <input ng-model="user.password" type="password" required>
-    <br>
-    <button id="login-button" ng-click="login(user)">
-        login
-    </button>
+    <h3>LOGIN</h3>
+
+    <p class="text-info">{{ status }}</p>
+
+    <form>
+      <label for="username">Username:</label>
+      <input ng-model="user.username" name="username" type="text" >
+      <label for="password">Password:</label>
+      <input ng-model="user.password" name="password" type="password" >
+      <br>
+      <input type="submit" id="login-button" ng-click="login(user)" value="Log in">
+    </form>
 </div>

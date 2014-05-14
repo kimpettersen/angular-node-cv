@@ -17,7 +17,7 @@
     "nock": "0.14.4",
     "should": "1.2.1",
     "superagent": "0.12.1",
-    "testacular": "0.6.0"
+    "protractor": "0.22.0"
   },
   "subdomain": "kimpettersen",
   "domains": [
@@ -25,7 +25,7 @@
     "www.kimpettersen.org"
   ],
   "scripts": {
-    "start": "node server/index.js"
+    "start": "NODE_ENV=production node server/index.js"
   },
   "engines": {
     "node": "0.8.x"

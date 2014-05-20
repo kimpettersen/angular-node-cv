@@ -135,6 +135,20 @@ describe('Given I am on the Admin page', function() {
   });
 
   describe('When I want to clear the form', function() {
+    beforeEach(function(){
+      createEducationItem();
+      element(by.css('#education .resource-list .show-item-button')).click();
+      element(by.css('#education .clear-button')).click();
+    });
+
+    it('should have an empty form', function() {
+      expect(element(by.model('adminService.education.item.institution')).getAttribute('value')).toEqual('');
+      expect(element(by.model('adminService.education.item.degree')).getAttribute('value')).toEqual('');
+      expect(element(by.model('adminService.education.item.description')).getAttribute('value')).toEqual('');
+      expect(element(by.model('adminService.education.item.order')).getAttribute('value')).toEqual('');
+    });
+
+
 
   });
 

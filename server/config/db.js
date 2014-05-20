@@ -5,95 +5,84 @@ var mongoose = require ('mongoose'),
     experienceModel = require('../api/experience/model.js'),
     meModel = require('../api/me/model.js'),
     userModel = require('../api/user/model.js'),
-    config = require('../../config.js')
-    sessionSettings = {};
-
-var user,
+    config = require('../../config.js'),
+    sessionSettings = {},
+    user,
     testuser,
-    dbName = 'cv';
-
-var blue  = '\033[34m',
+    blue  = '\033[34m',
     reset = '\033[0m';
 
-switch(process.env.NODE_ENV){
-        case 'test':
-          dbName = 'angularcv_test';
-          mongoose.connect('mongodb://localhost/' + dbName);
-          break;
-        case 'e2e':
-          dbName = 'e2eTest'
-          mongoose.connect('mongodb://localhost/' + dbName, function(){
-            mockgoose(mongoose);
-          });
-          break;
-        case 'production':
-          sessionSettings = config.sessionSettings
-          mongoose.connect('mongodb://' + sessionSettings.username + ':' + sessionSettings.password + '@' + sessionSettings.host + ':' + sessionSettings.port + sessionSettings.dbName);
-          break;
-        default:
-          mongoose.connect('mongodb://localhost/' + dbName);
+sessionSettings.db = 'cv'
 
+switch(process.env.NODE_ENV){
+  case 'test':
+  setUpForTest();
+  break;
+  case 'production':
+  sessionSettings = config.sessionSettings
+  mongoose.connect('mongodb://' + sessionSettings.username + ':' + sessionSettings.password + '@' + sessionSettings.host + ':' + sessionSettings.port + '/' + sessionSettings.db);
+  break;
+  default:
+  mongoose.connect('mongodb://localhost/' + sessionSettings.db);
 }
 
-sessionSettings.db = dbName;
-
-var removeTestData = function(callback){
-    bucketModel.BucketList.remove({}, function(){
-      console.log(blue + 'Emptied bucketlist');
-
-      educationModel.Education.remove({}, function(){
-        console.log(blue + 'Emptied education');
-
-        experienceModel.Experience.remove({}, function(){
-          console.log(blue + 'Emptied experience');
-
-          meModel.Me.remove({}, function(){
-            console.log(blue + 'Emptied me');
-
-            userModel.UserModel.remove({}, function(){
-              console.log(blue + 'Emptied users');
-              console.log(blue + 'Finished removing elems from testdatabse');
-              callback();
-            });
-          });
-        });
-      });
+function setUpForTest(){
+  mongoose.connect('mongodb://localhost/' + sessionSettings.db, function(){
+    mongoose.connection.db.dropDatabase();
+    createTestData(function(err){
+      if (err){
+        console.log(reset);
+        throw new Error('Error creating test data');
+      }else {
+        console.log(blue + 'Success!');
+        console.log(reset);
+      }
     });
-};
+  });
+}
 
-var createTestData = function(callback){
+function createTestData(callback) {
   var bucket,
-      education,
-      experience,
-      me,
-      user;
+  education,
+  experience,
+  me,
+  user;
 
   bucket = new bucketModel.BucketList({
-                            title: 'bucket title',
-                            description: 'bucket description',
-                            rating: 1
-                            });
+    title: 'bucket title',
+    description: 'bucket description',
+    rating: 1,
+    order: 1
+  });
+
   education = new educationModel.Education({
-                            institution: 'edu institution',
-                            degree: 'edu degree',
-                            description: 'edu description',
-                            tags: ['edu tag1', 'edu tag2']
-                            });
+    institution: 'edu institution',
+    degree: 'edu degree',
+    description: 'edu description',
+    tags: ['edu tag1', 'edu tag2'],
+    order: 1
+  });
+
   experience = new experienceModel.Experience({
-                            company: 'exp company',
-                            description: 'exp description',
-                            duration: 'exp duration',
-                            tags: ['exp tag1', 'exp tag2']
-                            });
+    company: 'exp company',
+    description: 'exp description',
+    duration: 'exp duration',
+    tags: ['exp tag1', 'exp tag2'],
+    order: 1
+  });
+
   me = new meModel.Me({
-                            title:'me title',
-                            description:'me description',
-                            tags: ['me tag1', 'me tag2']
-                            });
+    title:'me title',
+    description:'me description',
+    tags: ['me tag1', 'me tag2'],
+    order: 1
+  });
+
   user = new userModel.UserModel({
-                            username: 'admin',
-                            password: '1234'
-                            });
+    'username': 'admin',
+    'password': '1234'
+  });
+
   try{
     bucket.save();
     console.log(blue + 'Creating new bucket instance');
@@ -108,36 +97,7 @@ var createTestData = function(callback){
   }catch(err) {
     return callback(true);
   }
-
   callback(null);
-};
-
-if (dbName === 'angularcv_test'){
-    removeTestData(function(){
-      createTestData(function(err){
-        if (err){
-          console.log(reset);
-          throw new Error('Error creating test data');
-        }else {
-          console.log(blue + 'Success!');
-          console.log(reset);
-        }
-      });
-    });
 }
 
-testuser = {
-  'username': 'admin',
-  'password': '1234'
-};
-
-userModel.UserModel.find(testuser, function(err, res){
-  if(res.length === 0){
-    user = new userModel.UserModel(testuser);
-    user.save();
-    console.log(blue + 'Test user created');
-  }
-});
-
-module.exports.dbName = dbName;
 module.exports.sessionSettings = sessionSettings;

@@ -3,6 +3,7 @@ module.exports = {
     host: 'ds047427.mongolab.com',
     port: '47427',
     username: 'production',
-    password: 'y6kge67p'
+    password: 'y6kge67p',
+    db: 'cv'
   }
 }

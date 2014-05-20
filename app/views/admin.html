@@ -1,78 +1,40 @@
 <div class="row admin-content offset1" ng-controller="CVCtrl">
-        <div id="education" ng-controller="EducationCtrl">
-            <div>
-                <h1 class="resource-title">
-                    Education item
-                </h1>
-                <form class="form-vertical">
-                    <input placeholder="Institution" type="text" name="institution" ng-model="adminService.education.item.institution">
-                    <br>
-                    <input placeholder="Degree" type="text" name="degree" ng-model="adminService.education.item.degree">
-                    <br>
-                    <textarea placeholder="Description" name="description" ng-model="adminService.education.item.description">
-                    </textarea>
-                    <br>
-                    <input placeholder="Tag" type="text" name="tag" ng-model="education.tag">
-                    <button class="btn tag-button" ng-click="addTag(education.tag)">
-                        ADD TAG
-                    </button>
-                    <br>
-                    <input type="number" ng-model="adminService.education.item.order" placeholder="Order">
-                    <br>
-                    <span class="text-info mode-field">
-                        {{ mode|uppercase }} MODE
-                    </span>
-                    <br>
-                    <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'education', item: adminService.education.item })">
-                        SAVE
-                    </button>
-                    <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">
-                        CLEAR
-                    </button>
-                    <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'education', item: adminService.education.item })">
-                        CREATE
-                    </button>
-                </form>
-            </div>
-            <div>
-                <b>
-                    Status:
-                </b>
-                <span class="text-info edit-status">
-                    {{ status }}
-                </span>
-            </div>
-            <div class="pre-json" id="education-item">
-                <h3 class="item-institution">
-                    {{currentItem.institution}}
-                </h3>
-                <p class="item-degree">
-                    {{currentItem.degree}}
-                </p>
-                <div class="item-description" ng-bind-html="currentItem.description">
-                </div>
-                <br>
-                <div>
-                    <ul>
-                        <li class="item-tag" ng-repeat="tag in currentItem.tags">
-                            {{tag}}
-                            <button class="btn btn-mini" ng-click="removeTag(tag)">
-                                Remove
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-            </div>
-            <div>
-                <p class="text-info">"Show" - Select item you want to edit, "Delete" deletes item</p>
-                Resources:
-                <div class="resource-list" resources="" list="adminService.education.resources"
-                display="institution" edit="edit(item)" del="del(item)" type="education">
-                </div>
-            </div>
-        </div>
-        <hr>
+  <div id="education" ng-controller="EducationCtrl">
+    <h1 class="resource-title">Education item</h1>
+    <form class="form-vertical">
+        <input placeholder="Institution" type="text" name="institution" ng-model="adminService.education.item.institution">
+        <input placeholder="Degree" type="text" name="degree" ng-model="adminService.education.item.degree">
+        <textarea placeholder="Description" name="description" ng-model="adminService.education.item.description"></textarea>
+        <input placeholder="Tag" type="text" name="tag" ng-model="education.tag">
+        <button class="btn tag-button" ng-click="addTag(education.tag)">ADD TAG</button>
+        <input type="number" ng-model="adminService.education.item.order" placeholder="Order">
+        <div class="text-info mode-field">{{ mode|uppercase }} MODE</div>
+        <button class="btn edit-button" ng-disabled="isCreateMode()" ng-click="editResource({type: 'education', item: adminService.education.item })">SAVE</button>
+        <button class="btn clear-button" ng-disabled="isCreateMode()" ng-click="resetCurrent()">CLEAR</button>
+        <button class="btn create-button" ng-disabled="!isCreateMode()" ng-click="createResource({type: 'education', item: adminService.education.item })">CREATE</button>
+    </form>
+    <div class="row text-info edit-status">
+        {{ status }}
+    </div>
+    <h3 class="item-institution">
+        {{currentItem.institution}}
+    </h3>
+
+    <p class="item-degree">{{currentItem.degree}}</p>
+    <div class="item-description pre-json" id="education-item" ng-bind-html="currentItem.description"></div>
+    <ul>
+      <li class="item-tag" ng-repeat="tag in currentItem.tags">
+        {{tag}}
+        <button class="btn btn-mini" ng-click="removeTag(tag)">Remove</button>
+      </li>
+    </ul>
+
+    <h3>Saved Resources</h3>
+    <div class="resource-list" resources="" list="adminService.education.resources"
+    display="institution" edit="edit(item)" del="del(item)" type="education">
+    </div>
+  </div>
+  <hr>
         <div id="experience" ng-controller="ExperienceCtrl">
             <div>
                 <h1 class="resource-title">

@@ -1,3 +1,13 @@
+Update May 2014
+===============
+
+I added a few updates to this in May 2014.
+  * Update to AngularJS 1.3
+  * Change e2e tests from Testacular to Protractor
+  * Complete er-write of e2e tests
+  * Mock database for e2e testing
+  * General Refactoring
+
 Angular-node-cv
 ===============
 
@@ -23,7 +33,7 @@ What can you do with it?
 
 
 * Give me a job offer!
-* Perform a GET request to the API
+* Perform GET requests to the API
 * Look through the code
 * Give me a code review or any type of feedback
 
@@ -44,25 +54,17 @@ Requirements
 ============
 
 * [Mongodb](http://www.mongodb.org/) running locally
-* [Node JS](http://nodejs.org/) 0.8.x
+* [Node JS](http://nodejs.org/)
 
 
 Tests
 =====
+Make sure you have protractor and webdriver set up correctly
 
-Since this is an experimental project I decided to follow a few different approaches. I use *Mocha* to run tests
-on the server, and *Jasmine* and *Testacular testrunner* for the tests front-end. The e2e tests depend on the database content, the reason
-why is discussed further down.
-
-
-##Important##
-
-Once you start the server, it generates test data that the tests depend on.
-You should therefore restart the *Node server* when you switch between test types. Unit tests are not affected by this,
-but a failed test, can affect other tests.
-
-##Run the tests##
-*Start the server:* node server/index.js
+##Run e2e tests##
+*Start webdriver:* webdriver-manager start
+*Start the test server:* sh development_scripts/run_testserver.sh
+*run tests:* sh development_scripts/e2e_tests.sh
 
 *server unit tests*: sh server_test.sh
 

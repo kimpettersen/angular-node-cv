@@ -1,6 +1,6 @@
 describe('Given I am a user', function() {
   var baseUrl = 'http://localhost:3000/#/',
-    ptor = protractor.getInstance();
+      ptor = protractor.getInstance();
 
   function login(username, password) {
     username = username ? username : 'admin';

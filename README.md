@@ -51,8 +51,7 @@ Tests
 =====
 
 Since this is an experimental project I decided to follow a few different approaches. I use *Mocha* to run tests
-on the server, and *Jasmine* and *Testacular testrunner* for the tests front-end. The e2e tests depend on the database content, the reason
-why is discussed further down.
+on the server, and *Jasmine* and *Testacular testrunner* for the client side tests
 
 
 ##Important##

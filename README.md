@@ -4,7 +4,7 @@ Angular-node-cv
 Angular-node-cv is what it sounds like: my CV written in AngularJS. The backend is an RESTful API written in Node.js and ExpressJS.
 If you want you can clone this repository and download it, simply follow the instructions below.
 
-~~The project is hosted at [kimpettersen.org](http://kimpettersen.org)~~ This is temporarly taken down, a cleaner version will be available soon
+~~The project is hosted at [kimpettersen.org](http://kimpettersen.org)~~ I'm no longer hosting this, a cleaner version will be available soon.
 
 If you have any questions or just want to say hello, talk to me on [Twitter](https://twitter.com/PettersenKim)
 
